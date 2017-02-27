@@ -1,0 +1,3005 @@
+
+/**************************************************************************
+ * Copyright(c) 1998-1999, ALICE Experiment at CERN, All rights reserved. *
+ *                                                                        *
+ * Author: The ALICE Off-line Project.                                    *
+ * Contributors are mentioned in the code where appropriate.              *
+ *                                                                        *
+ * Permission to use, copy, modify and distribute this software and its   *
+ * documentation strictly for non-commercial purposes is hereby granted   *
+ * without fee, provided that the above copyright notice appears in all   *
+ * copies and that both the copyright notice and this permission notice   *
+ * appear in the supporting documentation. The authors make no claims     *
+ * about the suitability of this software for any purpose. It is          *
+ * provided "as is" without express or implied warranty.                  *
+ **************************************************************************/
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  This class is used to reconstruct the neutral Xi(1530) resonance.
+//  This class essentially combines charged Xi candidates from the Xi Vertexer
+//  with primary charged pions.
+//
+//  authors: Dhevan Gangadharan (dhevan.raja.gangadharan@cern.ch)
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+#include <iostream>
+#include <math.h>
+#include "TChain.h"
+#include "TFile.h"
+#include "TKey.h"
+#include "TObject.h"
+#include "TObjString.h"
+#include "TList.h"
+#include "TTree.h"
+#include "TH1F.h"
+#include "TH1D.h"
+#include "TH2D.h"
+#include "TH3D.h"
+#include "TProfile.h"
+#include "TCanvas.h"
+
+#include "AliAnalysisTask.h"
+#include "AliAnalysisManager.h"
+
+
+#include "AliESDEvent.h"
+#include "AliESDInputHandler.h"
+#include "AliESDtrackCuts.h"
+#include "AliMCEventHandler.h"
+#include "AliMCEvent.h"
+#include "AliStack.h"
+#include "AliCentrality.h"
+#include "AliOADBCentrality.h" // for Centrality jisong
+#include "AliESDVZERO.h"
+
+#include "AliAODEvent.h"
+#include "AliAODInputHandler.h"
+#include "AliAODMCParticle.h"
+#include "AliAODcascade.h"
+#include "AliESDcascade.h"
+#include "AliV0vertexer.h"
+#include "AliCascadeVertexer.h"
+
+#include "AliXiStar.h"
+
+#define PI 3.1415927
+
+
+// Author: Dhevan Gangadharan
+
+ClassImp(AliXiStar)
+
+//________________________________________________________________________
+AliXiStar::AliXiStar():
+AliAnalysisTaskSE(),
+fname(0),
+
+fAOD(0x0),
+fESD(0x0),
+//mcEvent(0x0),
+//mcstack(0x0),
+fOutputList(0x0),
+fTrackCut(0x0),
+fPIDResponse(0x0),
+
+fCentrality(0),
+fTreeXi(0),
+fTreePi(0),
+fTreeEvent(0),
+fTreeMC(0),
+fTreeMC1(0),
+fEC(0x0),
+fEvt(0x0),
+
+fTempStruct(0x0),
+fZvertexBins(0),
+fEventsToMix(0),
+fMultBins(0),
+fMCcase(0),
+fAODcase(0),
+fEventCounter(0),
+fEventNumber(0),
+fCentralityEstimator("V0M"),
+
+fMaxDecayLength(0),
+fMassWindow(0),
+fTrueMassPr(0),
+fTrueMassPi(0),
+fTrueMassK(0),
+fTrueMassLam(0),
+fTrueMassXi(0),
+
+
+// ---Tree Variables---//
+fTreeVariableMult(0),
+fTreeVariablePrimaryVz(0),
+fTreeVariableXiMass(0),
+fTreeVariableXiPt(0),
+fTreeVariableEta(0),
+fTreeVariablePhi(0),
+fTreeVariableDecayXYxi(0),
+fTreeVariableDecayXYlambda(0),
+fTreeVariableNclusp(0),
+fTreeVariableNcluspi1(0),
+fTreeVariableNcluspi2(0),
+fTreeVariablePVdcaP(0),
+fTreeVariablePVdcaPi1(0),
+fTreeVariablePVdcaPi2(0),
+fTreeVariablePVdcaLambda(0),
+fTreeVariableDCApip(0),
+fTreeVariableDCApilambda(0),
+fTreevariableCosPAlambda(0),
+fTreevariableCosPAxi(0), //1-19
+
+fTreeVariableCentrality(0),
+fTreeVariableCentralityV0M(0),
+fTreeVariableCentralityTRK(0),
+fTreeVariableCentralitySPD(0), //20-23
+
+fTreeVariablemyTracks(0),
+fTreeVariablexiTracks(0),
+fTreeVariableXiTrackX(0),
+fTreeVariableXiTrackY(0),
+fTreeVariableXiTrackZ(0),
+fTreeVariableXiTrackPx(0),
+fTreeVariableXiTrackPy(0),
+fTreeVariableXiTrackPz(0),
+fTreeVariableXiTrackQ(0),
+fTreeVariableXiTrackpID(0),
+fTreeVariableXiTracknID(0),
+fTreeVariableXiTrackbID(0),//24-34
+
+fTreeVariableESDTrackX(0),
+fTreeVariableESDTrackY(0),
+fTreeVariableESDTrackZ(0),
+fTreeVariableESDTrackPx(0),
+fTreeVariableESDTrackPy(0),
+fTreeVariableESDTrackPz(0),
+fTreeVariableESDTrackQ(0),
+fTreeVariableESDTrackID(0),
+fTreeVariavleESDStatus(0),
+fTreeVariableESDtrackDCAZ(0),
+fTreeVariableESDtrackDCAXY(0),
+fTreeVariableESDtrackEta(0),
+fTreeVariableESDtrackPt(0),
+fTreeVariableESDtrackMom(0),
+fTreeVariableESDtrackfNclusTPC(0),//35-49
+/*
+ fTreeVariableEventCounter1(0),
+ fTreeVariableEventCounter2(0),
+ fTreeVariableEventCounter3(0),
+ */
+fTreeVariableRunNumber(0),
+fTreeVariableEventNumber1(0),
+fTreeVariableEventNumber2(0),
+fTreeVariableEventNumber3(0),
+fTreeVariableEventNumberInFile(0),//50-55
+
+fTreeVariableMCinputTotalXiPt(0),
+fTreeVariableMCinputTotalXiY(0),
+fTreeVariableMCinputTotalXiCalcMass(0),
+
+
+fTreeVariableMCinputTotalXibarPt(0),
+fTreeVariableMCinputTotalXibarY(0),
+fTreeVariableMCinputTotalXibarCalcMass(0),
+
+fTreeVariableMCinputTotalXiStarPt(0),
+fTreeVariableMCinputTotalXiStarY(0),
+fTreeVariableMCinputTotalXiStarCalcMass(0),
+
+fTreeVariableMCinputTotalXiStarbarPt(0),
+fTreeVariableMCinputTotalXiStarbarY(0),
+fTreeVariableMCinputTotalXiStarbarCalcMass(0),
+fTreeVariableMCinputTotalSongPID(0),
+fTreeVariableMCinputTotalCent(0),
+
+fTreeVariableMCrecXiPt(0),
+fTreeVariableMCrecXiY(0),
+fTreeVariableMCrecXiMass(0),
+
+fTreeVariableMCrecXibarPt(0),
+fTreeVariableMCrecXibarY(0),
+fTreeVariableMCrecXibarMass(0),
+
+fTreeVariableMCrecXiSongPID(0),
+fTreeVariableMCrecXiCent(0),
+
+
+
+//fTreeVariableMCXiStarD2esd(0),
+//fTreeVariableMCXiMom(0),
+//fTreeVariableMCXiStarD2Mom(0),
+//fTreeVariableMCXiStaresd(0),
+
+
+
+fTreeVariableMCrecXiStarPt(0),
+fTreeVariableMCrecXiStarY(0),
+fTreeVariableMCrecXiStarMass(0),
+
+fTreeVariableMCrecXiStarbarPt(0),
+fTreeVariableMCrecXiStarbarY(0),
+fTreeVariableMCrecXiStarbarMass(0),
+
+fTreeVariableMCrecXiStarSongPID(0),
+fTreeVariableMCrecXiStarCent(0),
+fTreeVariableMCXiFilled(0),
+fTreeVariableMCrecXiStarcv(0),
+
+
+
+fESDTrack4(0x0),
+fXiTrack(0x0),
+fCutList(0)
+
+
+
+
+{
+    // Default Constructor
+    for (Int_t i=0; i<21; i++){
+        fCovMatrix[i]=-99999.;
+        if (i<12) fMultLimits[i] = 0;
+    }
+    for (Int_t i=0; i<kNCuts; i++){
+        fDecayParameters[i]=0;
+        for (Int_t j=0; j<kNCutVariations; j++){
+            fCutValues[j][i]=0;
+        }
+    }
+    //
+    for (Int_t cv=0; cv<kNCutVariations; cv++){
+        CutVar[cv].fXi=0x0;
+        CutVar[cv].fXibar=0x0;
+        CutVar[cv].fXiMinusPiPlus=0x0;
+        CutVar[cv].fXiMinusPiMinus=0x0;
+        CutVar[cv].fXiPlusPiPlus=0x0;
+        CutVar[cv].fXiPlusPiMinus=0x0;
+        //
+        CutVar[cv].fXiMinusPiPlusbkg=0x0;
+        CutVar[cv].fXiMinusPiMinusbkg=0x0;
+        CutVar[cv].fXiPlusPiPlusbkg=0x0;
+        CutVar[cv].fXiPlusPiMinusbkg=0x0;
+        //
+        CutVar[cv].fMCrecXi=0x0;
+        CutVar[cv].fMCrecXibar=0x0;
+        CutVar[cv].fMCrecXiMinusPiPlus=0x0;
+        CutVar[cv].fMCrecXiPlusPiMinus=0x0;
+    }
+    
+}
+//________________________________________________________________________
+AliXiStar::AliXiStar(const char *name, Bool_t AODdecision, Bool_t MCdecision, Int_t CutListOption)
+: AliAnalysisTaskSE(name),
+fname(name),
+fAOD(0x0),
+fESD(0x0),
+//mcEvent(0x0),
+//mcstack(0x0),
+fOutputList(0x0),
+fTrackCut(0x0),
+fPIDResponse(0x0),
+
+fCentrality(0),
+fTreeXi(0),
+fTreePi(0),
+fTreeEvent(0),
+fTreeMC(0),
+fTreeMC1(0),
+fEC(0x0),
+fEvt(0x0),
+
+fTempStruct(0x0),
+fZvertexBins(0),
+fEventsToMix(0),
+fMultBins(0),
+fMCcase(MCdecision),
+fAODcase(AODdecision),
+fEventCounter(0),
+fEventNumber(0),
+fCentralityEstimator("V0M"),
+
+fMaxDecayLength(0),
+fMassWindow(0),
+fTrueMassPr(0),
+fTrueMassPi(0),
+fTrueMassK(0),
+fTrueMassLam(0),
+fTrueMassXi(0),
+
+
+fTreeVariableMult(0),
+fTreeVariablePrimaryVz(0),
+fTreeVariableXiMass(0),
+fTreeVariableXiPt(0),
+fTreeVariableEta(0),
+fTreeVariablePhi(0),
+fTreeVariableDecayXYxi(0),
+fTreeVariableDecayXYlambda(0),
+fTreeVariableNclusp(0),
+fTreeVariableNcluspi1(0),
+fTreeVariableNcluspi2(0),
+fTreeVariablePVdcaP(0),
+fTreeVariablePVdcaPi1(0),
+fTreeVariablePVdcaPi2(0),
+fTreeVariablePVdcaLambda(0),
+fTreeVariableDCApip(0),
+fTreeVariableDCApilambda(0),
+fTreevariableCosPAlambda(0),
+fTreevariableCosPAxi(0), //1-19
+
+fTreeVariableCentrality(0),
+fTreeVariableCentralityV0M(0),
+fTreeVariableCentralityTRK(0),
+fTreeVariableCentralitySPD(0),//20-23
+
+fTreeVariablemyTracks(0),
+fTreeVariablexiTracks(0),
+fTreeVariableXiTrackX(0),
+fTreeVariableXiTrackY(0),
+fTreeVariableXiTrackZ(0),
+fTreeVariableXiTrackPx(0),
+fTreeVariableXiTrackPy(0),
+fTreeVariableXiTrackPz(0),
+fTreeVariableXiTrackQ(0),
+fTreeVariableXiTrackpID(0),
+fTreeVariableXiTracknID(0),
+fTreeVariableXiTrackbID(0),//24-34
+
+fTreeVariableESDTrackX(0),
+fTreeVariableESDTrackY(0),
+fTreeVariableESDTrackZ(0),
+fTreeVariableESDTrackPx(0),
+fTreeVariableESDTrackPy(0),
+fTreeVariableESDTrackPz(0),
+fTreeVariableESDTrackQ(0),
+fTreeVariableESDTrackID(0),
+fTreeVariavleESDStatus(0),
+fTreeVariableESDtrackDCAZ(0),
+fTreeVariableESDtrackDCAXY(0),
+fTreeVariableESDtrackEta(0),
+fTreeVariableESDtrackPt(0),
+fTreeVariableESDtrackMom(0),
+fTreeVariableESDtrackfNclusTPC(0),//35-49
+
+/*
+ fTreeVariableEventCounter1(0),
+ fTreeVariableEventCounter2(0),
+ fTreeVariableEventCounter3(0),
+ */
+
+fTreeVariableRunNumber(0),
+fTreeVariableEventNumber1(0),
+fTreeVariableEventNumber2(0),
+fTreeVariableEventNumber3(0),
+fTreeVariableEventNumberInFile(0),//50-55
+
+
+fTreeVariableMCinputTotalXiPt(0),
+fTreeVariableMCinputTotalXiY(0),
+fTreeVariableMCinputTotalXiCalcMass(0),
+
+fTreeVariableMCinputTotalXibarPt(0),
+fTreeVariableMCinputTotalXibarY(0),
+fTreeVariableMCinputTotalXibarCalcMass(0),
+
+fTreeVariableMCinputTotalXiStarPt(0),
+fTreeVariableMCinputTotalXiStarY(0),
+fTreeVariableMCinputTotalXiStarCalcMass(0),
+
+fTreeVariableMCinputTotalXiStarbarPt(0),
+fTreeVariableMCinputTotalXiStarbarY(0),
+fTreeVariableMCinputTotalXiStarbarCalcMass(0),
+fTreeVariableMCinputTotalSongPID(0),
+fTreeVariableMCinputTotalCent(0),
+
+fTreeVariableMCrecXiPt(0),
+fTreeVariableMCrecXiY(0),
+fTreeVariableMCrecXiMass(0),
+
+fTreeVariableMCrecXibarPt(0),
+fTreeVariableMCrecXibarY(0),
+fTreeVariableMCrecXibarMass(0),
+fTreeVariableMCrecXiSongPID(0),
+fTreeVariableMCrecXiCent(0),
+
+
+//fTreeVariableMCXiStarD2esd(0),
+//fTreeVariableMCXiMom(0),
+//fTreeVariableMCXiStarD2Mom(0),
+//fTreeVariableMCXiStaresd(0),
+
+
+
+fTreeVariableMCrecXiStarPt(0),
+fTreeVariableMCrecXiStarY(0),
+fTreeVariableMCrecXiStarMass(0),
+
+fTreeVariableMCrecXiStarbarPt(0),
+fTreeVariableMCrecXiStarbarY(0),
+fTreeVariableMCrecXiStarbarMass(0),
+
+fTreeVariableMCrecXiStarSongPID(0),
+fTreeVariableMCrecXiStarCent(0),
+fTreeVariableMCXiFilled(0),
+fTreeVariableMCrecXiStarcv(0),
+
+
+
+
+fESDTrack4(0x0),
+fXiTrack(0x0),
+fCutList(CutListOption)
+
+
+
+
+
+{
+    // Main Constructor
+    for (Int_t i=0; i<21; i++){
+        fCovMatrix[i]=-99999.;
+        if (i<12) fMultLimits[i] = 0;
+    }
+    for (Int_t i=0; i<kNCuts; i++){
+        fDecayParameters[i]=0;
+        for (Int_t j=0; j<kNCutVariations; j++){
+            fCutValues[j][i]=0;
+        }
+    }
+    //
+    for (Int_t cv=0; cv<kNCutVariations; cv++){
+        CutVar[cv].fXi=0x0;
+        CutVar[cv].fXibar=0x0;
+        CutVar[cv].fXiMinusPiPlus=0x0;
+        CutVar[cv].fXiMinusPiMinus=0x0;
+        CutVar[cv].fXiPlusPiPlus=0x0;
+        CutVar[cv].fXiPlusPiMinus=0x0;
+        //
+        CutVar[cv].fXiMinusPiPlusbkg=0x0;
+        CutVar[cv].fXiMinusPiMinusbkg=0x0;
+        CutVar[cv].fXiPlusPiPlusbkg=0x0;
+        CutVar[cv].fXiPlusPiMinusbkg=0x0;
+        //
+        CutVar[cv].fMCrecXi=0x0;
+        CutVar[cv].fMCrecXibar=0x0;
+        CutVar[cv].fMCrecXiMinusPiPlus=0x0;
+        CutVar[cv].fMCrecXiPlusPiMinus=0x0;
+    }
+    
+    // Define output for Tree
+    DefineInput (0, TChain::Class()); //jisong added
+    
+    // Define output slots here
+    // Output slot #1
+    DefineOutput(0, TTree::Class());
+    DefineOutput(1, TList::Class());
+    DefineOutput(2, TTree::Class());
+    DefineOutput(3, TTree::Class());
+    DefineOutput(4, TTree::Class());
+    DefineOutput(5, TTree::Class());
+    
+    
+}
+//________________________________________________________________________
+AliXiStar::AliXiStar(const AliXiStar &obj)
+: AliAnalysisTaskSE(obj.fname),
+fname(obj.fname),
+fAOD(obj.fAOD),
+fESD(obj.fESD),
+//mcEvent(obj.mcEvent),
+//mcstack(obj.mcstack),
+fOutputList(obj.fOutputList),
+fTrackCut(obj.fTrackCut),
+fPIDResponse(obj.fPIDResponse),
+
+fCentrality(obj.fCentrality),
+fTreeXi(obj.fTreeXi),
+fTreePi(obj.fTreePi),
+fTreeEvent(obj.fTreeEvent),
+fTreeMC(obj.fTreeMC),
+fTreeMC1(obj.fTreeMC1),
+fEC(obj.fEC),
+fEvt(obj.fEvt),
+
+
+fTempStruct(obj.fTempStruct),
+fZvertexBins(obj.fZvertexBins),
+fEventsToMix(obj.fEventsToMix),
+fMultBins(obj.fMultBins),
+fMultLimits(),
+fMCcase(obj.fMCcase),
+fAODcase(obj.fAODcase),
+fEventCounter(obj.fEventCounter),
+fEventNumber(obj.fEventNumber),
+fCentralityEstimator(obj.fCentralityEstimator),
+
+fMaxDecayLength(obj.fMaxDecayLength),
+fMassWindow(obj.fMassWindow),
+fTrueMassPr(obj.fTrueMassPr),
+fTrueMassPi(obj.fTrueMassPi),
+fTrueMassK(obj.fTrueMassK),
+fTrueMassLam(obj.fTrueMassLam),
+fTrueMassXi(obj.fTrueMassXi),
+
+
+fTreeVariableMult(obj.fTreeVariableMult),
+fTreeVariablePrimaryVz(obj.fTreeVariablePrimaryVz),
+fTreeVariableXiMass(obj.fTreeVariableXiMass),
+fTreeVariableXiPt(obj.fTreeVariableXiPt),
+fTreeVariableEta(obj.fTreeVariableEta),
+fTreeVariablePhi(obj.fTreeVariablePhi),
+fTreeVariableDecayXYxi(obj.fTreeVariableDecayXYxi),
+fTreeVariableDecayXYlambda(obj.fTreeVariableDecayXYlambda),
+fTreeVariableNclusp(obj.fTreeVariableNclusp),
+fTreeVariableNcluspi1(obj.fTreeVariableNcluspi1),
+fTreeVariableNcluspi2(obj.fTreeVariableNcluspi2),
+fTreeVariablePVdcaP(obj.fTreeVariablePVdcaP),
+fTreeVariablePVdcaPi1(obj.fTreeVariablePVdcaPi1),
+fTreeVariablePVdcaPi2(obj.fTreeVariablePVdcaPi2),
+fTreeVariablePVdcaLambda(obj.fTreeVariablePVdcaLambda),
+fTreeVariableDCApip(obj.fTreeVariableDCApip),
+fTreeVariableDCApilambda(obj.fTreeVariableDCApilambda),
+fTreevariableCosPAlambda(obj.fTreevariableCosPAlambda),
+fTreevariableCosPAxi(obj.fTreevariableCosPAxi),
+
+fTreeVariableCentrality(obj.fTreeVariableCentrality),
+fTreeVariableCentralityV0M(obj.fTreeVariableCentralityV0M),
+fTreeVariableCentralityTRK(obj.fTreeVariableCentralityTRK),
+fTreeVariableCentralitySPD(obj.fTreeVariableCentralitySPD),
+
+fTreeVariablemyTracks(obj.fTreeVariablemyTracks),
+fTreeVariablexiTracks(obj.fTreeVariablexiTracks),
+fTreeVariableXiTrackX(obj.fTreeVariableXiTrackX),
+fTreeVariableXiTrackY(obj.fTreeVariableXiTrackY),
+fTreeVariableXiTrackZ(obj.fTreeVariableXiTrackZ),
+fTreeVariableXiTrackPx(obj.fTreeVariableXiTrackPx),
+fTreeVariableXiTrackPy(obj.fTreeVariableXiTrackPy),
+fTreeVariableXiTrackPz(obj.fTreeVariableXiTrackPz),
+fTreeVariableXiTrackQ(obj.fTreeVariableXiTrackQ),
+fTreeVariableXiTrackpID(obj.fTreeVariableXiTrackpID),
+fTreeVariableXiTracknID(obj.fTreeVariableXiTracknID),
+fTreeVariableXiTrackbID(obj.fTreeVariableXiTrackbID),
+
+fTreeVariableESDTrackX(obj.fTreeVariableESDTrackX),
+fTreeVariableESDTrackY(obj.fTreeVariableESDTrackY),
+fTreeVariableESDTrackZ(obj.fTreeVariableESDTrackZ),
+fTreeVariableESDTrackPx(obj.fTreeVariableESDTrackPx),
+fTreeVariableESDTrackPy(obj.fTreeVariableESDTrackPy),
+fTreeVariableESDTrackPz(obj.fTreeVariableESDTrackPz),
+fTreeVariableESDTrackQ(obj.fTreeVariableESDTrackQ),
+fTreeVariableESDTrackID(obj.fTreeVariableESDTrackID),
+fTreeVariavleESDStatus(obj.fTreeVariavleESDStatus),
+fTreeVariableESDtrackDCAZ(obj.fTreeVariableESDtrackDCAZ),
+fTreeVariableESDtrackDCAXY(obj.fTreeVariableESDtrackDCAXY),
+fTreeVariableESDtrackEta(obj.fTreeVariableESDtrackEta),
+fTreeVariableESDtrackPt(obj.fTreeVariableESDtrackPt),
+fTreeVariableESDtrackMom(obj.fTreeVariableESDtrackMom),
+fTreeVariableESDtrackfNclusTPC(obj.fTreeVariableESDtrackfNclusTPC),
+
+/*fTreeVariableEventCounter1(obj.fTreeVariableEventCounter1),
+ fTreeVariableEventCounter2(obj.fTreeVariableEventCounter2),
+ fTreeVariableEventCounter3(obj.fTreeVariableEventCounter3),
+ */
+fTreeVariableRunNumber(obj.fTreeVariableRunNumber),
+fTreeVariableEventNumber1(obj.fTreeVariableEventNumber1),
+fTreeVariableEventNumber2(obj.fTreeVariableEventNumber2),
+fTreeVariableEventNumber3(obj.fTreeVariableEventNumber3),
+
+fTreeVariableEventNumberInFile(obj.fTreeVariableEventNumberInFile),
+
+// MC variables //
+
+fTreeVariableMCinputTotalXiPt(obj.fTreeVariableMCinputTotalXiPt),
+fTreeVariableMCinputTotalXiY(obj.fTreeVariableMCinputTotalXiY),
+fTreeVariableMCinputTotalXiCalcMass(obj.fTreeVariableMCinputTotalXiCalcMass),
+
+fTreeVariableMCinputTotalXibarPt(obj.fTreeVariableMCinputTotalXibarPt),
+fTreeVariableMCinputTotalXibarY(obj.fTreeVariableMCinputTotalXibarY),
+fTreeVariableMCinputTotalXibarCalcMass(obj.fTreeVariableMCinputTotalXibarCalcMass),
+
+
+fTreeVariableMCinputTotalXiStarPt(obj.fTreeVariableMCinputTotalXiStarPt),
+fTreeVariableMCinputTotalXiStarY(obj.fTreeVariableMCinputTotalXiStarY),
+fTreeVariableMCinputTotalXiStarCalcMass(obj.fTreeVariableMCinputTotalXiStarCalcMass),
+
+
+fTreeVariableMCinputTotalXiStarbarPt(obj.fTreeVariableMCinputTotalXiStarbarPt),
+fTreeVariableMCinputTotalXiStarbarY(obj.fTreeVariableMCinputTotalXiStarbarY),
+fTreeVariableMCinputTotalXiStarbarCalcMass(obj.fTreeVariableMCinputTotalXiStarbarCalcMass),
+fTreeVariableMCinputTotalSongPID(obj.fTreeVariableMCinputTotalSongPID),
+fTreeVariableMCinputTotalCent(obj.fTreeVariableMCinputTotalCent),
+
+fTreeVariableMCrecXiPt(obj.fTreeVariableMCrecXiPt),
+fTreeVariableMCrecXiY(obj.fTreeVariableMCrecXiY),
+fTreeVariableMCrecXiMass(obj.fTreeVariableMCrecXiMass),
+
+fTreeVariableMCrecXibarPt(obj.fTreeVariableMCrecXibarPt),
+fTreeVariableMCrecXibarY(obj.fTreeVariableMCrecXibarY),
+fTreeVariableMCrecXibarMass(obj.fTreeVariableMCrecXibarMass),
+fTreeVariableMCrecXiSongPID(obj.fTreeVariableMCrecXiSongPID),
+fTreeVariableMCrecXiCent(obj.fTreeVariableMCrecXiCent),
+
+
+fTreeVariableMCrecXiStarPt(obj.fTreeVariableMCrecXiStarPt),
+fTreeVariableMCrecXiStarY(obj.fTreeVariableMCrecXiStarY),
+fTreeVariableMCrecXiStarMass(obj.fTreeVariableMCrecXiStarMass),
+
+fTreeVariableMCrecXiStarbarPt(obj.fTreeVariableMCrecXiStarbarPt),
+fTreeVariableMCrecXiStarbarY(obj.fTreeVariableMCrecXiStarbarY),
+fTreeVariableMCrecXiStarbarMass(obj.fTreeVariableMCrecXiStarbarMass),
+
+fTreeVariableMCrecXiStarSongPID(obj.fTreeVariableMCrecXiStarSongPID),
+fTreeVariableMCrecXiStarCent(obj.fTreeVariableMCrecXiStarCent),
+fTreeVariableMCXiFilled(obj.fTreeVariableMCXiFilled),
+fTreeVariableMCrecXiStarcv(obj.fTreeVariableMCrecXiStarcv),
+
+
+fESDTrack4(obj.fESDTrack4),
+fXiTrack(obj.fXiTrack),
+fCutList(obj.fCutList)
+
+{
+    // Copy constructor
+    for (Int_t i=0; i<21; i++){
+        fCovMatrix[i]=obj.fCovMatrix[i];
+        if (i<12) fMultLimits[i]=obj.fMultLimits[i];
+    }
+    for (Int_t i=0; i<kNCuts; i++){
+        fDecayParameters[i]=obj.fDecayParameters[i];
+        for (Int_t j=0; j<kNCutVariations; j++){
+            fCutValues[j][i]=obj.fCutValues[j][i];
+        }
+    }
+    
+}
+//________________________________________________________________________
+AliXiStar &AliXiStar::operator=(const AliXiStar &obj)
+{
+    // Assignment operator
+    if (this == &obj)
+        return *this;
+    
+    fname = obj.fname;
+    fAOD = obj.fAOD;
+    fESD = obj.fESD;
+  //  mcEvent = obj.mcEvent;
+  //  mcstack = obj.mcstack;
+    fOutputList = obj.fOutputList;
+    fTrackCut = obj.fTrackCut;
+    fPIDResponse = obj.fPIDResponse;
+    
+    fCentrality = obj.fCentrality;
+    fTreeXi = obj.fTreeXi;
+    fTreePi = obj.fTreePi;
+    fTreeEvent =  obj.fTreeEvent;
+    fTreeMC = obj.fTreeMC;
+    fTreeMC1 = obj.fTreeMC1;
+    fEC = obj.fEC;
+    fEvt = obj.fEvt;
+    fTempStruct = obj.fTempStruct;
+    fZvertexBins = obj.fZvertexBins;
+    fEventsToMix = obj.fEventsToMix;
+    fMultBins = obj.fMultBins;
+    for (Int_t i=0; i<12; i++){
+        fMultLimits[i]=obj.fMultLimits[i];
+    }
+    fMCcase = obj.fMCcase;
+    fAODcase = obj.fAODcase;
+    fEventCounter = obj.fEventCounter;
+    fEventNumber = obj.fEventNumber;
+    fMaxDecayLength = obj.fMaxDecayLength;
+    fMassWindow = obj.fMassWindow;
+    for (Int_t i=0; i<21; i++){
+        fCovMatrix[i]=obj.fCovMatrix[i];
+    }
+    
+    fTrueMassPr = obj.fTrueMassPr;
+    fTrueMassPi = obj.fTrueMassPi;
+    fTrueMassK = obj.fTrueMassK;
+    fTrueMassLam = obj.fTrueMassLam;
+    fTrueMassXi = obj.fTrueMassXi;
+    fESDTrack4 = obj.fESDTrack4;
+    fXiTrack = obj.fXiTrack;
+    fCutList = obj.fCutList;
+    fCentralityEstimator = obj.fCentralityEstimator;
+    
+    
+    fTreeVariableMult = obj.fTreeVariableMult;
+    fTreeVariablePrimaryVz = obj.fTreeVariablePrimaryVz;
+    fTreeVariableXiMass = obj.fTreeVariableXiMass;
+    fTreeVariableXiPt = obj.fTreeVariableXiPt;
+    fTreeVariableEta = obj.fTreeVariableEta;
+    fTreeVariablePhi = obj.fTreeVariablePhi;
+    fTreeVariableDecayXYxi = obj.fTreeVariableDecayXYxi;
+    fTreeVariableDecayXYlambda = obj.fTreeVariableDecayXYlambda;
+    fTreeVariableNclusp = (obj.fTreeVariableNclusp),
+    fTreeVariableNcluspi1 = (obj.fTreeVariableNcluspi1),
+    fTreeVariableNcluspi2 = (obj.fTreeVariableNcluspi2),
+    fTreeVariablePVdcaP = obj.fTreeVariablePVdcaP;
+    fTreeVariablePVdcaPi1 = obj.fTreeVariablePVdcaPi1;
+    fTreeVariablePVdcaPi2 = obj.fTreeVariablePVdcaPi2;
+    fTreeVariablePVdcaLambda = obj.fTreeVariablePVdcaLambda;
+    fTreeVariableDCApip = obj.fTreeVariableDCApip;
+    fTreeVariableDCApilambda = obj.fTreeVariableDCApilambda;
+    fTreevariableCosPAlambda = obj.fTreevariableCosPAlambda;
+    fTreevariableCosPAxi = obj.fTreevariableCosPAxi;
+    
+    fTreeVariableCentrality = obj.fTreeVariableCentrality;
+    fTreeVariableCentralityV0M = obj.fTreeVariableCentralityV0M;
+    fTreeVariableCentralityTRK = obj.fTreeVariableCentralityTRK;
+    fTreeVariableCentralitySPD = obj.fTreeVariableCentralitySPD;
+    
+    fTreeVariablemyTracks = obj.fTreeVariablemyTracks;
+    fTreeVariableXiTrackX = obj.fTreeVariableXiTrackX;
+    fTreeVariableXiTrackY = obj.fTreeVariableXiTrackY;
+    fTreeVariableXiTrackZ = obj.fTreeVariableXiTrackZ;
+    fTreeVariableXiTrackPx = obj.fTreeVariableXiTrackPx;
+    fTreeVariableXiTrackPy = obj.fTreeVariableXiTrackPy;
+    fTreeVariableXiTrackPz = obj.fTreeVariableXiTrackPz;
+    fTreeVariableXiTrackQ = obj.fTreeVariableXiTrackQ;
+    fTreeVariableXiTrackpID = obj.fTreeVariableXiTrackpID;
+    fTreeVariableXiTracknID = obj.fTreeVariableXiTracknID;
+    fTreeVariableXiTrackbID = obj.fTreeVariableXiTrackbID;
+    
+    fTreeVariableESDTrackX = obj.fTreeVariableESDTrackX;
+    fTreeVariableESDTrackY = obj.fTreeVariableESDTrackY;
+    fTreeVariableESDTrackZ = obj.fTreeVariableESDTrackZ;
+    fTreeVariableESDTrackPx = obj.fTreeVariableESDTrackPx;
+    fTreeVariableESDTrackPy = obj.fTreeVariableESDTrackPy;
+    fTreeVariableESDTrackPz = obj.fTreeVariableESDTrackPz;
+    fTreeVariableESDTrackQ = obj.fTreeVariableESDTrackQ;
+    fTreeVariableESDTrackID = obj.fTreeVariableESDTrackID;
+    fTreeVariavleESDStatus = obj.fTreeVariavleESDStatus;
+    fTreeVariableESDtrackDCAZ = obj.fTreeVariableESDtrackDCAZ;
+    fTreeVariableESDtrackDCAXY = obj.fTreeVariableESDtrackDCAXY;
+    fTreeVariableESDtrackEta = obj.fTreeVariableESDtrackEta;
+    fTreeVariableESDtrackPt = obj.fTreeVariableESDtrackPt;
+    fTreeVariableESDtrackMom = obj.fTreeVariableESDtrackMom;
+    fTreeVariableESDtrackfNclusTPC = obj.fTreeVariableESDtrackfNclusTPC;
+    /*
+     fTreeVariableEventCounter1 = obj.fTreeVariableEventCounter1;
+     fTreeVariableEventCounter2 = obj.fTreeVariableEventCounter2;
+     fTreeVariableEventCounter3 = obj.fTreeVariableEventCounter3;
+     */
+    fTreeVariableRunNumber = obj.fTreeVariableRunNumber;
+    fTreeVariableEventNumber1 = obj.fTreeVariableEventNumber1;
+    fTreeVariableEventNumber2 = obj.fTreeVariableEventNumber2;
+    fTreeVariableEventNumber3 = obj.fTreeVariableEventNumber3;
+    
+    fTreeVariableEventNumberInFile = obj.fTreeVariableEventNumberInFile;
+    
+    
+    // MC variables //
+    
+    fTreeVariableMCinputTotalXiPt = obj.fTreeVariableMCinputTotalXiPt;
+    fTreeVariableMCinputTotalXiY = obj.fTreeVariableMCinputTotalXiY;
+    fTreeVariableMCinputTotalXiCalcMass = obj.fTreeVariableMCinputTotalXiCalcMass;
+    
+    
+    fTreeVariableMCinputTotalXibarPt = obj.fTreeVariableMCinputTotalXibarPt;
+    fTreeVariableMCinputTotalXibarY = obj.fTreeVariableMCinputTotalXibarY;
+    fTreeVariableMCinputTotalXibarCalcMass = obj.fTreeVariableMCinputTotalXibarCalcMass;
+    
+    fTreeVariableMCinputTotalXiStarPt = obj.fTreeVariableMCinputTotalXiStarPt;
+    fTreeVariableMCinputTotalXiStarY = obj.fTreeVariableMCinputTotalXiStarY;
+    fTreeVariableMCinputTotalXiStarCalcMass = obj.fTreeVariableMCinputTotalXiStarCalcMass;
+    
+    fTreeVariableMCinputTotalXiStarbarPt = obj.fTreeVariableMCinputTotalXiStarbarPt;
+    fTreeVariableMCinputTotalXiStarbarY = obj.fTreeVariableMCinputTotalXiStarbarY;
+    fTreeVariableMCinputTotalXiStarbarCalcMass = obj.fTreeVariableMCinputTotalXiStarbarCalcMass;
+    fTreeVariableMCinputTotalSongPID = obj.fTreeVariableMCinputTotalSongPID;
+    fTreeVariableMCinputTotalCent = obj.fTreeVariableMCinputTotalCent;
+    
+    fTreeVariableMCrecXiPt = obj.fTreeVariableMCrecXiPt;
+    fTreeVariableMCrecXiY = obj.fTreeVariableMCrecXiY;
+    fTreeVariableMCrecXiMass = obj.fTreeVariableMCrecXiMass;
+    
+    fTreeVariableMCrecXibarPt = obj.fTreeVariableMCrecXibarPt;
+    fTreeVariableMCrecXibarY = obj.fTreeVariableMCrecXibarY;
+    fTreeVariableMCrecXibarMass = obj.fTreeVariableMCrecXibarMass;
+    fTreeVariableMCrecXiSongPID = obj.fTreeVariableMCrecXiSongPID;
+    fTreeVariableMCrecXiCent = obj.fTreeVariableMCrecXiCent;
+    
+    
+    
+    //  fTreeVariableMCXiStarD2esd = obj.fTreeVariableMCXiStarD2esd;
+    //  fTreeVariableMCXiMom = obj.fTreeVariableMCXiMom;
+    //  fTreeVariableMCXiStarD2Mom = obj.fTreeVariableMCXiStarD2Mom;
+    //  fTreeVariableMCXiStaresd = obj.fTreeVariableMCXiStaresd;
+    
+    
+    
+    fTreeVariableMCrecXiStarPt = obj.fTreeVariableMCrecXiStarPt;
+    fTreeVariableMCrecXiStarY = obj.fTreeVariableMCrecXiStarY;
+    fTreeVariableMCrecXiStarMass = obj.fTreeVariableMCrecXiStarMass;
+    
+    fTreeVariableMCrecXiStarbarPt = obj.fTreeVariableMCrecXiStarbarPt;
+    fTreeVariableMCrecXiStarbarY = obj.fTreeVariableMCrecXiStarbarY;
+    fTreeVariableMCrecXiStarbarMass = obj.fTreeVariableMCrecXiStarbarMass;
+    
+    fTreeVariableMCrecXiStarSongPID = obj.fTreeVariableMCrecXiStarSongPID;
+    fTreeVariableMCrecXiStarCent = obj.fTreeVariableMCrecXiStarCent;
+    fTreeVariableMCXiFilled = obj.fTreeVariableMCXiFilled;
+    fTreeVariableMCrecXiStarcv = obj.fTreeVariableMCrecXiStarcv;
+    
+    
+    
+    for (Int_t i=0; i<kNCuts; i++){
+        fDecayParameters[i]=obj.fDecayParameters[i];
+        for (Int_t j=0; j<kNCutVariations; j++){
+            fCutValues[j][i]=obj.fCutValues[j][i];
+        }
+    }
+    
+    
+    return (*this);
+}
+//________________________________________________________________________
+AliXiStar::~AliXiStar()
+{
+    // Destructor
+    if(fAOD) delete fAOD;
+    if(fESD) delete fESD;
+ //   if(mcEvent) delete mcEvent;
+ //   if(mcstack) delete mcstack;
+    if(fOutputList) delete fOutputList;
+    if(fTrackCut) delete fTrackCut;
+    if(fPIDResponse) delete fPIDResponse;
+    if(fCentrality) delete fCentrality;
+    if(fTreePi) delete fTreePi;
+    if(fTreeEvent) delete fTreeEvent;
+    if(fTreeMC) delete fTreeMC;
+    if(fTreeMC1) delete fTreeMC1;
+    if(fEC) delete fEC;
+    if(fEvt) delete fEvt;
+    if(fTempStruct) delete fTempStruct;
+    if(fESDTrack4) delete fESDTrack4;
+    if(fXiTrack) delete fXiTrack;
+    if(fTreeXi){delete fTreeXi;
+        fTreeXi = 0x0;
+    }
+    
+    for (Int_t cv=0; cv<kNCutVariations; cv++){
+        if(CutVar[cv].fXi) delete CutVar[cv].fXi;
+        if(CutVar[cv].fXibar) delete CutVar[cv].fXibar;
+        if(CutVar[cv].fXiMinusPiPlus) delete CutVar[cv].fXiMinusPiPlus;
+        if(CutVar[cv].fXiMinusPiMinus) delete CutVar[cv].fXiMinusPiMinus;
+        if(CutVar[cv].fXiPlusPiPlus) delete CutVar[cv].fXiPlusPiPlus;
+        if(CutVar[cv].fXiPlusPiMinus) delete CutVar[cv].fXiPlusPiMinus;
+        //
+        if(CutVar[cv].fXiMinusPiPlusbkg) delete CutVar[cv].fXiMinusPiPlusbkg;
+        if(CutVar[cv].fXiMinusPiMinusbkg) delete CutVar[cv].fXiMinusPiMinusbkg;
+        if(CutVar[cv].fXiPlusPiPlusbkg) delete CutVar[cv].fXiPlusPiPlusbkg;
+        if(CutVar[cv].fXiPlusPiMinusbkg) delete CutVar[cv].fXiPlusPiMinusbkg;
+        //
+        if(CutVar[cv].fMCrecXi) delete CutVar[cv].fMCrecXi;
+        if(CutVar[cv].fMCrecXibar) delete CutVar[cv].fMCrecXibar;
+        if(CutVar[cv].fMCrecXiMinusPiPlus) delete CutVar[cv].fMCrecXiMinusPiPlus;
+        if(CutVar[cv].fMCrecXiPlusPiMinus) delete CutVar[cv].fMCrecXiPlusPiMinus;
+    }
+    
+}
+//________________________________________________________________________
+void AliXiStar::XiStarInit()
+{
+    //
+    //Inits cuts and analysis settings
+    //
+    
+    fEventCounter=0;// event counter initialization
+    cout<<"AliXiStar XiStarInit() call"<<endl;
+    
+    
+    ///////////////////////////////////////////////
+    // Track Cuts for ESD analysis
+    fTrackCut = new AliESDtrackCuts();
+    fTrackCut->SetPtRange(.15,1000);
+    fTrackCut->SetAcceptKinkDaughters(kFALSE);
+    //fTrackCut->SetMinNClustersTPC(70);
+    fTrackCut->SetRequireTPCRefit(kTRUE);
+    ////////////////////////////////////////////////
+    
+    fZvertexBins = 20;
+    fMultBins = 11;// This must also be set in AliXiStar.h
+    if(fMCcase) fEventsToMix = 0;
+    else fEventsToMix = 0; // original 40 jisong
+    
+    // multiplicity edges for event mixing bins
+    fMultLimits[0]=0, fMultLimits[1]=10, fMultLimits[2]=50, fMultLimits[3]=100, fMultLimits[4]=250, fMultLimits[5]=500;
+    fMultLimits[6]=1000, fMultLimits[7]=2500, fMultLimits[8]=5000, fMultLimits[9]=10000, fMultLimits[10]=15000, fMultLimits[11]=20000;
+    
+    
+    /*    fMultLimits[0]=0, fMultLimits[1]=5, fMultLimits[2]=10, fMultLimits[3]=15, fMultLimits[4]=20, fMultLimits[5]=25;
+     fMultLimits[6]=30, fMultLimits[7]=35, fMultLimits[8]=40, fMultLimits[9]=45, fMultLimits[10]=50, fMultLimits[11]=150;
+     */
+    
+    fEC = new AliXiStarEventCollection **[fZvertexBins];
+    for(unsigned short i=0; i<fZvertexBins; i++){
+        
+        fEC[i] = new AliXiStarEventCollection *[fMultBins];
+        
+        for(unsigned short j=0; j<fMultBins; j++){
+            
+            fEC[i][j] = new AliXiStarEventCollection(fEventsToMix+1);
+        }
+    }
+    
+    //    fTempStruct = new AliXiStarTrackStruct[kNbinsM];
+    fTempStruct = new AliXiStarTrackStruct[20000];
+    
+    
+    
+    fESDTrack4 = new AliESDtrack();
+    fXiTrack = new AliESDtrack();
+    
+    
+    fMaxDecayLength = 100.;
+    fMassWindow = 0.006;
+    
+    /////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////
+    // DecayParameters Key (number represents array index)
+    // NclustersTPC: 0=proton, 1=pion first, 2=pion second, 3=pion third
+    // DCAVtx: 4=proton, 5=pion first, 6=pion second, 7=lambda, 8=pion third
+    // 9 = DCA proton-pion
+    // 10 = DCA Lambda-pion
+    // 11 = Rxy Lambda
+    // 12 = Rxy Xi
+    // 13 = Cos PA Lambda
+    // 14 = Cos PA Xi
+    
+    // Set Standard Reconstruction cut values
+    fCutValues[0][0] = 70; fCutValues[0][1] = 70; fCutValues[0][2] = 70; fCutValues[0][3] = 70;
+    fCutValues[0][4] = 0.04; fCutValues[0][5] = 0.04; fCutValues[0][6] = 0.05; fCutValues[0][7] = 0.07; fCutValues[0][8] = 2.0;
+    fCutValues[0][9] = 1.6;
+    fCutValues[0][10] = 1.6;
+    fCutValues[0][11] = 1.4;
+    fCutValues[0][12] = 0.8;
+    fCutValues[0][13] = 0.97;
+    fCutValues[0][14] = 0.97;
+    for(int cv=1; cv<kNCutVariations; cv++){
+        for(int ct=0; ct<kNCuts; ct++){
+            fCutValues[cv][ct] = fCutValues[0][ct];
+        }
+    }
+    // Set Systematic Variations
+    fCutValues[1][0] = 80; fCutValues[1][1] = 80; fCutValues[1][2] = 80; fCutValues[1][3] = 80;// 80
+    fCutValues[2][4] = 0.104;// 0.104
+    fCutValues[3][5] = 0.104;// 0.104
+    fCutValues[4][6] = 0.08;// 0.08
+    fCutValues[5][7] = 0.1;// 0.1
+    fCutValues[6][8] = 1.0;// 1.0
+    fCutValues[7][9] = 0.94;// 0.94
+    fCutValues[8][10] = 1.41;// 1.41
+    fCutValues[9][11] = 4.39;// 4.39
+    fCutValues[10][12] = 0.95;// 0.95
+    fCutValues[11][13] = 0.99;// 0.99
+    fCutValues[12][14] = 0.985;// 0.085
+    
+    
+    
+    
+    
+    // PDG mass values
+    fTrueMassPr=.93827, fTrueMassPi=.13957, fTrueMassK=.493677, fTrueMassLam=1.11568, fTrueMassXi=1.32171;
+    
+    // The following CovMatrix is set so that PropogateToDCA() ignores track errors. Only used to propagate Xi to third pion for XiStar reconstruction
+    for(Int_t i=0; i<21; i++) fCovMatrix[i]=0;
+    fCovMatrix[0]=1, fCovMatrix[2]=1, fCovMatrix[5]=1, fCovMatrix[9]=1, fCovMatrix[14]=1, fCovMatrix[20]=1;
+    
+    
+}
+//________________________________________________________________________
+void AliXiStar::UserCreateOutputObjects()
+{
+    XiStarInit();
+    
+    //----- Event infor -------//
+    
+    fTreeEvent = new TTree("fTreeEvent","EventCount");
+    
+    fTreeEvent->Branch("fTreeVariableMult",&fTreeVariableMult,"fTreeVariableMult/F");
+    fTreeEvent->Branch("fTreeVariablePrimaryVz",&fTreeVariablePrimaryVz,"fTreeVariablePrimaryVz/F");
+    // fTreeEvent->Branch("fTreeVariableEventCounter1",&fTreeVariableEventCounter1,"fTreeVariableEventCounter1/F");
+    
+    
+    fTreeEvent->Branch("fTreeVariableRunNumber",&fTreeVariableRunNumber,"fTreeVariableRunNumber/I");
+    fTreeEvent->Branch("fTreeVariableEventNumber1",&fTreeVariableEventNumber1,"fTreeVariableEventNumber1/l");
+    fTreeEvent->Branch("fTreeVariableEventNumberInFile",&fTreeVariableEventNumberInFile,"fTreeVariableEventNumberInFile/F");
+    
+    
+    //----  Tree variables :: Centrality ----//
+    fTreeEvent->Branch("fTreeVariableCentrality",&fTreeVariableCentrality,"fTreeVariableCentrality/F");
+    fTreeEvent->Branch("fTreeVariableCentralityV0M",&fTreeVariableCentralityV0M,"fTreeVariableCentralityV0M/F");
+ 	fTreeEvent->Branch("fTreeVariableCentralityTRK",&fTreeVariableCentralityTRK,"fTreeVariableCentralityTRK/F");
+	fTreeEvent->Branch("fTreeVariableCentralitySPD",&fTreeVariableCentralitySPD,"fTreeVariableCentralitySPD/F");
+    fTreeEvent->Branch("fTreeVariablemyTracks",&fTreeVariablemyTracks,"fTreeVariablemyTracks/I");
+    fTreeEvent->Branch("fTreeVariablexiTracks",&fTreeVariablexiTracks,"fTreeVariablexiTracks/I");
+    
+    
+    
+    //----  Tree variables  ::  cut list ----//
+    
+    fTreeXi = new TTree("fTreeXi","Casacades");
+    fTreeXi->Branch("fTreeVariableXiMass",&fTreeVariableXiMass,"fTreeVariableXiMass/F");
+    fTreeXi->Branch("fTreeVariableXiPt",&fTreeVariableXiPt,"fTreeVariableXiPt/F");
+    fTreeXi->Branch("fTreeVariableEta",&fTreeVariableEta,"fTreeVariableEta/F");
+    fTreeXi->Branch("fTreeVariablePhi",&fTreeVariablePhi,"fTreeVariablePhi/F");
+    fTreeXi->Branch("fTreeVariableDecayXYxi",&fTreeVariableDecayXYxi,"fTreeVariableDecayXYxi/F");
+    fTreeXi->Branch("fTreeVariableDecayXYlambda",&fTreeVariableDecayXYlambda,"fTreeVariableDecayXYlambda/F");
+    fTreeXi->Branch("fTreeVariableNclusp",&fTreeVariableNclusp,"fTreeVariableNclusp/F");
+    fTreeXi->Branch("fTreeVariableNcluspi1",&fTreeVariableNcluspi1,"fTreeVariableNcluspi1/F");
+    fTreeXi->Branch("fTreeVariableNcluspi2",&fTreeVariableNcluspi2,"fTreeVariableNcluspi2/F");
+    fTreeXi->Branch("fTreeVariablePVdcaP",&fTreeVariablePVdcaP,"fTreeVariablePVdcaP/F");
+    fTreeXi->Branch("fTreeVariablePVdcaPi1",&fTreeVariablePVdcaPi1,"fTreeVariablePVdcaPi1/F");
+    fTreeXi->Branch("fTreeVariablePVdcaPi2",&fTreeVariablePVdcaPi2,"fTreeVariablePVdcaPi2/F");
+    
+    fTreeXi->Branch("fTreeVariablePVdcaLambda",&fTreeVariablePVdcaLambda,"fTreeVariablePVdcaLambda/F");
+    fTreeXi->Branch("fTreeVariableDCApip",&fTreeVariableDCApip,"fTreeVariableDCApip/F");
+    fTreeXi->Branch("fTreeVariableDCApilambda",&fTreeVariableDCApilambda,"fTreeVariableDCApilambda/F");
+    fTreeXi->Branch("fTreevariableCosPAlambda",&fTreevariableCosPAlambda,"fTreevariableCosPAlambda/F");
+    fTreeXi->Branch("fTreevariableCosPAxi",&fTreevariableCosPAxi,"fTreevariableCosPAxi/F");
+    
+    //----  Tree variables  ::  Xi candidates needed to reconstruct XiStar ----//
+    fTreeXi->Branch("fTreeVariableXiTrackX",&fTreeVariableXiTrackX,"fTreeVariableXiTrackX/F");
+    fTreeXi->Branch("fTreeVariableXiTrackY",&fTreeVariableXiTrackY,"fTreeVariableXiTrackY/F");
+    fTreeXi->Branch("fTreeVariableXiTrackZ",&fTreeVariableXiTrackZ,"fTreeVariableXiTrackZ/F");
+    fTreeXi->Branch("fTreeVariableXiTrackPx",&fTreeVariableXiTrackPx,"fTreeVariableXiTrackPx/F");
+    fTreeXi->Branch("fTreeVariableXiTrackPy",&fTreeVariableXiTrackPy,"fTreeVariableXiTrackPy/F");
+    fTreeXi->Branch("fTreeVariableXiTrackPz",&fTreeVariableXiTrackPz,"fTreeVariableXiTrackPz/F");
+    fTreeXi->Branch("fTreeVariableXiTrackQ",&fTreeVariableXiTrackQ,"fTreeVariableXiTrackQ/F");
+    fTreeXi->Branch("fTreeVariableXiTrackpID",&fTreeVariableXiTrackpID,"fTreeVariableXiTrackpID/F");
+    fTreeXi->Branch("fTreeVariableXiTracknID",&fTreeVariableXiTracknID,"fTreeVariableXiTracknID/F");
+    fTreeXi->Branch("fTreeVariableXiTrackbID",&fTreeVariableXiTrackbID,"fTreeVariableXiTrackbID/F");
+    //  fTreeXi->Branch("fTreeVariableEventCounter2",&fTreeVariableEventCounter2,"fTreeVariableEventCounter2/F");
+    fTreeXi->Branch("fTreeVariableEventNumber2",&fTreeVariableEventNumber2,"fTreeVariableEventNumber2/l");
+    
+    
+    //Tree variables :: MC :: Xi//
+    
+    
+    fTreeXi->Branch("fTreeVariableMCrecXiPt",&fTreeVariableMCrecXiPt,"fTreeVariableMCrecXiPt/F");
+    fTreeXi->Branch("fTreeVariableMCrecXiY",&fTreeVariableMCrecXiY,"fTreeVariableMCrecXiY/F");
+    fTreeXi->Branch("fTreeVariableMCrecXiMass",&fTreeVariableMCrecXiMass,"fTreeVariableMCrecXiMass/F");
+    
+    fTreeXi->Branch("fTreeVariableMCrecXibarPt",&fTreeVariableMCrecXibarPt,"fTreeVariableMCrecXibarPt/F");
+    fTreeXi->Branch("fTreeVariableMCrecXibarY",&fTreeVariableMCrecXibarY,"fTreeVariableMCrecXibarY/F");
+    fTreeXi->Branch("fTreeVariableMCrecXibarMass",&fTreeVariableMCrecXibarMass,"fTreeVariableMCrecXibarMass/F");
+    fTreeXi->Branch("fTreeVariableMCrecXiSongPID",&fTreeVariableMCrecXiSongPID,"fTreeVariableMCrecXiSongPID/I");
+    fTreeXi->Branch("fTreeVariableMCrecXiCent",&fTreeVariableMCrecXiCent,"fTreeVariableMCrecXiCent/F");
+    
+    //---- Tree variables  ::  3rd pion ----//
+    
+    fTreePi = new TTree("fTreePi","3rdPion");
+    fTreePi->Branch("fTreeVariableESDTrackX",&fTreeVariableESDTrackX,"fTreeVariableESDTrackX/F");
+    fTreePi->Branch("fTreeVariableESDTrackY",&fTreeVariableESDTrackY,"fTreeVariableESDTrackY/F");
+    fTreePi->Branch("fTreeVariableESDTrackZ",&fTreeVariableESDTrackZ,"fTreeVariableESDTrackZ/F");
+    fTreePi->Branch("fTreeVariableESDTrackPx",&fTreeVariableESDTrackPx,"fTreeVariableESDTrackPx/F");
+    fTreePi->Branch("fTreeVariableESDTrackPy",&fTreeVariableESDTrackPy,"fTreeVariableESDTrackPy/F");
+    fTreePi->Branch("fTreeVariableESDTrackPz",&fTreeVariableESDTrackPz,"fTreeVariableESDTrackPz/F");
+    fTreePi->Branch("fTreeVariableESDTrackQ",&fTreeVariableESDTrackQ,"fTreeVariableESDTrackQ/F");
+    fTreePi->Branch("fTreeVariableESDTrackID",&fTreeVariableESDTrackID,"fTreeVariableESDTrackID/F");
+    fTreePi->Branch("fTreeVariavleESDStatus",&fTreeVariavleESDStatus,"fTreeVariavleESDStatus/F");
+    
+    
+    fTreePi->Branch("fTreeVariableESDtrackDCAZ",&fTreeVariableESDtrackDCAZ,"fTreeVariableESDtrackDCAZ/F");
+    fTreePi->Branch("fTreeVariableESDtrackDCAXY",&fTreeVariableESDtrackDCAXY,"fTreeVariableESDtrackDCAXY/F");
+    fTreePi->Branch("fTreeVariableESDtrackEta",&fTreeVariableESDtrackEta,"fTreeVariableESDtrackEta/F");
+    fTreePi->Branch("fTreeVariableESDtrackPt",&fTreeVariableESDtrackPt,"fTreeVariableESDtrackPt/F");
+    fTreePi->Branch("fTreeVariableESDtrackMom",&fTreeVariableESDtrackMom,"fTreeVariableESDtrackMom/F");
+    fTreePi->Branch("fTreeVariableESDtrackfNclusTPC",&fTreeVariableESDtrackfNclusTPC,"fTreeVariableESDtrackfNclusTPC/F");
+    //   fTreePi->Branch("fTreeVariableEventCounter3",&fTreeVariableEventCounter3,"fTreeVariableEventCounter3/F");
+    fTreePi->Branch("fTreeVariableEventNumber3",&fTreeVariableEventNumber3,"fTreeVariableEventNumber3/l");
+    
+    
+    
+    
+    // Tree variables :: MC information //
+    fTreeMC =  new TTree("fTreeMC","MC");
+    
+    fTreeMC->Branch("fTreeVariableMCinputTotalXiPt",&fTreeVariableMCinputTotalXiPt,"fTreeVariableMCinputTotalXiPt/F");
+    fTreeMC->Branch("fTreeVariableMCinputTotalXiY",&fTreeVariableMCinputTotalXiY,"fTreeVariableMCinputTotalXiY/F");
+    fTreeMC->Branch("fTreeVariableMCinputTotalXiCalcMass",&fTreeVariableMCinputTotalXiCalcMass,"fTreeVariableMCinputTotalXiCalcMass/F");
+    
+    
+    fTreeMC->Branch("fTreeVariableMCinputTotalXibarPt",&fTreeVariableMCinputTotalXibarPt,"fTreeVariableMCinputTotalXibarPt/F");
+    fTreeMC->Branch("fTreeVariableMCinputTotalXibarY",&fTreeVariableMCinputTotalXibarY,"fTreeVariableMCinputTotalXibarY/F");
+    fTreeMC->Branch("fTreeVariableMCinputTotalXibarCalcMass",&fTreeVariableMCinputTotalXibarCalcMass,"fTreeVariableMCinputTotalXibarCalcMass/F");
+    
+    fTreeMC->Branch("fTreeVariableMCinputTotalXiStarPt",&fTreeVariableMCinputTotalXiStarPt,"fTreeVariableMCinputTotalXiStarPt/F");
+    fTreeMC->Branch("fTreeVariableMCinputTotalXiStarY",&fTreeVariableMCinputTotalXiStarY,"fTreeVariableMCinputTotalXiStarY/F");
+    fTreeMC->Branch("fTreeVariableMCinputTotalXiStarCalcMass",&fTreeVariableMCinputTotalXiStarCalcMass,"fTreeVariableMCinputTotalXiStarCalcMass/F");
+    
+    
+    fTreeMC->Branch("fTreeVariableMCinputTotalXiStarbarPt",&fTreeVariableMCinputTotalXiStarbarPt,"fTreeVariableMCinputTotalXiStarbarPt/F");
+    fTreeMC->Branch("fTreeVariableMCinputTotalXiStarbarY",&fTreeVariableMCinputTotalXiStarbarY,"fTreeVariableMCinputTotalXiStarbarY/F");
+    fTreeMC->Branch("fTreeVariableMCinputTotalXiStarbarCalcMass",&fTreeVariableMCinputTotalXiStarbarCalcMass,"fTreeVariableMCinputTotalXiStarbarCalcMass/F");
+    fTreeMC->Branch("fTreeVariableMCinputTotalSongPID",&fTreeVariableMCinputTotalSongPID,"fTreeVariableMCinputTotalSongPID/I");
+    fTreeMC->Branch("fTreeVariableMCinputTotalCent",&fTreeVariableMCinputTotalCent,"fTreeVariableMCinputTotalCent/F");
+    
+    
+    
+    //Tree variables :: MC :: XiStar//
+    
+    
+    fTreeMC1 = new TTree("fTreeMC1","MCRecXiStar");
+    
+    //  fTreeMC1->Branch("fTreeVariableMCXiStarD2esd",&fTreeVariableMCXiStarD2esd,"fTreeVariableMCXiStarD2esd/I");
+    //  fTreeMC1->Branch("fTreeVariableMCXiMom",&fTreeVariableMCXiMom,"fTreeVariableMCXiMom/I");
+    //  fTreeMC1->Branch("fTreeVariableMCXiStarD2Mom",&fTreeVariableMCXiStarD2Mom,"fTreeVariableMCXiStarD2Mom/I");
+    //  fTreeMC1->Branch("fTreeVariableMCXiStaresd",&fTreeVariableMCXiStaresd,"fTreeVariableMCXiStaresd/I");
+    
+    
+    
+    fTreeMC1->Branch("fTreeVariableMCrecXiStarPt",&fTreeVariableMCrecXiStarPt,"fTreeVariableMCrecXiStarPt/F");
+    fTreeMC1->Branch("fTreeVariableMCrecXiStarY",&fTreeVariableMCrecXiStarY,"fTreeVariableMCrecXiStarY/F");
+    fTreeMC1->Branch("fTreeVariableMCrecXiStarMass",&fTreeVariableMCrecXiStarMass,"fTreeVariableMCrecXiStarMass/F");
+    
+    fTreeMC1->Branch("fTreeVariableMCrecXiStarbarPt",&fTreeVariableMCrecXiStarbarPt,"fTreeVariableMCrecXiStarbarPt/F");
+    fTreeMC1->Branch("fTreeVariableMCrecXiStarbarY",&fTreeVariableMCrecXiStarbarY,"fTreeVariableMCrecXiStarbarY/F");
+    fTreeMC1->Branch("fTreeVariableMCrecXiStarbarMass",&fTreeVariableMCrecXiStarbarMass,"fTreeVariableMCrecXiStarbarMass/F");
+    
+    fTreeMC1->Branch("fTreeVariableMCrecXiStarSongPID",&fTreeVariableMCrecXiStarSongPID,"fTreeVariableMCrecXiStarSongPID/I");
+    
+    
+    fTreeMC1->Branch("fTreeVariableMCrecXiStarCent",&fTreeVariableMCrecXiStarCent,"fTreeVariableMCrecXiStarCent/F");
+    fTreeMC1->Branch("fTreeVariableMCXiFilled",&fTreeVariableMCXiFilled,"fTreeVariableMCXiFilled/F");
+    fTreeMC1->Branch("fTreeVariableMCrecXiStarcv",&fTreeVariableMCrecXiStarcv,"fTreeVariableMCrecXiStarcv/F");
+    
+    
+    // XiStarInit();// Initialize settings original
+    
+    // Create histograms
+    fOutputList = new TList();
+    fOutputList->SetOwner();
+    
+    TH3F *fVertexDist1 = new TH3F("fVertexDist1","Vertex Distribution",20,-1,1, 20,-1,1, 600,-30,30);
+    fVertexDist1->GetXaxis()->SetTitle("X Vertex (cm)");
+    fVertexDist1->GetYaxis()->SetTitle("Y Vertex (cm)");
+    fVertexDist1->GetZaxis()->SetTitle("Z Vertex (cm)");
+    fOutputList->Add(fVertexDist1);
+    
+    TH3F *fVertexDist3 = new TH3F("fVertexDist3","Vertex Distribution",20,-1,1, 20,-1,1, 600,-30,30);
+    fVertexDist3->GetXaxis()->SetTitle("X Vertex (cm)");
+    fVertexDist3->GetYaxis()->SetTitle("Y Vertex (cm)");
+    fVertexDist3->GetZaxis()->SetTitle("Z Vertex (cm)");
+    fOutputList->Add(fVertexDist3);
+    
+    TH2F *fDCADist = new TH2F("fDCADist","DCA distribution",kNbinsM,-.5,kNbinsM-.5, 100,0,10);
+    fOutputList->Add(fDCADist);
+    
+    
+    TH3F *fMultDist3d = new TH3F("fMultDist3d","Multiplicity Distribution",kNbinsM,-.5,kNbinsM-.5, kNbinsM,-.5,kNbinsM-.5, kNbinsM,-.5,kNbinsM-.5);
+    fMultDist3d->GetXaxis()->SetTitle("Multiplicity");
+    fMultDist3d->GetYaxis()->SetTitle("Positive Multiplicity");
+    fMultDist3d->GetZaxis()->SetTitle("Negative Multiplicity");
+    fMultDist3d->SetMarkerStyle(kFullCircle);
+    fOutputList->Add(fMultDist3d);
+    
+    
+    TH1F *fMultDist1 = new TH1F("fMultDist1","Multiplicity Distribution",2000,0,20000);
+    fMultDist1->GetXaxis()->SetTitle("Multiplicity");
+    fOutputList->Add(fMultDist1);
+    
+    TH1F *fMultDist2 = new TH1F("fMultDist2","Multiplicity Distribution",kNbinsM,-.5,kNbinsM-.5);
+    fMultDist2->GetXaxis()->SetTitle("Multiplicity");
+    fOutputList->Add(fMultDist2);
+    
+    TH1F *fMultDist3 = new TH1F("fMultDist3","Multiplicity Distribution",kNbinsM,-.5,kNbinsM-.5);
+    fMultDist3->GetXaxis()->SetTitle("Multiplicity");
+    fOutputList->Add(fMultDist3);
+    
+    TH1F *fMultDist4 = new TH1F("fMultDist4","Multiplicity Distribution",kNbinsM,-.5,kNbinsM-.5);
+    fMultDist4->GetXaxis()->SetTitle("Multiplicity");
+    fOutputList->Add(fMultDist4);
+    
+    TH1F *fMultDist5 = new TH1F("fMultDist5","Multiplicity Distribution",kNbinsM,-.5,kNbinsM-.5);
+    fMultDist5->GetXaxis()->SetTitle("Multiplicity");
+    fOutputList->Add(fMultDist5);
+    
+    
+    TH3F *fPtEtaDist = new TH3F("fPtEtaDist","PtEtaDist",2,-1.1,1.1, 300,0,3., 28,-1.4,1.4);
+    fOutputList->Add(fPtEtaDist);
+    
+    TH3F *fPhiPtDist = new TH3F("fPhiPtDist","PhiPtDist",2,-1.1,1.1, 120,0,2*PI, 300,0,3.);
+    fOutputList->Add(fPhiPtDist);
+    
+    
+    TH1F *fPtDist = new TH1F("fPtDist","fPtDist",90,0,9);
+    fPtDist->GetXaxis()->SetTitle("fPtDist");
+    fOutputList->Add(fPtDist);
+    
+    
+    TH1F *fPhiDist = new TH1F("fPhiDist","fPhiDist",70,0,7);
+    fPhiDist->GetXaxis()->SetTitle("fPhiDist");
+    fOutputList->Add(fPhiDist);
+    
+    
+    TH1F *fEtaDist = new TH1F("fEtaDist","fEtaDist",60,-3,3);
+    fEtaDist->GetXaxis()->SetTitle("fEtaDist");
+    fOutputList->Add(fEtaDist);
+    
+    
+    
+    TH1F *fCutEvents = new TH1F("fCutEvents","fCutEvents",16,0,16);
+    fOutputList->Add(fCutEvents);
+    
+    TH1F *fTPCNcls_p = new TH1F("fTPCNcls_p","TPC Number of cluster proton",200,0,200);
+    fOutputList->Add(fTPCNcls_p);
+    
+    
+    TH1F *fTPCNcls_pi1 = new TH1F("fTPCNcls_pi1","TPC Number of cluster 1st pion",200,0,200);
+    fOutputList->Add(fTPCNcls_pi1);
+    
+    TH1F *fTPCNcls_pi2 = new TH1F("fTPCNcls_pi2","TPC Number of cluster 2nd pion",200,0,200);
+    fOutputList->Add(fTPCNcls_pi2);
+    
+    TH1F *fTPCNcls_pi3 = new TH1F("fTPCNcls_pi3","TPC Number of cluster 3rd pion",200,0,200);
+    fOutputList->Add(fTPCNcls_pi3);
+    
+    
+    TH1F *fDCADist_p = new TH1F("fDCADist_p","DCA distribution proton",200,0,2);
+    fOutputList->Add(fDCADist_p);
+    
+    TH1F *fDCADist_pi1 = new TH1F("fDCADist_pi1","DCA distribution 1st pion",200,0,2);
+    fOutputList->Add(fDCADist_pi1);
+    
+    TH1F *fDCADist_pi2 = new TH1F("fDCADist_pi2","DCA distribution 2nd pion",200,0,2);
+    fOutputList->Add(fDCADist_pi2);
+    
+    
+    
+    TH1F *fDCADist_lambda = new TH1F("fDCADist_lambda","DCA distribution Lambda",200,0,2);
+    fOutputList->Add(fDCADist_lambda);
+    
+    TH1F *fDCADist_3rd_pi = new TH1F("fDCADist_3rd_pi","DCA distribution 3rd pion",400,0,4);
+    fOutputList->Add(fDCADist_3rd_pi);
+    
+    TH1F *fDCADist_pi_p = new TH1F("fDCADist_pi_p","DCA distribution Pion-Proton",400,0,4);
+    fOutputList->Add(fDCADist_pi_p);
+    
+    TH1F *fDCADist_pi_lambda = new TH1F("fDCADist_pi_lambda","DCA distribution Pion-Lambda",400,0,4);
+    fOutputList->Add(fDCADist_pi_lambda);
+    
+    
+    TH1F *fRXY_lambda = new TH1F("fRXY_lambda","Rxy distribution Lambda",400,0,4);
+    fOutputList->Add(fRXY_lambda);
+    
+    TH1F *fRXY_Xi = new TH1F("fRXY_Xi","Rxy distribution Xi",400,0,4);
+    fOutputList->Add(fRXY_Xi);
+    
+    TH1F *fCosPA_lambda = new TH1F("fCosPA_lambda","Cosine pointing angle Lambda",100,0.996,1.002);
+    fOutputList->Add(fCosPA_lambda);
+    
+    TH1F *fCosPA_Xi = new TH1F("fCosPA_Xi","Cosine pointing angle Xi",100,0.9989,1.0001);
+    fOutputList->Add(fCosPA_Xi);
+ 
+    TH1F *hXi0_30 = new TH1F("hXi0_30","Xi invariant mass distribution : cent 0 - 10",200,1.2,1.4);
+    fOutputList->Add(hXi0_30);
+    
+    
+    TH1F *hXiStar0_30 = new TH1F("hXiStar0_30","Xi invariant mass distribution : cent 0 - 10",200,1.2,1.4);
+    fOutputList->Add(hXiStar0_30);
+
+    
+    
+    // === PID === //
+    TH2F *TPCPID = new TH2F("TPCPID","PID",1000,0,20,1000,0,200);
+    fOutputList->Add(TPCPID);
+    
+    TH2F *TPCPID1 = new TH2F("TPCPID1","PID pion",1000,0,20,1000,0,200);
+    fOutputList->Add(TPCPID1);
+    TH2F *TPCPID2 = new TH2F("TPCPID2","PID kaon",1000,0,20,1000,0,200);
+    fOutputList->Add(TPCPID2);
+    TH2F *TPCPID3 = new TH2F("TPCPID3","PID proton",1000,0,20,1000,0,200);
+    fOutputList->Add(TPCPID3);
+
+    
+    
+    TH2F *XidEdx1 = new TH2F("XidEdx1","Xi PID p",1000,0,20,1000,0,200);
+    fOutputList->Add(XidEdx1);
+    TH2F *XidEdx2 = new TH2F("XidEdx2","Xi PID pi",1000,0,20,1000,0,200);
+    fOutputList->Add(XidEdx2);
+    TH2F *XidEdx3 = new TH2F("XidEdx3","Xi PID pi_b",1000,0,20,1000,0,200);
+    fOutputList->Add(XidEdx3);
+    
+    
+   // TH1F *Xinsigpr = new TH1F("nsigpr","nsigpr",100,-5,5);
+   // fOutputList->Add(nsigpr);
+    
+    TH2F *dEdxpi = new TH2F("dEdxpi","nsigpion",1000,0,20,1000,-5,5);
+    fOutputList->Add(dEdxpi);
+    
+   // TH1F *Xinsigpi2 = new TH1F("nsigpi2","nsigpion2",100,-5,5);
+   // fOutputList->Add(nsigpi2);
+
+    
+    TH1F *Xinsigpr = new TH1F("Xinsigpr","nsigpr",100,-5,5);
+    fOutputList->Add(Xinsigpr);
+
+    TH1F *Xinsigpi1 = new TH1F("Xinsigpi1","nsigpion1",100,-5,5);
+    fOutputList->Add(Xinsigpi1);
+
+    TH1F *Xinsigpi2 = new TH1F("Xinsigpi2","nsigpion2",100,-5,5);
+    fOutputList->Add(Xinsigpi2);
+
+
+ /*
+    TH1F *hXi10_20 = new TH1F("hXi10_20","Xi invariant mass distribution : cent 10 - 20",200,1.2,1.4);
+    fOutputList->Add(hXi10_20);
+
+    TH1F *hXi20_30 = new TH1F("hXi20_30","Xi invariant mass distribution : cent 20 - 30",200,1.2,1.4);
+    fOutputList->Add(hXi20_30);
+
+    TH1F *hXi30_40 = new TH1F("hXi30_40","Xi invariant mass distribution : cent 30 - 40",200,1.2,1.4);
+    fOutputList->Add(hXi30_40);
+    
+    TH1F *hXi40_50 = new TH1F("hXi40_50","Xi invariant mass distribution : cent 40 - 50",200,1.2,1.4);
+    fOutputList->Add(hXi40_50);
+    
+    TH1F *hXi50_60 = new TH1F("hXi50_60","Xi invariant mass distribution : cent 50 - 60",200,1.2,1.4);
+    fOutputList->Add(hXi50_60);
+    
+    TH1F *hXi60_70 = new TH1F("hXi60_70","Xi invariant mass distribution : cent 60 - 70",200,1.2,1.4);
+    fOutputList->Add(hXi60_70);
+    
+    TH1F *hXi70_100 = new TH1F("hXi70_100","Xi invariant mass distribution : cent 70 - 100",200,1.2,1.4);
+    fOutputList->Add(hXi70_100);
+
+  
+    TH1F *hXiStar10_20 = new TH1F("hXiStar10_20","Xi invariant mass distribution : cent 10 - 20",200,1.2,1.4);
+    fOutputList->Add(hXiStar10_20);
+    
+    TH1F *hXiStar20_30 = new TH1F("hXiStar20_30","Xi invariant mass distribution : cent 20 - 30",200,1.2,1.4);
+    fOutputList->Add(hXiStar20_30);
+    
+    TH1F *hXiStar30_40 = new TH1F("hXiStar30_40","Xi invariant mass distribution : cent 30 - 40",200,1.2,1.4);
+    fOutputList->Add(hXiStar30_40);
+    
+    TH1F *hXiStar40_50 = new TH1F("hXiStar40_50","Xi invariant mass distribution : cent 40 - 50",200,1.2,1.4);
+    fOutputList->Add(hXiStar40_50);
+    
+    TH1F *hXiStar50_60 = new TH1F("hXiStar50_60","Xi invariant mass distribution : cent 50 - 60",200,1.2,1.4);
+    fOutputList->Add(hXiStar50_60);
+    
+    TH1F *hXiStar60_70 = new TH1F("hXiStar60_70","Xi invariant mass distribution : cent 60 - 70",200,1.2,1.4);
+    fOutputList->Add(hXiStar60_70);
+    
+    TH1F *hXiStar70_100 = new TH1F("hXiStar70_100","Xi invariant mass distribution : cent 70 - 100",200,1.2,1.4);
+    fOutputList->Add(hXiStar70_100);
+
+*/
+
+    
+    
+    for(Int_t cv=0; cv<kNCutVariations; cv++){
+        
+        if(cv==0){
+            TString *nameXi=new TString("fXi_");
+            TString *nameXibar=new TString("fXibar_");
+            *nameXi += cv;
+            *nameXibar += cv;
+            CutVar[cv].fXi = new TH3F(nameXi->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.2,1.4);
+            fOutputList->Add(CutVar[cv].fXi);
+            CutVar[cv].fXibar = new TH3F(nameXibar->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.2,1.4);
+            fOutputList->Add(CutVar[cv].fXibar);
+            //
+            TString *nameMCrecXi = new TString("fMCrecXi_");
+            TString *nameMCrecXibar = new TString("fMCrecXibar_");
+            *nameMCrecXi += cv;
+            *nameMCrecXibar += cv;
+            CutVar[cv].fMCrecXi = new TH3F(nameMCrecXi->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.2,1.4);
+            CutVar[cv].fMCrecXibar = new TH3F(nameMCrecXibar->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.2,1.4);
+            fOutputList->Add(CutVar[cv].fMCrecXi);
+            fOutputList->Add(CutVar[cv].fMCrecXibar);
+        }
+        //
+        TString *nameXiMinusPiPlus = new TString("fXiMinusPiPlus_");
+        TString *nameXiMinusPiMinus = new TString("fXiMinusPiMinus_");
+        TString *nameXiPlusPiPlus = new TString("fXiPlusPiPlus_");
+        TString *nameXiPlusPiMinus = new TString("fXiPlusPiMinus_");
+        TString *nameXiMinusPiPlusbkg = new TString("fXiMinusPiPlusbkg_");
+        TString *nameXiMinusPiMinusbkg = new TString("fXiMinusPiMinusbkg_");
+        TString *nameXiPlusPiPlusbkg = new TString("fXiPlusPiPlusbkg_");
+        TString *nameXiPlusPiMinusbkg = new TString("fXiPlusPiMinusbkg_");
+        *nameXiMinusPiPlus += cv;
+        *nameXiMinusPiMinus += cv;
+        *nameXiPlusPiPlus += cv;
+        *nameXiPlusPiMinus += cv;
+        *nameXiMinusPiPlusbkg += cv;
+        *nameXiMinusPiMinusbkg += cv;
+        *nameXiPlusPiPlusbkg += cv;
+        *nameXiPlusPiMinusbkg += cv;
+        CutVar[cv].fXiMinusPiPlus  = new TH3F(nameXiMinusPiPlus->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+        CutVar[cv].fXiMinusPiMinus = new TH3F(nameXiMinusPiMinus->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+        CutVar[cv].fXiPlusPiPlus   = new TH3F(nameXiPlusPiPlus->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+        CutVar[cv].fXiPlusPiMinus  = new TH3F(nameXiPlusPiMinus->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+        CutVar[cv].fXiMinusPiPlusbkg  = new TH3F(nameXiMinusPiPlusbkg->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+        CutVar[cv].fXiMinusPiMinusbkg = new TH3F(nameXiMinusPiMinusbkg->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+        CutVar[cv].fXiPlusPiPlusbkg   = new TH3F(nameXiPlusPiPlusbkg->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+        CutVar[cv].fXiPlusPiMinusbkg  = new TH3F(nameXiPlusPiMinusbkg->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+        
+        fOutputList->Add(CutVar[cv].fXiMinusPiPlus);
+        fOutputList->Add(CutVar[cv].fXiMinusPiMinus);
+        fOutputList->Add(CutVar[cv].fXiPlusPiPlus);
+        fOutputList->Add(CutVar[cv].fXiPlusPiMinus);
+        fOutputList->Add(CutVar[cv].fXiMinusPiPlusbkg);
+        fOutputList->Add(CutVar[cv].fXiMinusPiMinusbkg);
+        fOutputList->Add(CutVar[cv].fXiPlusPiPlusbkg);
+        fOutputList->Add(CutVar[cv].fXiPlusPiMinusbkg);
+        //
+        
+        
+        TString *nameMCrecXiMinusPiPlus = new TString("fMCrecXiMinusPiPlus_");
+        TString *nameMCrecXiPlusPiMinus = new TString("fMCrecXiPlusPiMinus_");
+        *nameMCrecXiMinusPiPlus += cv;
+        *nameMCrecXiPlusPiMinus += cv;
+        CutVar[cv].fMCrecXiMinusPiPlus  = new TH3F(nameMCrecXiMinusPiPlus->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+        CutVar[cv].fMCrecXiPlusPiMinus  = new TH3F(nameMCrecXiPlusPiMinus->Data(),"Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+        fOutputList->Add(CutVar[cv].fMCrecXiMinusPiPlus);
+        fOutputList->Add(CutVar[cv].fMCrecXiPlusPiMinus);
+        //
+        
+        /*
+         CutVar[cv].fMCrecXiStarxiy = new TH2F("fMCrecXiStarxiy","y distribution",80,-2,2, 80,-2,2);
+         CutVar[cv].fMCrecXiStarpiony = new TH2F("fMCrecXiStarpiony","y distribution",80,-2,2, 80,-2,2);
+         fOutputList->Add(CutVar[cv].fMCrecXiStarxiy);
+         fOutputList->Add(CutVar[cv].fMCrecXiStarpiony);
+         CutVar[cv].fMCrecXilambday = new TH2F("fMCrecXilambday","y distribution",80,-2,2, 80,-2,2);
+         CutVar[cv].fMCrecXipiony = new TH2F("fMCrecXipiony","y distribution",80,-2,2, 80,-2,2);
+         fOutputList->Add(CutVar[cv].fMCrecXilambday);
+         fOutputList->Add(CutVar[cv].fMCrecXipiony);
+         CutVar[cv].fMCrecLamprotony = new TH2F("fMCrecLamprotony","y distribution",80,-2,2, 80,-2,2);
+         CutVar[cv].fMCrecLampiony = new TH2F("fMCrecLampiony","y distribution",80,-2,2, 80,-2,2);
+         fOutputList->Add(CutVar[cv].fMCrecLamprotony);
+         fOutputList->Add(CutVar[cv].fMCrecLampiony);
+         */
+    }
+    
+    
+    
+    
+    //////////////////////
+    // MC input histos
+    TH3F *fMCinputXiStar = new TH3F("fMCinputXiStar","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+    TH3F *fMCinputXiStarbar = new TH3F("fMCinputXiStarbar","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+    fOutputList->Add(fMCinputXiStar);
+    fOutputList->Add(fMCinputXiStarbar);
+    
+    TH3F *fMCinputXi = new TH3F("fMCinputXi","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.2,1.4);
+    TH3F *fMCinputXibar = new TH3F("fMCinputXibar","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.2,1.4);
+    fOutputList->Add(fMCinputXi);
+    fOutputList->Add(fMCinputXibar);
+    
+    //
+    
+    TH3F *fMCinputTotalXiStar1 = new TH3F("fMCinputTotalXiStar1","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+    TH3F *fMCinputTotalXiStarbar1 = new TH3F("fMCinputTotalXiStarbar1","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+    fOutputList->Add(fMCinputTotalXiStar1);
+    fOutputList->Add(fMCinputTotalXiStarbar1);
+    
+    TH3F *fMCinputTotalXi1 = new TH3F("fMCinputTotalXi1","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.2,1.4);
+    TH3F *fMCinputTotalXibar1 = new TH3F("fMCinputTotalXibar1","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.2,1.4);
+    fOutputList->Add(fMCinputTotalXi1);
+    fOutputList->Add(fMCinputTotalXibar1);
+    
+    //
+    
+    TH3F *fMCinputTotalXiStar3 = new TH3F("fMCinputTotalXiStar3","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+    TH3F *fMCinputTotalXiStarbar3 = new TH3F("fMCinputTotalXiStarbar3","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.4,1.6);
+    fOutputList->Add(fMCinputTotalXiStar3);
+    fOutputList->Add(fMCinputTotalXiStarbar3);
+    
+    TH3F *fMCinputTotalXi3 = new TH3F("fMCinputTotalXi3","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.2,1.4);
+    TH3F *fMCinputTotalXibar3 = new TH3F("fMCinputTotalXibar3","Invariant Mass Distribution", 100,0,10, 40,-2,2, 200,1.2,1.4);
+    fOutputList->Add(fMCinputTotalXi3);
+    fOutputList->Add(fMCinputTotalXibar3);
+    
+    //
+    
+    TH2F *fMCinputXiStarxiy = new TH2F("fMCinputXiStarxiy","y distribution",80,-2,2, 80,-2,2);
+    TH2F *fMCinputXiStarpiony = new TH2F("fMCinputXiStarpiony","y distribution",80,-2,2, 80,-2,2);
+    fOutputList->Add(fMCinputXiStarxiy);
+    fOutputList->Add(fMCinputXiStarpiony);
+    TH2F *fMCinputXilambday = new TH2F("fMCinputXilambday","y distribution",80,-2,2, 80,-2,2);
+    TH2F *fMCinputXipiony = new TH2F("fMCinputXipiony","y distribution",80,-2,2, 80,-2,2);
+    fOutputList->Add(fMCinputXilambday);
+    fOutputList->Add(fMCinputXipiony);
+    TH2F *fMCinputLamprotony = new TH2F("fMCinputLamprotony","y distribution",80,-2,2, 80,-2,2);
+    TH2F *fMCinputLampiony = new TH2F("fMCinputLampiony","y distribution",80,-2,2, 80,-2,2);
+    fOutputList->Add(fMCinputLamprotony);
+    fOutputList->Add(fMCinputLampiony);
+    
+    ///////////////////////////////////
+    PostData(1, fOutputList);
+    PostData(0, fTreeEvent);
+    PostData(2, fTreeXi);
+    PostData(3, fTreePi);
+    PostData(4, fTreeMC);
+    PostData(5, fTreeMC1);
+    
+    
+}
+
+//________________________________________________________________________
+void AliXiStar::Exec(Option_t *)
+{
+    
+    
+    
+    // Main loop
+    // Called for each event
+    
+    cout<<"===========  Event # "<<fEventCounter+1<<"  ==========="<<endl;
+    fEventCounter++;
+    
+    if(fAODcase) {cout<<"AODs not fully supported! Exiting event."<<endl; return;}
+    
+    if(fAODcase) fAOD = dynamic_cast<AliAODEvent*> (InputEvent());
+    else fESD = dynamic_cast<AliESDEvent*> (InputEvent());
+    
+    if(fAODcase) {if (!fAOD) {Printf("ERROR: fAOD not available"); return;}}
+    else {if (!fESD) {Printf("ERROR: fESD not available"); return;}}
+    
+  /*
+    if(fMCcase){
+        //mcEvent = static_cast<AliMCEventHandler*>(AliAnalysisManager::GetAnalysisManager()->GetMCtruthEventHandler())->MCEvent();
+        AliMCEvent *mcEvent = MCEvent();
+        if (!mcEvent) {Printf("ERROR: Could not retrieve MC event"); return;}
+
+        AliStack *mcstack = mcEvent->Stack();
+        //mcstack = mcEvent->Stack();
+        if (!mcstack) {Printf("ERROR: Could not retrieve the stack"); return;}
+        
+        
+    }
+    
+*/
+    
+    
+    // ESD Trigger Cut
+    if(!fAODcase){
+        if(!(((AliInputEventHandler*)(AliAnalysisManager::GetAnalysisManager()->GetInputEventHandler()))->IsEventSelected())) {cout<<"Event Rejected"<<endl; return;}
+    }
+    
+    ///////////////////////////////////////////////////////////
+    const AliAODVertex *PrimaryVertexAOD;
+    const AliESDVertex *PrimaryVertexESD;
+    
+    AliAnalysisManager *man=AliAnalysisManager::GetAnalysisManager();
+    AliInputEventHandler* inputHandler = (AliInputEventHandler*) (man->GetInputEventHandler());
+    
+    
+    
+    //fGetEvent= inputHandler->GetEvent();
+    //fGetEvent = dynamic_cast<AliVEvent*>(const_cast<AliVEvent*>(InputEvent()));
+    
+    // ---- AliPIDResponse ---- //
+    fPIDResponse = inputHandler->GetPIDResponse();
+    
+    
+    
+    
+    TClonesArray *mcArray       = 0x0;
+    //AliAODMCParticle *mcXi;
+    //AliAODMCParticle *mcXiStarD2;
+    //AliAODMCParticle *mcXiStar;
+    //AliMCEvent  *mcEvent        = 0x0;
+    AliStack    *mcstack        = 0x0;
+    TParticle   *MCLamD1esd     = 0x0;
+    TParticle   *MCLamD2esd     = 0x0;
+    TParticle   *MCLamesd       = 0x0;
+    TParticle   *MCXiD2esd      = 0x0;
+    TParticle   *MCXiesd        = 0x0;
+    TParticle   *MCXiStarD2esd  = 0x0;
+    TParticle   *MCXiStaresd    = 0x0;
+    
+    Double_t px1,py1,pz1, px2,py2,pz2;
+    Double_t p1sq,p2sq,e1,e2,angle;
+    Double_t dca3d;
+    Float_t dca2[2];
+    Double_t xiVtx[3];//, xiStarVtx[3];
+    Double_t xiP[3], xiStarP[3];
+    Double_t xiStarMom;
+    Double_t xiMass, xiStarMass;
+    Double_t xiPt, xiStarPt;
+    Double_t xiY, xiStarY;
+    Double_t xiCharge;
+    Double_t decayLengthXY;
+    Double_t pDaughter1[3];
+    Double_t pDaughter2[3];
+    Double_t xDaughter1[3];
+    Double_t xDaughter2[3];
+    //
+    Double_t bField=0;
+    UInt_t status=0;
+    Int_t positiveTracks=0, negativeTracks=0;
+    Int_t myTracks=0;
+    Int_t myxiTracks=0;
+    //
+    Double_t primaryVtx[3]={0};
+    Int_t mBin=0;
+    Int_t zBin=0;
+    Double_t zStep=2*10/Double_t(fZvertexBins), zStart=-10.;
+    
+    Float_t lCentrality = -100;
+    Float_t centralityV0M = -100;
+    Float_t centralityTRK = -100;
+    Float_t centralitySPD = -100;
+    
+    //
+    Bool_t mcXiFilled=kFALSE;// So that mctracks are never used uninitialized
+    Bool_t mcXiFilled1=kFALSE;
+    Float_t mcCheck = -100;
+    
+    if(fMCcase){
+        
+        if(AliAnalysisManager::GetAnalysisManager()->GetMCtruthEventHandler()){
+            if(static_cast<AliMCEventHandler*>(AliAnalysisManager::GetAnalysisManager()->GetMCtruthEventHandler())->MCEvent())
+                mcstack = static_cast<AliMCEventHandler*>(AliAnalysisManager::GetAnalysisManager()->GetMCtruthEventHandler())->MCEvent()->Stack();
+        }
+
+        
+    }
+    
+ /*
+    if(fMCcase){
+        if(fAODcase){
+            mcArray = (TClonesArray*)fAOD->FindListObject(AliAODMCParticle::StdBranchName());
+            if(!mcArray){
+                cout<<"No MC particle branch found"<<endl;
+                return;
+            }
+        }else {
+            mcEvent = MCEvent();
+            if (!mcEvent) {Printf("ERROR: Could not retrieve MC event"); return;}
+            
+            mcstack = mcEvent->Stack();
+            if (!mcstack) {Printf("ERROR: Could not retrieve the stack"); return;}
+        }
+    }
+*/
+    
+    
+    
+    /////////////////////////////////////////////////
+    
+    
+    
+    if(fAODcase){// AOD case
+        ////////////////////////////////
+        // Vertexing
+        ((TH1F*)fOutputList->FindObject("fMultDist1"))->Fill(fAOD->GetNumberOfTracks());
+        PrimaryVertexAOD = fAOD->GetPrimaryVertex();
+        if(!PrimaryVertexAOD) return;
+        
+        if(fMCcase){
+            for (Int_t it = 0; it < mcArray->GetEntriesFast(); it++) {
+                AliAODMCParticle *mcInputTrack = (AliAODMCParticle*)mcArray->At(it);
+                if (!mcInputTrack) {
+                    Error("UserExec", "Could not receive track %d", it);
+                    continue;
+                }
+                
+                if(!mcInputTrack->IsPhysicalPrimary()) continue;
+                
+                // Xi
+                if(mcInputTrack->GetPdgCode() == +kXiCode) ((TH3F*)fOutputList->FindObject("fMCinputTotalXi1"))->Fill(mcInputTrack->Pt(), mcInputTrack->Y(), mcInputTrack->GetCalcMass());
+                if(mcInputTrack->GetPdgCode() == -kXiCode) ((TH3F*)fOutputList->FindObject("fMCinputTotalXibar1"))->Fill(mcInputTrack->Pt(), mcInputTrack->Y(), mcInputTrack->GetCalcMass());
+                
+                // XiStar
+                if(mcInputTrack->GetPdgCode() == +kXiStarCode) ((TH3F*)fOutputList->FindObject("fMCinputTotalXiStar1"))->Fill(mcInputTrack->Pt(), mcInputTrack->Y(), mcInputTrack->GetCalcMass());
+                if(mcInputTrack->GetPdgCode() == -kXiStarCode) ((TH3F*)fOutputList->FindObject("fMCinputTotalXiStarbar1"))->Fill(mcInputTrack->Pt(), mcInputTrack->Y(), mcInputTrack->GetCalcMass());
+            }
+        }
+        
+        
+        
+        primaryVtx[0]=PrimaryVertexAOD->GetX(); primaryVtx[1]=PrimaryVertexAOD->GetY(); primaryVtx[2]=PrimaryVertexAOD->GetZ();
+        ((TH3F*)fOutputList->FindObject("fVertexDist1"))->Fill(primaryVtx[0], primaryVtx[1], primaryVtx[2]);
+        
+        if(fabs(primaryVtx[2]) > 10.) return; // Z-Vertex Cut
+        ((TH1F*)fOutputList->FindObject("fMultDist2"))->Fill(fAOD->GetNumberOfTracks());
+        
+        
+        if(fAOD->IsPileupFromSPD()) return; // Reject Pile-up events
+        
+        ((TH1F*)fOutputList->FindObject("fMultDist3"))->Fill(fAOD->GetNumberOfTracks());
+        ((TH3F*)fOutputList->FindObject("fVertexDist3"))->Fill(primaryVtx[0], primaryVtx[1], primaryVtx[2]);
+        
+        if(PrimaryVertexAOD->GetNContributors() >= 1) ((TH1F*)fOutputList->FindObject("fMultDist4"))->Fill(fAOD->GetNumberOfTracks());
+        
+        
+        
+        Printf("There are %d tracks in this event", fAOD->GetNumberOfTracks());
+        // fNtracks Cut
+        if(fAOD->GetNumberOfTracks() > kNbinsM) {cout<<"More tracks than limit"<<endl; return;}
+        bField = fAOD->GetMagneticField();
+        
+        // Track loop
+        for (Int_t i = 0; i < fAOD->GetNumberOfTracks(); i++) {
+            AliAODTrack* aodtrack = fAOD->GetTrack(i);
+            if (!aodtrack) continue;
+            
+            status=aodtrack->GetStatus();
+            
+            
+            if( (status&AliESDtrack::kTPCrefit)==0) continue;// Require tpcrefit
+            if( aodtrack->GetTPCNcls() < 70) continue;// TPC Ncluster cut
+            if(aodtrack->Pt() < 0.15) continue;
+            AliAODVertex *VtxType=aodtrack->GetProdVertex();
+            if((VtxType->GetType())==AliAODVertex::kKink) continue;// Reject Kinks
+            
+            Bool_t goodMomentum = aodtrack->GetPxPyPz( fTempStruct[myTracks].fP);
+            if(!goodMomentum) continue;
+            aodtrack->GetXYZ( fTempStruct[myTracks].fX);
+            
+            
+            aodtrack->GetCovarianceXYZPxPyPz( fTempStruct[myTracks].fCov);
+            
+            dca2[0] = sqrt( pow(fTempStruct[myTracks].fX[0] - primaryVtx[0],2) + pow(fTempStruct[myTracks].fX[1] - primaryVtx[1],2));
+            dca2[1] = sqrt( pow(fTempStruct[myTracks].fX[2] - primaryVtx[2],2));
+            dca3d = sqrt( pow(dca2[0],2) + pow(dca2[1],2));
+            
+            ((TH1F*)fOutputList->FindObject("fDCADist"))->Fill(fAOD->GetNumberOfTracks(), dca3d);
+            ((TH3F*)fOutputList->FindObject("fPhiPtDist"))->Fill(aodtrack->Charge(), aodtrack->Phi(), aodtrack->Pt());
+            ((TH3F*)fOutputList->FindObject("fPtEtaDist"))->Fill(aodtrack->Charge(), aodtrack->Pt(), aodtrack->Eta());
+            
+            
+            
+            
+            fTempStruct[myTracks].fStatus = status;
+            fTempStruct[myTracks].fFilterMap = aodtrack->GetFilterMap();
+            fTempStruct[myTracks].fID = aodtrack->GetID();
+            fTempStruct[myTracks].fLabel = aodtrack->GetLabel();
+            fTempStruct[myTracks].fPhi = atan2(fTempStruct[myTracks].fP[1], fTempStruct[myTracks].fP[0]);
+            if(fTempStruct[myTracks].fPhi < 0) fTempStruct[myTracks].fPhi += 2*PI;
+            fTempStruct[myTracks].fPt = sqrt(pow(fTempStruct[myTracks].fP[0],2) + pow(fTempStruct[myTracks].fP[1],2));
+            fTempStruct[myTracks].fMom = sqrt( pow(fTempStruct[myTracks].fPt,2) + pow(fTempStruct[myTracks].fP[2],2) );
+            fTempStruct[myTracks].fEta = aodtrack->Eta();
+            fTempStruct[myTracks].fCharge = aodtrack->Charge();
+            fTempStruct[myTracks].fDCAXY = dca2[0];
+            fTempStruct[myTracks].fDCAZ = dca2[1];
+            fTempStruct[myTracks].fDCA = dca3d;
+            fTempStruct[myTracks].fNSigmaPi = fabs(fPIDResponse->NumberOfSigmasTPC(aodtrack,AliPID::kPion));
+            fTempStruct[myTracks].fNSigmaK = fabs(fPIDResponse->NumberOfSigmasTPC(aodtrack,AliPID::kKaon));
+            fTempStruct[myTracks].fNSigmaPr = fabs(fPIDResponse->NumberOfSigmasTPC(aodtrack,AliPID::kProton));
+            
+            
+            if(aodtrack->Charge() > 0) positiveTracks++;
+            else negativeTracks++;
+            
+            
+            myTracks++;
+        }
+    }else {// ESDs
+        
+        
+        
+        ((TH1F*)fOutputList->FindObject("fMultDist1"))->Fill(fESD->GetNumberOfTracks());
+        PrimaryVertexESD = fESD->GetPrimaryVertex();
+        if(!PrimaryVertexESD) return;
+        
+        fEventNumber =
+        ( ( ((ULong64_t)fESD->GetPeriodNumber() ) << 36 ) |
+         ( ((ULong64_t)fESD->GetOrbitNumber () ) << 12 ) |
+         ((ULong64_t)fESD->GetBunchCrossNumber() )  );
+        
+        
+        
+        // centrality
+        
+        fCentrality = fESD->GetCentrality();
+        centralityV0M = fCentrality->GetCentralityPercentile("V0M");
+        centralityTRK = fCentrality->GetCentralityPercentile("TRK");
+        centralitySPD =fCentrality->GetCentralityPercentile("CL1");
+        lCentrality =  fCentrality->GetCentralityPercentile( fCentralityEstimator.Data());
+        
+        
+        
+        
+        primaryVtx[0]=PrimaryVertexESD->GetX(); primaryVtx[1]=PrimaryVertexESD->GetY(); primaryVtx[2]=PrimaryVertexESD->GetZ();
+        ((TH3F*)fOutputList->FindObject("fVertexDist1"))->Fill(primaryVtx[0], primaryVtx[1], primaryVtx[2]);
+        
+        if(fMCcase){
+            /////////////////////////////////////////////////
+            // Lam mc input
+            /////////////////////////////////////////////////
+            for (Int_t it = 0; it < mcstack->GetNprimary(); it++) {
+                TParticle *mcInputTrack = (TParticle*)mcstack->Particle(it);
+                if (!mcInputTrack) {
+                    Error("UserExec", "Could not receive track %d", it);
+                    continue;
+                }
+                
+                fTreeVariableMCinputTotalSongPID = -1;
+                
+                
+                if(mcInputTrack->GetPdgCode() != +kXiCode && mcInputTrack->GetPdgCode() != -kXiCode && mcInputTrack->GetPdgCode() != +kXiStarCode && mcInputTrack->GetPdgCode() != -kXiStarCode) continue;
+                // Xi
+                if(mcInputTrack->GetPdgCode() == +kXiCode) {((TH3F*)fOutputList->FindObject("fMCinputTotalXi1"))->Fill(mcInputTrack->Pt(), mcInputTrack->Y(), mcInputTrack->GetCalcMass());
+                    fTreeVariableMCinputTotalXiPt = mcInputTrack->Pt();
+                    fTreeVariableMCinputTotalXiY = mcInputTrack->Y();
+                    fTreeVariableMCinputTotalXiCalcMass = mcInputTrack->GetCalcMass();
+                    fTreeVariableMCinputTotalSongPID = 1;
+                    fTreeVariableMCinputTotalCent = lCentrality;
+                }
+                
+                if(mcInputTrack->GetPdgCode() == -kXiCode) {((TH3F*)fOutputList->FindObject("fMCinputTotalXibar1"))->Fill(mcInputTrack->Pt(), mcInputTrack->Y(), mcInputTrack->GetCalcMass());
+                    fTreeVariableMCinputTotalXibarPt = mcInputTrack->Pt();
+                    fTreeVariableMCinputTotalXibarY = mcInputTrack->Y();
+                    fTreeVariableMCinputTotalXibarCalcMass = mcInputTrack->GetCalcMass();
+                    fTreeVariableMCinputTotalSongPID = 2;
+                    fTreeVariableMCinputTotalCent = lCentrality;
+                    
+                    
+                }
+                // XiStar
+                if(mcInputTrack->GetPdgCode() == +kXiStarCode) {((TH3F*)fOutputList->FindObject("fMCinputTotalXiStar1"))->Fill(mcInputTrack->Pt(), mcInputTrack->Y(), mcInputTrack->GetCalcMass());
+                    
+                    fTreeVariableMCinputTotalXiStarPt = mcInputTrack->Pt();
+                    fTreeVariableMCinputTotalXiStarY = mcInputTrack->Y();
+                    fTreeVariableMCinputTotalXiStarCalcMass = mcInputTrack->GetCalcMass();
+                    fTreeVariableMCinputTotalSongPID = 3;
+                    fTreeVariableMCinputTotalCent = lCentrality;
+                    
+                }
+                
+                if(mcInputTrack->GetPdgCode() == -kXiStarCode) {((TH3F*)fOutputList->FindObject("fMCinputTotalXiStarbar1"))->Fill(mcInputTrack->Pt(), mcInputTrack->Y(), mcInputTrack->GetCalcMass());
+                    fTreeVariableMCinputTotalXiStarbarPt = mcInputTrack->Pt();
+                    fTreeVariableMCinputTotalXiStarbarY = mcInputTrack->Y();
+                    fTreeVariableMCinputTotalXiStarbarCalcMass = mcInputTrack->GetCalcMass();
+                    fTreeVariableMCinputTotalSongPID = 4;
+                    fTreeVariableMCinputTotalCent = lCentrality;
+                    
+                }
+                
+                fTreeMC->Fill();
+            }
+            
+            
+        }
+        
+        if(fabs(primaryVtx[2]) > 10.) return; // Z-Vertex Cut
+        ((TH1F*)fOutputList->FindObject("fMultDist2"))->Fill(fESD->GetNumberOfTracks());
+        
+        
+        if(fESD->IsPileupFromSPD()) return; // Reject Pile-up events
+        
+        ((TH1F*)fOutputList->FindObject("fMultDist3"))->Fill(fESD->GetNumberOfTracks());
+        ((TH3F*)fOutputList->FindObject("fVertexDist3"))->Fill(primaryVtx[0], primaryVtx[1], primaryVtx[2]);
+        
+        
+        // ===========  Treevariables for Event =========== //
+        
+        fTreeVariableMult = fESD->GetNumberOfTracks();
+        fTreeVariablePrimaryVz = PrimaryVertexESD->GetZ();
+        fTreeVariableRunNumber = fESD ->GetRunNumber();
+        fTreeVariableEventNumber1 = fEventNumber;
+        
+        
+        fTreeVariableEventNumberInFile = fESD->GetEventNumberInFile();
+  /*
+        
+        // centrality
+        
+        fCentrality = fESD->GetCentrality();
+        
+        centralityV0M = fCentrality->GetCentralityPercentile("V0M");
+        centralityTRK = fCentrality->GetCentralityPercentile("TRK");
+        centralitySPD =fCentrality->GetCentralityPercentile("CL1");
+        
+       // lCentrality =  fCentrality->GetCentralityPercentile( fCentralityEstimator.Data()); // this is from XliAnalisysTaskExtractPerformanceCascade.cxx
+    */
+        
+        
+        ///------- centrality ----------///
+        fTreeVariableCentrality =  lCentrality;
+        fTreeVariableCentralityV0M = centralityV0M;
+        fTreeVariableCentralityTRK = centralityTRK;
+        fTreeVariableCentralitySPD = centralitySPD;
+        
+        // ===========  Treevariables for Event =========== //
+        
+        
+        
+        // multiplicity
+        
+        if(PrimaryVertexESD->GetNContributors() >= 1) ((TH1F*)fOutputList->FindObject("fMultDist4"))->Fill(fESD->GetNumberOfTracks());
+        
+        Printf("There are %d tracks in this event", fESD->GetNumberOfTracks());
+        // fNtracks Cut
+        //if(fESD->GetNumberOfTracks() > 20000 ) {cout<<"More tracks than limit"<<endl; return;}
+        
+        //   if(fESD->GetNumberOfTracks() < 17500 ) {cout<<"multiplicity is smaller than 5000"<<endl; return;}
+        
+        //if(fESD->GetNumberOfTracks() > 200000 ) {cout<<"multiplicity is larger than 20000"<<endl; return;}
+        
+        if(lCentrality>30.){cout<<"centrality is NOT 0 - 30 "<<endl; return;}
+        
+        bField = fESD->GetMagneticField();
+        
+        
+        // Track loop
+        for (Int_t i = 0; i < fESD->GetNumberOfTracks(); i++) {
+            AliESDtrack* esdtrack = fESD->GetTrack(i);
+            if (!esdtrack) continue;
+            
+            status=esdtrack->GetStatus();
+            
+            if(!fTrackCut->AcceptTrack(esdtrack)) continue;
+            
+            Bool_t goodMomentum = esdtrack->GetPxPyPz( fTempStruct[myTracks].fP);
+            if(!goodMomentum) continue;
+            esdtrack->GetXYZ( fTempStruct[myTracks].fX);
+            
+            //=========PID=========//
+            
+            Double_t pidmom = esdtrack->GetTPCmomentum();
+            Double_t sigTPC = esdtrack->GetTPCsignal();
+            Double_t nsigpi= fabs(fPIDResponse->NumberOfSigmasTPC(esdtrack,AliPID::kPion));
+            Double_t nsigk= fabs(fPIDResponse->NumberOfSigmasTPC(esdtrack,AliPID::kKaon));
+            Double_t nsigpr= fabs(fPIDResponse->NumberOfSigmasTPC(esdtrack,AliPID::kProton));
+            
+            ((TH2F*)fOutputList->FindObject("TPCPID"))->Fill(pidmom,sigTPC);
+            if(nsigpi<3.) ((TH2F*)fOutputList->FindObject("TPCPID1"))->Fill(pidmom,sigTPC);
+            if(nsigk<3.) ((TH2F*)fOutputList->FindObject("TPCPID2"))->Fill(pidmom,sigTPC);
+            if(nsigpr<3.) ((TH2F*)fOutputList->FindObject("TPCPID3"))->Fill(pidmom,sigTPC);
+
+            ((TH2F*)fOutputList->FindObject("dEdxpi"))->Fill(pidmom,fPIDResponse->NumberOfSigmasTPC(esdtrack,AliPID::kPion));
+
+            
+            esdtrack->GetCovarianceXYZPxPyPz( fTempStruct[myTracks].fCov);
+            //esdtrack->GetImpactParameters(dca2, cov);
+            dca2[0] = sqrt( pow(fTempStruct[myTracks].fX[0] - primaryVtx[0],2) + pow(fTempStruct[myTracks].fX[1] - primaryVtx[1],2));
+            dca2[1] = sqrt( pow(fTempStruct[myTracks].fX[2] - primaryVtx[2],2));
+            dca3d = sqrt( pow(dca2[0],2) + pow(dca2[1],2));
+            
+            ((TH1F*)fOutputList->FindObject("fDCADist"))->Fill(fESD->GetNumberOfTracks(), dca3d);
+            ((TH3F*)fOutputList->FindObject("fPhiPtDist"))->Fill(esdtrack->Charge(), esdtrack->Phi(), esdtrack->Pt());
+            ((TH3F*)fOutputList->FindObject("fPtEtaDist"))->Fill(esdtrack->Charge(), esdtrack->Pt(), esdtrack->Eta());
+            
+            ((TH1F*)fOutputList->FindObject("fPtDist"))->Fill(esdtrack->Pt());
+            ((TH1F*)fOutputList->FindObject("fPhiDist"))->Fill(esdtrack->Phi());
+            ((TH1F*)fOutputList->FindObject("fEtaDist"))->Fill(esdtrack->Eta());
+            
+            
+            // 20140715 Pion PID here !
+            
+            
+            fTempStruct[myTracks].fStatus = status;
+            fTempStruct[myTracks].fID = esdtrack->GetID();
+            fTempStruct[myTracks].fLabel = esdtrack->GetLabel();
+            fTempStruct[myTracks].fPhi = atan2(fTempStruct[myTracks].fP[1], fTempStruct[myTracks].fP[0]);
+            if(fTempStruct[myTracks].fPhi < 0) fTempStruct[myTracks].fPhi += 2*PI;
+            fTempStruct[myTracks].fPt = sqrt(pow(fTempStruct[myTracks].fP[0],2) + pow(fTempStruct[myTracks].fP[1],2));
+            fTempStruct[myTracks].fMom = sqrt( pow(fTempStruct[myTracks].fPt,2) + pow(fTempStruct[myTracks].fP[2],2) );
+            fTempStruct[myTracks].fEta = esdtrack->Eta();
+            fTempStruct[myTracks].fCharge = esdtrack->Charge();
+            fTempStruct[myTracks].fDCAXY = dca2[0];
+            fTempStruct[myTracks].fDCAZ = dca2[1];
+            fTempStruct[myTracks].fDCA = dca3d;
+            fTempStruct[myTracks].fNSigmaPi = fabs(fPIDResponse->NumberOfSigmasTPC(esdtrack,AliPID::kPion));
+            fTempStruct[myTracks].fNSigmaK = fabs(fPIDResponse->NumberOfSigmasTPC(esdtrack,AliPID::kKaon));
+            fTempStruct[myTracks].fNSigmaPr = fabs(fPIDResponse->NumberOfSigmasTPC(esdtrack,AliPID::kProton));
+            fTempStruct[myTracks].fNclusTPC = esdtrack->GetTPCNcls();
+            
+
+            
+            if(esdtrack->Charge() > 0) positiveTracks++;
+            else negativeTracks++;
+            
+            if(fTempStruct[myTracks].fNclusTPC < 70) continue;
+             if(dca2[1]>3) continue;
+             if(dca2[0]>3) continue;
+            
+            
+            fTreeVariableESDTrackX = fTempStruct[myTracks].fX[0];
+            fTreeVariableESDTrackY = fTempStruct[myTracks].fX[1];
+            fTreeVariableESDTrackZ = fTempStruct[myTracks].fX[2];
+            fTreeVariableESDTrackPx = fTempStruct[myTracks].fP[0];
+            fTreeVariableESDTrackPy = fTempStruct[myTracks].fP[1];
+            fTreeVariableESDTrackPz = fTempStruct[myTracks].fP[2];
+            fTreeVariableESDTrackQ = esdtrack->Charge();
+            fTreeVariableESDTrackID = fTempStruct[myTracks].fID;
+            fTreeVariavleESDStatus = fTempStruct[myTracks].fStatus;
+            
+            fTreeVariableESDtrackDCAZ = dca2[1];
+            fTreeVariableESDtrackDCAXY = dca2[0];
+            fTreeVariableESDtrackEta = esdtrack->Eta();
+            fTreeVariableESDtrackPt= fTempStruct[myTracks].fPt;
+            fTreeVariableESDtrackMom = fTempStruct[myTracks].fMom;
+            fTreeVariableESDtrackfNclusTPC = esdtrack->GetTPCNcls();
+            //  fTreeVariableEventCounter3 = fEventCounter;
+            fTreeVariableEventNumber3 = fEventNumber;
+            
+            fTreePi->Fill();  // Fill here : tree variable for 3rd pion
+            
+            myTracks++;
+        }
+        
+        
+        fTreeVariablemyTracks = myTracks;
+        //fTreeVariablexiTracks = fESD->GetNumberOfCascades();
+        //fTreeEvent->Fill();
+        
+    }// end of ESD case
+    
+    
+    
+    if(myTracks >= 1) {
+        ((TH1F*)fOutputList->FindObject("fMultDist5"))->Fill(myTracks);
+        ((TH3F*)fOutputList->FindObject("fMultDist3d"))->Fill(positiveTracks+negativeTracks, positiveTracks, negativeTracks);
+    }
+    
+    
+    cout<<"There are "<<myTracks<<"  myTracks"<<endl;
+    
+    // set Z Vertex bin
+    for(Int_t i=0; i<fZvertexBins; i++){
+        if( (primaryVtx[2] > zStart+i*zStep) && (primaryVtx[2] < zStart+(i+1)*zStep) ){
+            zBin=i;
+            break;
+        }
+    }
+    
+    
+    // set Multiplicity bin
+    for(Int_t i=0; i<fMultBins; i++){
+        if( ( myTracks > fMultLimits[i]) && ( myTracks <= fMultLimits[i+1]) ) { mBin=i; break;}
+    }
+    
+    
+    
+    ////////////////////////////////////
+    // Add event to buffer if > 0 tracks
+    if(myTracks > 0){
+        fEC[zBin][mBin]->FIFOShift();
+        (fEvt) = fEC[zBin][mBin]->fEvtStr;
+        (fEvt)->fNTracks = myTracks;
+        for(Int_t i=0; i<myTracks; i++) (fEvt)->fTracks[i] = fTempStruct[i];
+    }
+    
+    
+    
+    
+    if(fMCcase && fAODcase){// get Input MC information for AOD case
+        
+        /////////////////////////////////////////////////
+        // Xi mc input
+        /////////////////////////////////////////////////
+        for (Int_t it = 0; it < mcArray->GetEntriesFast(); it++) {
+            AliAODMCParticle *mcInputTrackXi = (AliAODMCParticle*)mcArray->At(it);
+            
+            if (!mcInputTrackXi) {
+                Error("UserExec", "Could not receive track %d", it);
+                continue;
+            }
+            
+            if(abs(mcInputTrackXi->GetPdgCode())!=kXiCode) continue;
+            if(!mcInputTrackXi->IsPhysicalPrimary()) continue;
+            
+            
+            if(mcInputTrackXi->GetPdgCode() == +kXiCode) ((TH3F*)fOutputList->FindObject("fMCinputTotalXi3"))->Fill(mcInputTrackXi->Pt(), mcInputTrackXi->Y(), mcInputTrackXi->GetCalcMass());
+            else ((TH3F*)fOutputList->FindObject("fMCinputTotalXibar3"))->Fill(mcInputTrackXi->Pt(), mcInputTrackXi->Y(), mcInputTrackXi->GetCalcMass());
+            
+            
+            
+            AliAODMCParticle *mcInputTrackXiD1 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXi->GetDaughter(0)));
+            AliAODMCParticle *mcInputTrackXiD2 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXi->GetDaughter(1)));
+            
+            if(abs(mcInputTrackXiD1->GetPdgCode())!=kLambdaCode && abs(mcInputTrackXiD2->GetPdgCode())!=kLambdaCode) continue;
+            if(abs(mcInputTrackXiD1->GetPdgCode())!=kPionCode && abs(mcInputTrackXiD2->GetPdgCode())!=kPionCode) continue;
+            
+            
+            // At this point we have the right Xi decay channel
+            
+            AliAODMCParticle *mcInputTrackLamD1;
+            AliAODMCParticle *mcInputTrackLamD2;
+            
+            if(abs(mcInputTrackXiD1->GetPdgCode())==kLambdaCode) {
+                mcInputTrackLamD1 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiD1->GetDaughter(0)));
+                mcInputTrackLamD2 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiD1->GetDaughter(1)));
+            }
+            else{
+                mcInputTrackLamD1 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiD2->GetDaughter(0)));
+                mcInputTrackLamD2 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiD2->GetDaughter(1)));
+            }
+            
+            
+            if(abs(mcInputTrackLamD1->GetPdgCode())!=kProtonCode && abs(mcInputTrackLamD2->GetPdgCode())!=kProtonCode) continue;
+            if(abs(mcInputTrackLamD1->GetPdgCode())!=kPionCode && abs(mcInputTrackLamD2->GetPdgCode())!=kPionCode) continue;
+            
+            // At this point we have the right Lambda decay channel
+            
+            if(mcInputTrackXi->GetPdgCode() == +kXiCode) ((TH3F*)fOutputList->FindObject("fMCinputXi"))->Fill(mcInputTrackXi->Pt(), mcInputTrackXi->Y(), mcInputTrackXi->GetCalcMass());
+            else ((TH3F*)fOutputList->FindObject("fMCinputXibar"))->Fill(mcInputTrackXi->Pt(), mcInputTrackXi->Y(), mcInputTrackXi->GetCalcMass());
+            
+        }
+        
+        
+        
+        /////////////////////////////////////////////////
+        // XiStar mc input
+        /////////////////////////////////////////////////
+        for (Int_t it = 0; it < mcArray->GetEntriesFast(); it++) {
+            AliAODMCParticle *mcInputTrackXiStar = (AliAODMCParticle*)mcArray->At(it);
+            if (!mcInputTrackXiStar) {
+                Error("UserExec", "Could not receive track %d", it);
+                continue;
+            }
+            
+            if(abs(mcInputTrackXiStar->GetPdgCode())!=kXiStarCode) continue;
+            if(!mcInputTrackXiStar->IsPhysicalPrimary()) continue;
+            
+            if(mcInputTrackXiStar->GetPdgCode() == +kXiStarCode) ((TH3F*)fOutputList->FindObject("fMCinputTotalXiStar3"))->Fill(mcInputTrackXiStar->Pt(), mcInputTrackXiStar->Y(), mcInputTrackXiStar->GetCalcMass());
+            else ((TH3F*)fOutputList->FindObject("fMCinputTotalXiStarbar3"))->Fill(mcInputTrackXiStar->Pt(), mcInputTrackXiStar->Y(), mcInputTrackXiStar->GetCalcMass());
+            
+            
+            AliAODMCParticle *mcInputTrackXiStarD1 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiStar->GetDaughter(0)));
+            AliAODMCParticle *mcInputTrackXiStarD2 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiStar->GetDaughter(1)));
+            
+            if(abs(mcInputTrackXiStarD1->GetPdgCode())!=kXiCode && abs(mcInputTrackXiStarD2->GetPdgCode())!=kXiCode) continue;
+            if(abs(mcInputTrackXiStarD1->GetPdgCode())!=kPionCode && abs(mcInputTrackXiStarD2->GetPdgCode())!=kPionCode) continue;
+            
+            
+            // At this point we have the right Xi(1530) decay channel
+            
+            AliAODMCParticle *mcInputTrackXiD1;
+            AliAODMCParticle *mcInputTrackXiD2;
+            if(abs(mcInputTrackXiStarD1->GetPdgCode())==kXiCode) {
+                mcInputTrackXiD1 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiStarD1->GetDaughter(0)));
+                mcInputTrackXiD2 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiStarD1->GetDaughter(1)));
+            }
+            else{
+                mcInputTrackXiD1 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiStarD2->GetDaughter(0)));
+                mcInputTrackXiD2 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiStarD2->GetDaughter(1)));
+            }
+            
+            if(abs(mcInputTrackXiD1->GetPdgCode())!=kLambdaCode && abs(mcInputTrackXiD2->GetPdgCode())!=kLambdaCode) continue;
+            if(abs(mcInputTrackXiD1->GetPdgCode())!=kPionCode && abs(mcInputTrackXiD2->GetPdgCode())!=kPionCode) continue;
+            
+            
+            // At this point we have the right Xi decay channel
+            
+            AliAODMCParticle *mcInputTrackLamD1;
+            AliAODMCParticle *mcInputTrackLamD2;
+            
+            if(abs(mcInputTrackXiD1->GetPdgCode())==kLambdaCode) {
+                mcInputTrackLamD1 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiD1->GetDaughter(0)));
+                mcInputTrackLamD2 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiD1->GetDaughter(1)));
+            }
+            else{
+                mcInputTrackLamD1 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiD2->GetDaughter(0)));
+                mcInputTrackLamD2 = (AliAODMCParticle*)mcArray->At(abs(mcInputTrackXiD2->GetDaughter(1)));
+            }
+            
+            if(abs(mcInputTrackLamD1->GetPdgCode())!=kProtonCode && abs(mcInputTrackLamD2->GetPdgCode())!=kProtonCode) continue;
+            if(abs(mcInputTrackLamD1->GetPdgCode())!=kPionCode && abs(mcInputTrackLamD2->GetPdgCode())!=kPionCode) continue;
+            
+            // At this point we the right Lambda decay channel
+            
+            if(mcInputTrackXiStar->GetPdgCode() == +kXiStarCode) ((TH3F*)fOutputList->FindObject("fMCinputXiStar"))->Fill(mcInputTrackXiStar->Pt(), mcInputTrackXiStar->Y(), mcInputTrackXiStar->GetCalcMass());
+            else ((TH3F*)fOutputList->FindObject("fMCinputXiStarbar"))->Fill(mcInputTrackXiStar->Pt(), mcInputTrackXiStar->Y(), mcInputTrackXiStar->GetCalcMass());
+            
+            if(abs(mcInputTrackXiStarD1->GetPdgCode())==kXiCode) {
+                ((TH2F*)fOutputList->FindObject("fMCinputXiStarxiy"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackXiStarD1->Y());
+                ((TH2F*)fOutputList->FindObject("fMCinputXiStarpiony"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackXiStarD2->Y());
+            }else{
+                ((TH2F*)fOutputList->FindObject("fMCinputXiStarxiy"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackXiStarD2->Y());
+                ((TH2F*)fOutputList->FindObject("fMCinputXiStarpiony"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackXiStarD1->Y());
+            }
+            if(abs(mcInputTrackXiD1->GetPdgCode())==kLambdaCode){
+                ((TH2F*)fOutputList->FindObject("fMCinputXilambday"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackXiD1->Y());
+                ((TH2F*)fOutputList->FindObject("fMCinputXipiony"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackXiD2->Y());
+            }else{
+                ((TH2F*)fOutputList->FindObject("fMCinputXilambday"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackXiD2->Y());
+                ((TH2F*)fOutputList->FindObject("fMCinputXipiony"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackXiD1->Y());
+            }
+            if(abs(mcInputTrackLamD1->GetPdgCode())==kProtonCode){
+                ((TH2F*)fOutputList->FindObject("fMCinputLamprotony"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackLamD1->Y());
+                ((TH2F*)fOutputList->FindObject("fMCinputLampiony"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackLamD2->Y());
+            }else {
+                ((TH2F*)fOutputList->FindObject("fMCinputLamprotony"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackLamD2->Y());
+                ((TH2F*)fOutputList->FindObject("fMCinputLampiony"))->Fill(mcInputTrackXiStar->Y(), mcInputTrackLamD1->Y());
+            }
+            
+            
+        }
+    }
+    
+    
+    
+    if(fMCcase && !fAODcase){// get Input MC information for ESD case
+        
+        /////////////////////////////////////////////////
+        // Xi mc input
+        /////////////////////////////////////////////////
+        for (Int_t it = 0; it < mcstack->GetNprimary(); it++) {
+            TParticle *mcInputTrackXi = (TParticle*)mcstack->Particle(it);
+            if (!mcInputTrackXi) {
+                Error("UserExec", "Could not receive track %d", it);
+                continue;
+            }
+            
+            //if(!mcstack->IsPhysicalPrimary(it)) continue;
+            if(abs(mcInputTrackXi->GetPdgCode())!=kXiCode) continue;
+            
+            
+            if(mcInputTrackXi->GetPdgCode() == +kXiCode) {
+                
+                ((TH3F*)fOutputList->FindObject("fMCinputTotalXi3"))->Fill(mcInputTrackXi->Pt(), mcInputTrackXi->Y(), mcInputTrackXi->GetCalcMass());
+            }
+            else {((TH3F*)fOutputList->FindObject("fMCinputTotalXibar3"))->Fill(mcInputTrackXi->Pt(), mcInputTrackXi->Y(), mcInputTrackXi->GetCalcMass());
+            }
+            
+        }
+        
+        
+        /////////////////////////////////////////////////
+        // XiStar mc input
+        /////////////////////////////////////////////////
+        for (Int_t it = 0; it < mcstack->GetNprimary(); it++) {
+            TParticle *mcInputTrackXiStar = (TParticle*)mcstack->Particle(it);
+            if (!mcInputTrackXiStar) {
+                Error("UserExec", "Could not receive track %d", it);
+                continue;
+            }
+            
+            //if(!mcstack->IsPhysicalPrimary(it)) continue;
+            if(abs(mcInputTrackXiStar->GetPdgCode())!=kXiStarCode) continue;
+            
+            if(mcInputTrackXiStar->GetPdgCode() == +kXiStarCode) {((TH3F*)fOutputList->FindObject("fMCinputTotalXiStar3"))->Fill(mcInputTrackXiStar->Pt(), mcInputTrackXiStar->Y(), mcInputTrackXiStar->GetCalcMass());
+            }
+            else {((TH3F*)fOutputList->FindObject("fMCinputTotalXiStarbar3"))->Fill(mcInputTrackXiStar->Pt(), mcInputTrackXiStar->Y(), mcInputTrackXiStar->GetCalcMass());
+                
+            }
+            
+            
+        }
+    }
+    
+    
+    
+    if(fAODcase) {cout<<"AOD XiVertexer not currently supported! Exiting event"<<endl; return;}
+    
+    ////////////////////////////////////////////////
+    // Reconstruction
+    
+    for(Int_t i=0; i<fESD->GetNumberOfCascades(); i++){
+        
+        AliESDcascade *Xicandidate = fESD->GetCascade(i);
+        
+        if(TMath::Abs( Xicandidate->GetPindex()) == TMath::Abs( Xicandidate->GetNindex())) continue;
+        if(TMath::Abs( Xicandidate->GetPindex()) == TMath::Abs( Xicandidate->GetBindex())) continue;
+        if(TMath::Abs( Xicandidate->GetNindex()) == TMath::Abs( Xicandidate->GetBindex())) continue;
+        
+        AliESDtrack *pTrackXi	= fESD->GetTrack(TMath::Abs( Xicandidate->GetPindex()));
+        AliESDtrack *nTrackXi	= fESD->GetTrack(TMath::Abs( Xicandidate->GetNindex()));
+        AliESDtrack *bTrackXi	= fESD->GetTrack(TMath::Abs( Xicandidate->GetBindex()));
+        
+        // Standard track QA cuts
+        if(!fTrackCut->AcceptTrack(pTrackXi)) continue;
+        if(!fTrackCut->AcceptTrack(nTrackXi)) continue;
+        if(!fTrackCut->AcceptTrack(bTrackXi)) continue;
+        
+        
+        //////////////////////
+        // DecayParameters Key (number represents array index)
+        // NclustersTPC: 0=proton, 1=pion first, 2=pion second, 3=pion third
+        // DCAVtx: 4=proton, 5=pion first, 6=pion second, 7=lambda, 8=pion third
+        // 9 = DCA proton-pion
+        // 10 = DCA Lambda-pion
+        // 11 = Rxy Lambda
+        // 12 = Rxy Xi
+        // 13 = Cos PA Lambda
+        // 14 = Cos PA Xi
+        
+        
+        fDecayParameters[2] = bTrackXi->GetTPCNcls();
+        ((TH1F*)fOutputList->FindObject("fTPCNcls_pi2"))->Fill(fDecayParameters[2]);
+        
+        Double_t Xinsigpr = 10;
+        Double_t Xinsigpi1 = 10;
+        Double_t Xinsigpi2 = 10;
+        
+        
+        Double_t pidmomXi[3] = {-10,-10,-10};
+        Double_t sigTPCXi[3] = {-10,-10,-10};
+        
+        
+        if(Xicandidate->Charge() == -1){
+            fDecayParameters[0] = pTrackXi->GetTPCNcls();
+            fDecayParameters[1] = nTrackXi->GetTPCNcls();
+            fDecayParameters[4] = fabs(pTrackXi->GetD(primaryVtx[0],primaryVtx[1],bField));// DCA Vtx proton
+            fDecayParameters[5] = fabs(nTrackXi->GetD(primaryVtx[0],primaryVtx[1],bField));// DCA Vtx pion first
+            
+            Xinsigpr = fPIDResponse->NumberOfSigmasTPC(pTrackXi,AliPID::kProton);
+            Xinsigpi1 = fPIDResponse->NumberOfSigmasTPC(nTrackXi,AliPID::kPion);
+            Xinsigpi2 = fPIDResponse->NumberOfSigmasTPC(bTrackXi,AliPID::kPion);
+            
+            pidmomXi[0] = pTrackXi->GetTPCmomentum();
+            sigTPCXi[0] = pTrackXi->GetTPCsignal();
+            
+            pidmomXi[1] = nTrackXi->GetTPCmomentum();
+            sigTPCXi[1] = nTrackXi->GetTPCsignal();
+            
+            pidmomXi[2] = bTrackXi->GetTPCmomentum();
+            sigTPCXi[2] = bTrackXi->GetTPCsignal();
+
+           
+
+        }else{
+            fDecayParameters[0] = nTrackXi->GetTPCNcls();
+            fDecayParameters[1] = pTrackXi->GetTPCNcls();
+            fDecayParameters[4] = fabs(nTrackXi->GetD(primaryVtx[0],primaryVtx[1],bField));// DCA Vtx proton
+            fDecayParameters[5] = fabs(pTrackXi->GetD(primaryVtx[0],primaryVtx[1],bField));// DCA Vtx pion first
+            
+           
+            Xinsigpr = fPIDResponse->NumberOfSigmasTPC(nTrackXi,AliPID::kProton);
+            Xinsigpi1 = fPIDResponse->NumberOfSigmasTPC(pTrackXi,AliPID::kPion);
+            Xinsigpi2 = fPIDResponse->NumberOfSigmasTPC(bTrackXi,AliPID::kPion);
+            
+            pidmomXi[0] = nTrackXi->GetTPCmomentum();
+            sigTPCXi[0] = nTrackXi->GetTPCsignal();
+            
+            pidmomXi[1] = pTrackXi->GetTPCmomentum();
+            sigTPCXi[1] = pTrackXi->GetTPCsignal();
+            
+            pidmomXi[2] = bTrackXi->GetTPCmomentum();
+            sigTPCXi[2] = bTrackXi->GetTPCsignal();
+
+           
+
+        }
+        
+        ((TH1F*)fOutputList->FindObject("Xinsigpr"))->Fill(Xinsigpr);
+        ((TH1F*)fOutputList->FindObject("Xinsigpi1"))->Fill(Xinsigpi1);
+        ((TH1F*)fOutputList->FindObject("Xinsigpi2"))->Fill(Xinsigpi2);
+
+        ((TH2F*)fOutputList->FindObject("XidEdx1"))->Fill(pidmomXi[0],sigTPCXi[0]);
+        ((TH2F*)fOutputList->FindObject("XidEdx2"))->Fill(pidmomXi[1],sigTPCXi[1]);
+        ((TH2F*)fOutputList->FindObject("XidEdx3"))->Fill(pidmomXi[2],sigTPCXi[2]);
+  
+        
+        
+        ((TH1F*)fOutputList->FindObject("fTPCNcls_p"))->Fill(fDecayParameters[0]);
+        ((TH1F*)fOutputList->FindObject("fTPCNcls_pi1"))->Fill(fDecayParameters[1]);
+        ((TH1F*)fOutputList->FindObject("fDCADist_p"))->Fill(fDecayParameters[4]);
+        ((TH1F*)fOutputList->FindObject("fDCADist_pi1"))->Fill(fDecayParameters[5]);
+        
+        
+        fDecayParameters[6] = fabs(bTrackXi->GetD(primaryVtx[0],primaryVtx[1],bField));// DCA Vtx pion second
+        ((TH1F*)fOutputList->FindObject("fDCADist_pi2"))->Fill(fDecayParameters[6]);
+        
+        
+        fDecayParameters[7] = fabs(Xicandidate->GetD(primaryVtx[0],primaryVtx[1],primaryVtx[2]));// DCA Vtx Lambda
+        ((TH1F*)fOutputList->FindObject("fDCADist_lambda"))->Fill(fDecayParameters[7]);
+        
+        fDecayParameters[9] = fabs(Xicandidate->GetDcaV0Daughters());// DCA proton-pion
+        ((TH1F*)fOutputList->FindObject("fDCADist_pi_p"))->Fill(fDecayParameters[9]);
+        
+        fDecayParameters[10] = fabs(Xicandidate->GetDcaXiDaughters());// DCA Lambda-pion
+        ((TH1F*)fOutputList->FindObject("fDCADist_pi_lambda"))->Fill(fDecayParameters[10]);
+        
+        
+        
+        Double_t tempX[3]={0};
+        Xicandidate->GetXYZ(tempX[0], tempX[1], tempX[2]);
+        fDecayParameters[11] = sqrt( pow(tempX[0],2) + pow(tempX[1],2));// Rxy Lambda
+        ((TH1F*)fOutputList->FindObject("fRXY_lambda"))->Fill(fDecayParameters[11]);
+        
+        // if(sqrt( pow(tempX[0],2) + pow(tempX[1],2) ) > fMaxDecayLength) continue;
+        
+        
+        fDecayParameters[13] = Xicandidate->GetV0CosineOfPointingAngle(primaryVtx[0],primaryVtx[1],primaryVtx[2]);// Cos PA Lambda
+        ((TH1F*)fOutputList->FindObject("fCosPA_lambda"))->Fill(fDecayParameters[13]);
+        
+        fDecayParameters[14] = Xicandidate->GetCascadeCosineOfPointingAngle(primaryVtx[0],primaryVtx[1],primaryVtx[2]);// Cos PA Xi
+        ((TH1F*)fOutputList->FindObject("fCosPA_Xi"))->Fill(fDecayParameters[14]);
+        
+        if(sqrt( pow(tempX[0],2) + pow(tempX[1],2) ) > fMaxDecayLength) continue;
+        
+        decayLengthXY = sqrt( pow(xiVtx[0]-primaryVtx[0],2) + pow(xiVtx[1]-primaryVtx[1],2) );
+        
+        fDecayParameters[12] = decayLengthXY;// Rxy Xi
+        ((TH1F*)fOutputList->FindObject("fRXY_Xi"))->Fill(fDecayParameters[12]);
+        
+        xiP[0] = Xicandidate->Px();
+        xiP[1] = Xicandidate->Py();
+        xiP[2] = Xicandidate->Pz();
+        xiVtx[0] = Xicandidate->Xv();
+        xiVtx[1] = Xicandidate->Yv();
+        xiVtx[2] = Xicandidate->Zv();
+        xiPt = Xicandidate->Pt();
+        xiY = Xicandidate->RapXi();
+        xiMass = Xicandidate->M();
+        xiCharge = Xicandidate->Charge();
+        
+
+        // =========== loose cut to make reduction of output file size =======//
+        if(fDecayParameters[0] < 60) continue;// Nclus proton : 70
+        if(fDecayParameters[1] < 60) continue;// Nclus pion first : 70
+        if(fDecayParameters[2] < 60) continue;// Nclus pion second : 70
+        if(fDecayParameters[4] < 0.02) continue;// DCAVtx proton : 0.04
+        if(fDecayParameters[5] < 0.02) continue;// DCAVtx pion first : 0.04
+        if(fDecayParameters[6] < 0.02) continue;// DCAVtx pion second : 0.05
+        if(fDecayParameters[7] < 0.05) continue;// DCAVtx Lambda : 0.07
+        if(fDecayParameters[9] > 1.8 ) continue;// DCAV proton-pion : 1.6
+        if(fDecayParameters[10] > 1.8) continue;// DCAV Lambda-pion : 1.6
+        if(fDecayParameters[11] < 1.2) continue;// Rxy Lambda : 1.4
+        if(fDecayParameters[12] < 0.6) continue;// Rxy Xi : 0.8
+        if(fDecayParameters[13] < 0.96) continue;// Cos PA Lambda : 0.97
+        if(fDecayParameters[14] < 0.96) continue;// Cos PA Xi : 0.97
+        
+        // =========== loose cut to make reduction of output file size =======//
+
+        
+        fTreeVariableXiMass = xiMass;
+        fTreeVariableXiPt = xiPt;
+        fTreeVariableEta = Xicandidate->Eta();
+        fTreeVariablePhi = Xicandidate->Phi();
+        
+        fTreeVariableDecayXYxi = decayLengthXY;
+        fTreeVariableNclusp = fDecayParameters[0];
+        fTreeVariableNcluspi1 = fDecayParameters[1];
+        fTreeVariableNcluspi2 = fDecayParameters[2];
+        
+        fTreeVariablePVdcaP = fDecayParameters[4];
+        fTreeVariablePVdcaPi1 = fDecayParameters[5];
+        fTreeVariablePVdcaPi2 = fDecayParameters[6];
+        fTreeVariablePVdcaLambda = fDecayParameters[7];
+        fTreeVariableDCApip = fDecayParameters[9];
+        fTreeVariableDCApilambda = fDecayParameters[10];
+        fTreeVariableDecayXYlambda = fDecayParameters[11];
+        fTreevariableCosPAlambda= fDecayParameters[13];
+        fTreevariableCosPAxi = fDecayParameters[14];
+        
+        ///------- Xi candidate needed to reconstruct XiStar ----------///
+        //        fTreeVariablemyTracks = myTracks; // don't need this variable
+        fTreeVariableXiTrackX = Xicandidate->Xv();
+        fTreeVariableXiTrackY = Xicandidate->Yv();
+        fTreeVariableXiTrackZ = Xicandidate->Zv();
+        fTreeVariableXiTrackPx = Xicandidate->Px();
+        fTreeVariableXiTrackPy = Xicandidate->Py();
+        fTreeVariableXiTrackPz = Xicandidate->Pz();
+        fTreeVariableXiTrackQ = Xicandidate->Charge();
+        fTreeVariableXiTrackpID = pTrackXi->GetID();
+        fTreeVariableXiTracknID = nTrackXi->GetID();
+        fTreeVariableXiTrackbID = bTrackXi->GetID();
+        fTreeVariableEventNumber2 = fEventNumber;
+        
+        
+        
+        mcXiFilled = kFALSE;
+        if(fMCcase && !fAODcase){
+            fTreeVariableMCrecXiSongPID = -1;
+            
+            MCXiD2esd = (TParticle*)mcstack->Particle(abs(bTrackXi->GetLabel()));
+            
+            if(abs(MCXiD2esd->GetPdgCode())==kPionCode){
+                
+                MCLamD1esd = (TParticle*)mcstack->Particle(abs(pTrackXi->GetLabel()));
+                MCLamD2esd = (TParticle*)mcstack->Particle(abs(nTrackXi->GetLabel()));
+                
+                if(MCLamD1esd->GetMother(0) == MCLamD2esd->GetMother(0)){
+                    if(abs(MCLamD1esd->GetPdgCode())==kProtonCode || abs(MCLamD2esd->GetPdgCode())==kProtonCode) {
+                        if(abs(MCLamD1esd->GetPdgCode())==kPionCode || abs(MCLamD2esd->GetPdgCode())==kPionCode) {
+                            
+                            MCLamesd = (TParticle*)mcstack->Particle(abs(MCLamD1esd->GetMother(0)));
+                            if(abs(MCLamesd->GetPdgCode())==kLambdaCode) {
+                                
+                                if(MCLamesd->GetMother(0) == MCXiD2esd->GetMother(0)){
+                                    MCXiesd = (TParticle*)mcstack->Particle(abs(MCLamesd->GetMother(0)));
+                                    if(abs(MCXiesd->GetPdgCode())==kXiCode) {
+                                        mcXiFilled = kTRUE;
+                                        mcCheck = 1;
+                                        
+                                        if(Xicandidate->Charge() == -1) {
+                                            //CutVar[0].fMCrecXi->Fill(xiPt, xiY, xiMass);
+                                            fTreeVariableMCrecXiPt = xiPt;
+                                            fTreeVariableMCrecXiY = xiY;
+                                            fTreeVariableMCrecXiMass = xiMass;
+                                            fTreeVariableMCrecXiSongPID = 1;
+                                            fTreeVariableMCrecXiCent = lCentrality;
+                                        }
+                                        if(Xicandidate->Charge() == +1) {
+                                            //CutVar[0].fMCrecXibar->Fill(xiPt, xiY, xiMass);
+                                            fTreeVariableMCrecXibarPt = xiPt;
+                                            fTreeVariableMCrecXibarY = xiY;
+                                            fTreeVariableMCrecXibarMass = xiMass;
+                                            fTreeVariableMCrecXiSongPID = 2;
+                                            fTreeVariableMCrecXiCent = lCentrality;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }// Tree variable for MC
+        
+        
+        fTreeXi->Fill();
+        myxiTracks++;
+        
+        if(decayLengthXY > fMaxDecayLength) continue;
+        
+        Bool_t StandardXi=kTRUE;
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(1,1);
+        
+        if(fDecayParameters[0] < fCutValues[0][0]) StandardXi=kFALSE;// Nclus proton
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(2,1);
+        
+        if(fDecayParameters[1] < fCutValues[0][1]) StandardXi=kFALSE;// Nclus pion first
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(3,1);
+        
+        if(fDecayParameters[2] < fCutValues[0][2]) StandardXi=kFALSE;// Nclus pion second
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(4,1);
+        
+        //
+        if(fDecayParameters[4] < fCutValues[0][4]) StandardXi=kFALSE;// DCAVtx proton
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(5,1);
+        
+        if(fDecayParameters[5] < fCutValues[0][5]) StandardXi=kFALSE;// DCAVtx pion first
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(6,1);
+        
+        if(fDecayParameters[6] < fCutValues[0][6]) StandardXi=kFALSE;// DCAVtx pion second
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(7,1);
+        
+        if(fDecayParameters[7] < fCutValues[0][7]) StandardXi=kFALSE;// DCAVtx Lambda
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(8,1);
+        
+        //
+        if(fDecayParameters[9] > fCutValues[0][9]) StandardXi=kFALSE;// DCAV proton-pion
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(9,1);
+        
+        if(fDecayParameters[10] > fCutValues[0][10]) StandardXi=kFALSE;// DCAV Lambda-pion
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(10,1);
+        
+        //
+        if(fDecayParameters[11] < fCutValues[0][11]) StandardXi=kFALSE;// Rxy Lambda
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(11,1);
+        
+        if(fDecayParameters[12] < fCutValues[0][12]) StandardXi=kFALSE;// Rxy Xi
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(12,1);
+        
+        //
+        if(fDecayParameters[13] < fCutValues[0][13]) StandardXi=kFALSE;// Cos PA Lambda
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(13,1);
+        
+        if(fDecayParameters[14] < fCutValues[0][14]) StandardXi=kFALSE;// Cos PA Xi
+        if(StandardXi)((TH1F*)fOutputList->FindObject("fCutEvents"))->Fill(14,1);
+        
+        
+        if(StandardXi){
+            if(xiCharge == -1) {
+                CutVar[0].fXi->Fill(xiPt, xiY, xiMass);
+                ((TH1F*)fOutputList->FindObject("hXi0_30"))->Fill(xiMass);
+            }
+            else {
+                CutVar[0].fXibar->Fill(xiPt, xiY, xiMass);
+                ((TH1F*)fOutputList->FindObject("hXi0_30"))->Fill(xiMass);
+            }
+                    }
+        
+/*
+        if(StandardXi){
+            if(0.<centralityV0M<10.) ((TH1F*)fOutputList->FindObject("hXi0_30"))->Fill(xiMass);
+            if(10.<centralityV0M<20.) ((TH1F*)fOutputList->FindObject("hXi10_20"))->Fill(xiMass);
+            if(20.<lCentrality<30.) ((TH1F*)fOutputList->FindObject("hXi20_30"))->Fill(xiMass);
+            if(30.<lCentrality<40.) ((TH1F*)fOutputList->FindObject("hXi30_40"))->Fill(xiMass);
+            if(40.<lCentrality<50.) ((TH1F*)fOutputList->FindObject("hXi40_50"))->Fill(xiMass);
+            if(50.<lCentrality<60.) ((TH1F*)fOutputList->FindObject("hXi50_60"))->Fill(xiMass);
+            if(60.<lCentrality<70.) ((TH1F*)fOutputList->FindObject("hXi60_70"))->Fill(xiMass);
+            if(70.<lCentrality<100.) ((TH1F*)fOutputList->FindObject("hXi70_100"))->Fill(xiMass);
+        }
+        
+*/
+
+        
+        // MC associaton
+        mcXiFilled1 = kFALSE;
+        if(fMCcase && !fAODcase){
+            // fTreeVariableMCrecXiSongPID = -1;
+            
+            MCXiD2esd = (TParticle*)mcstack->Particle(abs(bTrackXi->GetLabel()));
+            
+            if(abs(MCXiD2esd->GetPdgCode())==kPionCode){
+                
+                MCLamD1esd = (TParticle*)mcstack->Particle(abs(pTrackXi->GetLabel()));
+                MCLamD2esd = (TParticle*)mcstack->Particle(abs(nTrackXi->GetLabel()));
+                
+                if(MCLamD1esd->GetMother(0) == MCLamD2esd->GetMother(0)){
+                    if(abs(MCLamD1esd->GetPdgCode())==kProtonCode || abs(MCLamD2esd->GetPdgCode())==kProtonCode) {
+                        if(abs(MCLamD1esd->GetPdgCode())==kPionCode || abs(MCLamD2esd->GetPdgCode())==kPionCode) {
+                            
+                            MCLamesd = (TParticle*)mcstack->Particle(abs(MCLamD1esd->GetMother(0)));
+                            if(abs(MCLamesd->GetPdgCode())==kLambdaCode) {
+                                
+                                if(MCLamesd->GetMother(0) == MCXiD2esd->GetMother(0)){
+                                    MCXiesd = (TParticle*)mcstack->Particle(abs(MCLamesd->GetMother(0)));
+                                    if(abs(MCXiesd->GetPdgCode())==kXiCode) {
+                                         mcXiFilled1 = kTRUE;
+                                        
+                                        if(StandardXi){
+                                            if(Xicandidate->Charge() == -1){
+                                                CutVar[0].fMCrecXi->Fill(xiPt, xiY, xiMass);
+                                            }else{
+                                                CutVar[0].fMCrecXibar->Fill(xiPt, xiY, xiMass);
+                                            }
+                                            
+                                            
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }// MC association
+        
+        
+        if(fabs(xiMass-fTrueMassXi) > fMassWindow) continue;
+        fXiTrack->Set(xiVtx, xiP, fCovMatrix, Short_t(xiCharge));
+        
+        
+        
+        //////////////////////////////////////////////////////////
+        // Reconstruct Xi(1530)
+        for(Int_t EN=0; EN<fEventsToMix+1; EN++){// Event buffer loop
+            
+            for(Int_t l=0; l<(fEvt+EN)->fNTracks; l++){// Present(EN=0) and Past(EN from 1 to fEventsToMix) event track loop
+                
+                if(EN==0) {
+                    if((fEvt+EN)->fTracks[l].fID == pTrackXi->GetID()) continue;
+                    if((fEvt+EN)->fTracks[l].fID == nTrackXi->GetID()) continue;
+                    if((fEvt+EN)->fTracks[l].fID == bTrackXi->GetID()) continue;
+                }
+                
+                fXiTrack->Set(xiVtx, xiP, fCovMatrix, Short_t(xiCharge));
+                
+                
+                
+                
+                if(!fESDTrack4) continue;
+                fESDTrack4->Set((fEvt+EN)->fTracks[l].fX, (fEvt+EN)->fTracks[l].fP, (fEvt+EN)->fTracks[l].fCov, (fEvt+EN)->fTracks[l].fCharge);
+                if(fAODcase){
+                    if((Bool_t)(((1<<5) & (fEvt+EN)->fTracks[l].fFilterMap) == 0)) continue;// AOD filterbit cut, "Standard cuts with tight dca"
+                }else{
+                    fDecayParameters[8] = (fEvt+EN)->fTracks[l].fDCAXY;// DCA Vtx pion third
+                    ((TH1F*)fOutputList->FindObject("fDCADist_3rd_pi"))->Fill(fDecayParameters[8]);
+                    
+                    
+                    
+                    
+                    if((fEvt+EN)->fTracks[l].fDCAZ > 2) continue;
+                    if( (((fEvt+EN)->fTracks[l].fStatus)&AliESDtrack::kITSrefit)==0) continue;// Require itsrefit
+                    // no Chi^2 cut applied for ESDs.  Info not available in my track structure.
+                }
+                
+                
+                if(fabs((fEvt+EN)->fTracks[l].fEta) > 0.8) continue;
+                
+                fDecayParameters[3] = (fEvt+EN)->fTracks[l].fNclusTPC;
+                ((TH1F*)fOutputList->FindObject("fTPCNcls_pi3"))->Fill(fDecayParameters[3]);
+                
+                AliVertex *XiStarVtx = new AliVertex((fEvt+EN)->fTracks[l].fX,0,0);
+                //fESDTrack4->PropagateToDCA(fXiTrack, bField);// Propagate tracks to dca, both tracks are budged
+                if(!(fXiTrack->PropagateToDCA(XiStarVtx, bField, 3))) continue;// Propagate tracks to dca, version which assumes fESDTrack4 is already primary
+                /////////////
+                fXiTrack->GetPxPyPz(pDaughter1);
+                fXiTrack->GetXYZ(xDaughter1);
+                fESDTrack4->GetPxPyPz(pDaughter2);
+                fESDTrack4->GetXYZ(xDaughter2);
+                //////////////////////////
+                
+                
+                
+                //xiStarVtx[0] = (xDaughter1[0]+xDaughter2[0])/2.;
+                //xiStarVtx[1] = (xDaughter1[1]+xDaughter2[1])/2.;
+                //xiStarVtx[2] = (xDaughter1[2]+xDaughter2[2])/2.;
+                //decayLength = sqrt(pow(xiStarVtx[0]-primaryVtx[0],2)+pow(xiStarVtx[1]-primaryVtx[1],2)+pow(xiStarVtx[2]-primaryVtx[2],2));
+                
+                px1=pDaughter1[0];
+                py1=pDaughter1[1];
+                pz1=pDaughter1[2];
+                px2=pDaughter2[0];
+                py2=pDaughter2[1];
+                pz2=pDaughter2[2];
+                
+                p1sq=px1*px1+py1*py1+pz1*pz1;
+                p2sq=px2*px2+py2*py2+pz2*pz2;
+                if(p1sq <=0 || p2sq <=0) continue;
+                
+                e1=sqrt(p1sq+fTrueMassXi*fTrueMassXi);
+                e2=sqrt(p2sq+fTrueMassPi*fTrueMassPi);
+                angle=px1*px2+py1*py2+pz1*pz2;
+                xiStarMass=fTrueMassXi*fTrueMassXi+fTrueMassPi*fTrueMassPi+2.*e1*e2-2.*angle;
+                if(xiStarMass<0.) xiStarMass=1.e-8;
+                xiStarMass=sqrt(xiStarMass);
+                
+                
+                xiStarP[0] = px1+px2;
+                xiStarP[1] = py1+py2;
+                xiStarP[2] = pz1+pz2;
+                xiStarMom = sqrt(pow(xiStarP[0],2)+pow(xiStarP[1],2)+pow(xiStarP[2],2));
+                if(xiStarMom==0) continue; // So one of the following lines doesnt break
+                xiStarPt = sqrt(xiStarP[0]*xiStarP[0] + xiStarP[1]*xiStarP[1]);
+                xiStarY = .5*log( ((e1+e2) + xiStarP[2])/((e1+e2) - xiStarP[2]));
+                //xiStarE = e1 + e2;
+                
+                
+                //if( (xiStarP[0]*(xiStarVtx[0]-primaryVtx[0]) + xiStarP[1]*(xiStarVtx[1]-primaryVtx[1]) + xiStarP[2]*(xiStarVtx[2]-primaryVtx[2]))/xiStarMom/decayLength < fXiStarCosTheta) continue;
+                
+                
+                for(int cv=0; cv<kNCutVariations; cv++){
+                    
+       /*
+                    if(fMCcase && !fAODcase){// ESD MC's
+                        
+                        MCXiStarD2esd = (TParticle*)mcstack->Particle(abs((fEvt+EN)->fTracks[l].fLabel));
+                        
+                        if(abs(MCXiStarD2esd->GetPdgCode())==kPionCode){
+                            if(MCXiesd->GetMother(0) == MCXiStarD2esd->GetMother(0)){
+                                MCXiStaresd = (TParticle*)mcstack->Particle(abs(MCXiesd->GetMother(0)));
+                                if(abs(MCXiStaresd->GetPdgCode())==kXiStarCode) {
+                                    if(fXiTrack->Charge() == -1 &&  fESDTrack4->Charge() == +1) CutVar[cv].fMCrecXiMinusPiPlus->Fill(xiStarPt, xiStarY, xiStarMass); {
+                                        fTreeVariableMCrecXiStarPt = xiStarPt;
+                                        fTreeVariableMCrecXiStarY = xiStarY;
+                                        fTreeVariableMCrecXiStarMass = xiStarMass;
+                                        fTreeVariableMCrecXiStarSongPID = 1;
+                                        fTreeVariableMCrecXiStarCent = lCentrality;
+                                        fTreeVariableMCXiFilled = mcCheck;
+                                        fTreeVariableMCrecXiStarcv = cv;
+                                        
+                                    }
+                                    if(fXiTrack->Charge() == +1 &&  fESDTrack4->Charge() == -1) CutVar[cv].fMCrecXiPlusPiMinus->Fill(xiStarPt, xiStarY, xiStarMass); {
+                                        fTreeVariableMCrecXiStarbarPt = xiStarPt;
+                                        fTreeVariableMCrecXiStarbarY = xiStarY;
+                                        fTreeVariableMCrecXiStarbarMass = xiStarMass;
+                                        fTreeVariableMCrecXiStarSongPID = 2;
+                                        fTreeVariableMCrecXiStarCent = lCentrality;
+                                        fTreeVariableMCXiFilled = mcCheck;
+                                        fTreeVariableMCrecXiStarcv = cv;
+                                        
+                                    }
+                                    
+                                    
+                                    fTreeVariableMCXiFilled = mcCheck;
+                                    
+                                    // fTreeMC1->Fill(); //current version 5/May
+                                }
+                                
+                                fTreeMC1->Fill();
+                            }
+                            
+                        }
+                        
+                    }
+       */
+                    if(fDecayParameters[0] < fCutValues[cv][0]) continue;// Nclus proton
+                    if(fDecayParameters[1] < fCutValues[cv][1]) continue;// Nclus pion first
+                    if(fDecayParameters[2] < fCutValues[cv][2]) continue;// Nclus pion second
+                    if(fDecayParameters[3] < fCutValues[cv][3]) continue;// Nclus pion third
+                    //
+                    if(fDecayParameters[4] < fCutValues[cv][4]) continue;// DCAVtx proton
+                    if(fDecayParameters[5] < fCutValues[cv][5]) continue;// DCAVtx pion first
+                    if(fDecayParameters[6] < fCutValues[cv][6]) continue;// DCAVtx pion second
+                    if(fDecayParameters[7] < fCutValues[cv][7]) continue;// DCAVtx Lambda
+                    if(cv!=8) {if(fDecayParameters[8] > (0.0182 + 0.035/pow((fEvt+EN)->fTracks[l].fPt,1.01))) continue;}// DCAVtx pion third
+                    else {if(fDecayParameters[8] > fCutValues[cv][8]) continue;}// DCAVtx pion third
+                    //
+                    if(fDecayParameters[9] > fCutValues[cv][9]) continue;// DCAV proton-pion
+                    if(fDecayParameters[10] > fCutValues[cv][10]) continue;// DCAV Lambda-pion
+                    //
+                    if(fDecayParameters[11] < fCutValues[cv][11]) continue;// Rxy Lambda
+                    if(fDecayParameters[12] < fCutValues[cv][12]) continue;// Rxy Xi
+                    //
+                    if(fDecayParameters[13] < fCutValues[cv][13]) continue;// Cos PA Lambda
+                    if(fDecayParameters[14] < fCutValues[cv][14]) continue;// Cos PA Xi
+                    
+                    
+                    if(EN==0){
+                        if(fXiTrack->Charge() == -1 &&  fESDTrack4->Charge() == -1) CutVar[cv].fXiMinusPiMinus->Fill(xiStarPt, xiStarY, xiStarMass);
+                        else if(fXiTrack->Charge() == -1 &&  fESDTrack4->Charge() == +1) {
+                            CutVar[cv].fXiMinusPiPlus->Fill(xiStarPt, xiStarY, xiStarMass);
+                            ((TH1F*)fOutputList->FindObject("hXiStar0_30"))->Fill(xiStarMass);
+                        }
+                        else if(fXiTrack->Charge() == +1 &&  fESDTrack4->Charge() == -1) {
+                            CutVar[cv].fXiPlusPiMinus->Fill(xiStarPt, xiStarY, xiStarMass);
+                            ((TH1F*)fOutputList->FindObject("hXiStar0_30"))->Fill(xiStarMass);
+                        }
+                        else CutVar[cv].fXiPlusPiPlus->Fill(xiStarPt, xiStarY, xiStarMass);
+                    }else {
+                        if(fXiTrack->Charge() == -1 &&  fESDTrack4->Charge() == -1) CutVar[cv].fXiMinusPiMinusbkg->Fill(xiStarPt, xiStarY, xiStarMass);
+                        else if(fXiTrack->Charge() == -1 &&  fESDTrack4->Charge() == +1) CutVar[cv].fXiMinusPiPlusbkg->Fill(xiStarPt, xiStarY, xiStarMass);
+                        else if(fXiTrack->Charge() == +1 &&  fESDTrack4->Charge() == -1) CutVar[cv].fXiPlusPiMinusbkg->Fill(xiStarPt, xiStarY, xiStarMass);
+                        else CutVar[cv].fXiPlusPiPlusbkg->Fill(xiStarPt, xiStarY, xiStarMass);
+                    }
+                    
+                    //    if(0.<lCentrality<10.) ((TH1F*)fOutputList->FindObject("hXiStar0_30"))->Fill(xiStarMass);
+                    //    if(10.<lCentrality<20.) ((TH1F*)fOutputList->FindObject("hXiStar10_20"))->Fill(xiStarMass);
+                    //    if(20.<lCentrality<30.) ((TH1F*)fOutputList->FindObject("hXiStar20_30"))->Fill(xiStarMass);
+                    //    if(30.<lCentrality<40.) ((TH1F*)fOutputList->FindObject("hXiStar30_40"))->Fill(xiStarMass);
+                    //    if(40.<lCentrality<50.) ((TH1F*)fOutputList->FindObject("hXiStar40_50"))->Fill(xiStarMass);
+                    //    if(50.<lCentrality<60.) ((TH1F*)fOutputList->FindObject("hXiStar50_60"))->Fill(xiStarMass);
+                    //    if(60.<lCentrality<70.) ((TH1F*)fOutputList->FindObject("hXiStar60_70"))->Fill(xiStarMass);
+                    //    if(70.<lCentrality<100.) ((TH1F*)fOutputList->FindObject("hXiStar70_100"))->Fill(xiStarMass);
+                    
+
+                    
+                    /*
+                     // MC associaton AOD
+                     if(fMCcase && mcXiFilled && EN==0 && fAODcase){// AOD MC's
+                     
+                     MCXiStarD2 = (AliAODMCParticle*)mcArray->At(abs((fEvt)->fTracks[l].fLabel));
+                     
+                     if(abs(MCXiStarD2->GetPdgCode())==kPionCode){
+                     if(MCXi->GetMother() == MCXiStarD2->GetMother()){
+                     MCXiStar = (AliAODMCParticle*)mcArray->At(MCXi->GetMother());
+                     if(abs(MCXiStar->GetPdgCode())==kXiStarCode) {
+                     
+                     if(fXiTrack->Charge() == -1 &&  fESDTrack4->Charge() == +1) fMCrecXiMinusPiPlus->Fill(xiStarPt, xiStarY, xiStarMass);
+                     if(fXiTrack->Charge() == +1 &&  fESDTrack4->Charge() == -1) fMCrecXiPlusPiMinus->Fill(xiStarPt, xiStarY, xiStarMass);
+                     
+                     }
+                     }
+                     }
+                     }
+                     */
+                    
+                    // MC associaton ESD
+                    
+                    
+                    //if(fMCcase && mcXiFilled && EN==0 && !fAODcase){// ESD MC's
+                    if(fMCcase && mcXiFilled && EN==0 && !fAODcase){// ESD MC's
+                        
+                        MCXiStarD2esd = (TParticle*)mcstack->Particle(abs((fEvt)->fTracks[l].fLabel));
+                        
+                        if(abs(MCXiStarD2esd->GetPdgCode())==kPionCode){
+                            if(MCXiesd->GetMother(0) == MCXiStarD2esd->GetMother(0)){
+                                MCXiStaresd = (TParticle*)mcstack->Particle(abs(MCXiesd->GetMother(0)));
+                                if(abs(MCXiStaresd->GetPdgCode())==kXiStarCode) {
+                                    if(fXiTrack->Charge() == -1 &&  fESDTrack4->Charge() == +1) {
+                                        fTreeVariableMCrecXiStarPt = xiStarPt;
+                                        fTreeVariableMCrecXiStarY = xiStarY;
+                                        fTreeVariableMCrecXiStarMass = xiStarMass;
+                                        fTreeVariableMCrecXiStarSongPID = 1;
+                                        fTreeVariableMCrecXiStarCent = lCentrality;
+                                        fTreeVariableMCXiFilled = mcCheck;
+                                        fTreeVariableMCrecXiStarcv = cv;
+                                        if(mcXiFilled1) CutVar[cv].fMCrecXiMinusPiPlus->Fill(xiStarPt, xiStarY, xiStarMass);
+                                    }
+                                    if(fXiTrack->Charge() == +1 &&  fESDTrack4->Charge() == -1) {
+                                        fTreeVariableMCrecXiStarbarPt = xiStarPt;
+                                        fTreeVariableMCrecXiStarbarY = xiStarY;
+                                        fTreeVariableMCrecXiStarbarMass = xiStarMass;
+                                        fTreeVariableMCrecXiStarSongPID = 2;
+                                        fTreeVariableMCrecXiStarCent = lCentrality;
+                                        fTreeVariableMCXiFilled = mcCheck;
+                                        fTreeVariableMCrecXiStarcv = cv;
+                                        if(mcXiFilled1) CutVar[cv].fMCrecXiPlusPiMinus->Fill(xiStarPt, xiStarY, xiStarMass);
+                                    }
+                                    fTreeMC1->Fill(); // May7
+                                }
+                                
+                            }
+                            
+                        }
+                        
+                        //fTreeMC1->Fill(); // ori
+                        
+                    }
+                    
+                    
+                }// Cut Variation loop
+            }// 3rd pion loop
+            
+            
+        }// Event mixing loop
+        
+        
+        
+        
+        
+        
+        
+    }// Xi loop
+    
+    fTreeVariablexiTracks = myxiTracks;
+    fTreeEvent->Fill();
+    
+    
+    // Post output data.
+    PostData(1, fOutputList);
+    PostData(0, fTreeEvent);
+    PostData(2, fTreeXi);
+    PostData(3, fTreePi);
+    PostData(4, fTreeMC);
+    PostData(5, fTreeMC1);
+    
+    
+}
+//________________________________________________________________________
+void AliXiStar::Terminate(Option_t *)
+{
+    cout<<"Done"<<endl;
+}
+//________________________________________________________________________
+Double_t AliXiStar::LinearPropagateToDCA(AliESDtrack *v, AliESDtrack *t, Double_t b) {// Adapted from AliCascadeVertexer.cxx
+    //--------------------------------------------------------------------
+    // This function returns the DCA between the V0 and the track
+    //--------------------------------------------------------------------
+    
+    Double_t alpha=t->GetAlpha(), cs1=TMath::Cos(alpha), sn1=TMath::Sin(alpha);
+    Double_t r[3]; t->GetXYZ(r);
+    Double_t x1=r[0], y1=r[1], z1=r[2];
+    Double_t p[3]; t->GetPxPyPz(p);
+    Double_t px1=p[0], py1=p[1], pz1=p[2];
+    
+    Double_t x2[3]={0};
+    Double_t p2[3]={0};
+    Double_t vx2,vy2,vz2;     // position and momentum of V0
+    Double_t px2,py2,pz2;
+    
+    v->GetXYZ(x2);
+    v->GetPxPyPz(p2);
+    vx2=x2[0], vy2=x2[1], vz2=x2[2];
+    px2=p2[0], py2=p2[1], pz2=p2[2];
+    
+    // calculation dca
+    
+    Double_t dd= Det(vx2-x1,vy2-y1,vz2-z1,px1,py1,pz1,px2,py2,pz2);
+    Double_t ax= Det(py1,pz1,py2,pz2);
+    Double_t ay=-Det(px1,pz1,px2,pz2);
+    Double_t az= Det(px1,py1,px2,py2);
+    
+    Double_t dca=TMath::Abs(dd)/TMath::Sqrt(ax*ax + ay*ay + az*az);
+    
+    //points of the DCA
+    Double_t t1 = Det(vx2-x1,vy2-y1,vz2-z1,px2,py2,pz2,ax,ay,az)/
+    Det(px1,py1,pz1,px2,py2,pz2,ax,ay,az);
+    
+    x1 += px1*t1; y1 += py1*t1; //z1 += pz1*t1;
+    
+    
+    //propagate track to the points of DCA
+    
+    x1=x1*cs1 + y1*sn1;
+    if (!t->PropagateTo(x1,b)) {
+        Error("PropagateToDCA","Propagation failed !");
+        return 1.e+33;
+    }
+    
+    return dca;
+}
+
+
+//________________________________________________________________________
+Double_t AliXiStar::Det(Double_t a00, Double_t a01, Double_t a10, Double_t a11) const {// Taken from AliCascadeVertexer
+    //--------------------------------------------------------------------
+    // This function calculates locally a 2x2 determinant
+    //--------------------------------------------------------------------
+    return a00*a11 - a01*a10;
+}
+//________________________________________________________________________
+Double_t AliXiStar::Det(Double_t a00,Double_t a01,Double_t a02,
+                        Double_t a10,Double_t a11,Double_t a12,
+                        Double_t a20,Double_t a21,Double_t a22) const {// Taken from AliCascadeVertexer
+    //--------------------------------------------------------------------
+    // This function calculates locally a 3x3 determinant
+    //--------------------------------------------------------------------
+    return  a00*Det(a11,a12,a21,a22)-a01*Det(a10,a12,a20,a22)+a02*Det(a10,a11,a20,a21);
+}
+
+
+

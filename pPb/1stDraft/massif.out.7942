@@ -1,0 +1,1558 @@
+desc: (none)
+cmd: aliroot -b -q runXiStar.C
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=1146593403
+mem_heap_B=8
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=1534072836
+mem_heap_B=5278335
+mem_heap_extra_B=648697
+mem_stacks_B=0
+heap_tree=detailed
+n17: 5278335 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1060912 0x111209F93: _NXMapRehash(_NXMapTable*) (in /usr/lib/libobjc.A.dylib)
+  n2: 1060912 0x111209CA7: NXMapInsert (in /usr/lib/libobjc.A.dylib)
+   n2: 1048592 0x11122004F: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+    n1: 1048592 0x1112085CD: _read_images (in /usr/lib/libobjc.A.dylib)
+     n1: 1048592 0x111207445: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+      n1: 1048592 0x111206EC7: map_images (in /usr/lib/libobjc.A.dylib)
+       n1: 1048592 0x7FFF5FC0498D: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*)) (in /usr/lib/dyld)
+        n1: 1048592 0x7FFF5FC046D5: dyld::registerImageStateBatchChangeHandler(dyld_image_states, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*)) (in /usr/lib/dyld)
+         n1: 1048592 0x110EBF957: dyld_register_image_state_change_handler (in /usr/lib/system/libdyld.dylib)
+          n1: 1048592 0x111206A52: _objc_init (in /usr/lib/libobjc.A.dylib)
+           n1: 1048592 0x110E6F87B: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+            n1: 1048592 0x110E6F863: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+             n1: 1048592 0x104014A8E: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+              n1: 1048592 0x7FFF5FC12CE9: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+               n1: 1048592 0x7FFF5FC12E76: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+                n1: 1048592 0x7FFF5FC0F86F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+                 n1: 1048592 0x7FFF5FC0F804: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+                  n1: 1048592 0x7FFF5FC0F6F6: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+                   n1: 1048592 0x7FFF5FC0F967: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+                    n1: 1048592 0x7FFF5FC02228: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+                     n1: 1048592 0x7FFF5FC05BDF: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+                      n1: 1048592 0x7FFF5FC01274: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+                       n1: 1048592 0x7FFF5FC01034: _dyld_start (in /usr/lib/dyld)
+                        n1: 1048592 0x2: ???
+                         n1: 1048592 0x1048227A1: ???
+                          n1: 1048592 0x1048227A9: ???
+                           n1: 1048592 0x1048227AC: ???
+                            n0: 1048592 0x1048227AF: ???
+    n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 12320 in 2 places, all below massif's threshold (1.00%)
+ n0: 966039 in 1898 places, all below massif's threshold (1.00%)
+ n2: 822952 0x10E13925F: G__search_tagname (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+  n1: 820328 0x10E0B66D7: G__get_linked_tagnum_fwd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+   n0: 820328 in 2501 places, all below massif's threshold (1.00%)
+  n0: 2624 in 1 place, below massif's threshold (1.00%)
+ n1: 562016 0x10E0C31DE: G__memfunc_next (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+  n2: 562016 0x10E1393AD: G__search_tagname (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+   n1: 560224 0x10E0B66D7: G__get_linked_tagnum_fwd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+    n0: 560224 in 2501 places, all below massif's threshold (1.00%)
+   n0: 1792 in 1 place, below massif's threshold (1.00%)
+ n2: 562016 0x10E1392D2: G__search_tagname (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+  n1: 560224 0x10E0B66D7: G__get_linked_tagnum_fwd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+   n0: 560224 in 2501 places, all below massif's threshold (1.00%)
+  n0: 1792 in 1 place, below massif's threshold (1.00%)
+ n2: 201536 0x10D85784E: TStorage::ObjectAlloc(unsigned long) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n0: 135616 in 101 places, all below massif's threshold (1.00%)
+  n1: 65920 0x10D89B42C: ROOT::TMapTypeToClassRec::Add(char const*, TClassRec*&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n1: 65920 0x10D89A889: TClassTable::Add(char const*, short, std::type_info const&, void (*)(), int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+    n0: 65920 in 4 places, all below massif's threshold (1.00%)
+ n1: 194176 0x10E15E3D1: G__allocvariable(G__value, G__value*, G__var_array*, G__var_array*, int, int, char const*, char*, int, Cint::G__DataMemberHandle&) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+  n2: 194176 0x10E1525CF: G__letvariable(G__FastAllocString&, G__value, G__var_array*, G__var_array*, Cint::G__DataMemberHandle&) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+   n2: 192208 0x10E1513C2: G__letvariable(G__FastAllocString&, G__value, G__var_array*, G__var_array*) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+    n2: 190896 0x10E05C769: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+     n1: 182368 0x10E0C2CA0: G__memvar_setup (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+      n0: 182368 in 556 places, all below massif's threshold (1.00%)
+     n0: 8528 in 9 places, all below massif's threshold (1.00%)
+    n0: 1312 in 1 place, below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+ n2: 163136 0x10E12C92D: std::__1::map<char const*, std::__1::set<int, std::__1::less<int>, std::__1::allocator<int> >, NameMap::G__charptr_less, std::__1::allocator<std::__1::pair<char const* const, std::__1::set<int, std::__1::less<int>, std::__1::allocator<int> > > > >::operator[](char const* const&) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+  n2: 145920 0x10E139227: G__search_tagname (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+   n1: 145408 0x10E0B66D7: G__get_linked_tagnum_fwd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+    n0: 145408 in 2272 places, all below massif's threshold (1.00%)
+   n0: 512 in 1 place, below massif's threshold (1.00%)
+  n0: 17216 in 1 place, below massif's threshold (1.00%)
+ n2: 133168 0x111208EA2: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+  n1: 131088 0x111208185: _read_images (in /usr/lib/libobjc.A.dylib)
+   n1: 131088 0x111207445: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+    n1: 131088 0x111206EC7: map_images (in /usr/lib/libobjc.A.dylib)
+     n1: 131088 0x7FFF5FC0498D: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*)) (in /usr/lib/dyld)
+      n1: 131088 0x7FFF5FC046D5: dyld::registerImageStateBatchChangeHandler(dyld_image_states, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*)) (in /usr/lib/dyld)
+       n1: 131088 0x110EBF957: dyld_register_image_state_change_handler (in /usr/lib/system/libdyld.dylib)
+        n1: 131088 0x111206A52: _objc_init (in /usr/lib/libobjc.A.dylib)
+         n1: 131088 0x110E6F87B: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+          n1: 131088 0x110E6F863: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+           n1: 131088 0x104014A8E: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+            n1: 131088 0x7FFF5FC12CE9: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+             n1: 131088 0x7FFF5FC12E76: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+              n1: 131088 0x7FFF5FC0F86F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+               n1: 131088 0x7FFF5FC0F804: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+                n1: 131088 0x7FFF5FC0F6F6: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+                 n1: 131088 0x7FFF5FC0F967: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+                  n1: 131088 0x7FFF5FC02228: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+                   n1: 131088 0x7FFF5FC05BDF: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+                    n1: 131088 0x7FFF5FC01274: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+                     n1: 131088 0x7FFF5FC01034: _dyld_start (in /usr/lib/dyld)
+                      n1: 131088 0x2: ???
+                       n1: 131088 0x1048227A1: ???
+                        n1: 131088 0x1048227A9: ???
+                         n1: 131088 0x1048227AC: ???
+                          n0: 131088 0x1048227AF: ???
+  n0: 2080 in 5 places, all below massif's threshold (1.00%)
+ n1: 121816 0x11120D304: _memdup_internal (in /usr/lib/libobjc.A.dylib)
+  n1: 121816 0x11120D195: fixupMethodList(method_list_t*, bool, bool) (in /usr/lib/libobjc.A.dylib)
+   n2: 121816 0x11121DD4F: attachMethodLists(objc_class*, method_list_t**, int, bool, bool, bool) (in /usr/lib/libobjc.A.dylib)
+    n1: 89632 0x111218545: realizeClass(objc_class*) (in /usr/lib/libobjc.A.dylib)
+     n0: 89632 in 6 places, all below massif's threshold (1.00%)
+    n0: 32184 in 1 place, below massif's threshold (1.00%)
+ n2: 92576 0x10E12CA45: std::__1::__tree<int, std::__1::less<int>, std::__1::allocator<int> >::__insert_unique(int const&) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+  n2: 80288 0x10E139237: G__search_tagname (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+   n1: 80032 0x10E0B66D7: G__get_linked_tagnum_fwd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+    n0: 80032 in 2501 places, all below massif's threshold (1.00%)
+   n0: 256 in 1 place, below massif's threshold (1.00%)
+  n0: 12288 in 1 place, below massif's threshold (1.00%)
+ n1: 80056 0x10D8A7823: TObjectTable::TObjectTable(int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n1: 80056 0x10D8A7EC2: TObjectTable::AddObj(TObject*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n1: 80056 0x10D89A1C0: TClassTable::TClassTable() (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+    n1: 80056 0x10D89A792: TClassTable::Add(char const*, short, std::type_info const&, void (*)(), int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+     n1: 80056 0x10D8D2192: ROOT::TGenericClassInfo::TGenericClassInfo(char const*, int, char const*, int, std::type_info const&, ROOT::TInitBehavior const*, void (*)(), TVirtualIsAProxy*, int, int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+      n1: 80056 0x10004A54E: ROOT::GenerateInitInstanceLocal(AliMUONPairLight const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libMUONevaluation.so)
+       n1: 80056 0x10004A467: ROOT::GenerateInitInstance(AliMUONPairLight const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libMUONevaluation.so)
+        n1: 80056 0x10003097A: global constructors keyed to a (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libMUONevaluation.so)
+         n1: 80056 0x7FFF5FC12CE9: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+          n1: 80056 0x7FFF5FC12E76: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+           n1: 80056 0x7FFF5FC0F86F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+            n1: 80056 0x7FFF5FC0F804: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+             n1: 80056 0x7FFF5FC0F6F6: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+              n1: 80056 0x7FFF5FC0F967: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+               n1: 80056 0x7FFF5FC02243: dyld::initializeMainExecutable() (in /usr/lib/dyld)
+                n1: 80056 0x7FFF5FC05BDF: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+                 n1: 80056 0x7FFF5FC01274: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+                  n1: 80056 0x7FFF5FC01034: _dyld_start (in /usr/lib/dyld)
+                   n1: 80056 0x2: ???
+                    n1: 80056 0x1048227A1: ???
+                     n1: 80056 0x1048227A9: ???
+                      n1: 80056 0x1048227AC: ???
+                       n0: 80056 0x1048227AF: ???
+ n2: 69184 0x10D8A3455: TList::NewLink(TObject*, TObjLink*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n1: 60960 0x10D8A2510: TList::AddLast(TObject*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n0: 60960 in 5 places, all below massif's threshold (1.00%)
+  n0: 8224 in 1 place, below massif's threshold (1.00%)
+ n1: 65920 0x10D89A9E9: TClassTable::FindElementImpl(char const*, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n1: 65920 0x10D89A7E0: TClassTable::Add(char const*, short, std::type_info const&, void (*)(), int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n0: 65920 in 4 places, all below massif's threshold (1.00%)
+ n2: 62400 0x110F7264E: atexit_register (in /usr/lib/system/libsystem_c.dylib)
+  n1: 60320 0x110F72783: __cxa_atexit (in /usr/lib/system/libsystem_c.dylib)
+   n0: 60320 in 55 places, all below massif's threshold (1.00%)
+  n0: 2080 in 1 place, below massif's threshold (1.00%)
+ n2: 60216 0x10E139489: G__search_tagname (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+  n1: 60024 0x10E0B66D7: G__get_linked_tagnum_fwd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+   n0: 60024 in 2501 places, all below massif's threshold (1.00%)
+  n0: 192 in 1 place, below massif's threshold (1.00%)
+ n2: 60216 0x10E1394AA: G__search_tagname (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+  n1: 60024 0x10E0B66D7: G__get_linked_tagnum_fwd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+   n0: 60024 in 2501 places, all below massif's threshold (1.00%)
+  n0: 192 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=3
+#-----------
+time=1984030134
+mem_heap_B=11247783
+mem_heap_extra_B=1699025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=2755692460
+mem_heap_B=13851641
+mem_heap_extra_B=2051367
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=3200649064
+mem_heap_B=13867959
+mem_heap_extra_B=2053033
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=3761671750
+mem_heap_B=813545398
+mem_heap_extra_B=2142426
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=4107461668
+mem_heap_B=1484907470
+mem_heap_extra_B=2159626
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=4640856495
+mem_heap_B=2520511542
+mem_heap_extra_B=2186146
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=5117331615
+mem_heap_B=3286400190
+mem_heap_extra_B=2215834
+mem_stacks_B=0
+heap_tree=detailed
+n3: 3286400190 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 3104676960 0x11B71ABE3: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+  n1: 3104676960 0x11B71AD8E: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+   n1: 3104676960 0x11B73C74C: AliXiStar::XiStarInit() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+    n1: 3104676960 0x11B73CDCC: AliXiStar::UserCreateOutputObjects() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+     n1: 3104676960 0x11B43E0BC: AliAnalysisTaskSE::CreateOutputObjects() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 3104676960 0x10CA899B4: AliAnalysisManager::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+       n1: 3104676960 0x10CA95BC0: AliAnalysisSelector::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+        n1: 3104676960 0x1104EF777: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+         n1: 3104676960 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 3104676960 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 3104676960 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+            n1: 3104676960 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+             n1: 3104676960 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 3104676960 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 3104676960 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 3104676960 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 3104676960 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 3104676960 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 3104676960 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 3104676960 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 3104676960 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 3104676960 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 3104676960 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 3104676960 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 3104676960 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 3104676960 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                             n1: 3104676960 0x10D8B16F7: TCint::ProcessLineSynch(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                              n0: 3104676960 0x10D8116D1: TApplication::ExecuteFile(char const*, int*, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+ n3: 165673496 0x10D8917A0: TArrayF::Set(int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n2: 121342880 0x10ECC3582: TH3F::TH3F(char const*, char const*, int, double, double, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n0: 88373248 in 16 places, all below massif's threshold (1.00%)
+   n1: 32969632 0x11B73D256: AliXiStar::UserCreateOutputObjects() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+    n1: 32969632 0x11B43E0BC: AliAnalysisTaskSE::CreateOutputObjects() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+     n1: 32969632 0x10CA899B4: AliAnalysisManager::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+      n1: 32969632 0x10CA95BC0: AliAnalysisSelector::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+       n1: 32969632 0x1104EF777: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+        n1: 32969632 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+         n1: 32969632 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 32969632 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+           n1: 32969632 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+            n1: 32969632 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+             n1: 32969632 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 32969632 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 32969632 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 32969632 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 32969632 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 32969632 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 32969632 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 32969632 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 32969632 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 32969632 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 32969632 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 32969632 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 32969632 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 32969632 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 32969632 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                            n1: 32969632 0x10D8B16F7: TCint::ProcessLineSynch(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                             n1: 32969632 0x10D8116D1: TApplication::ExecuteFile(char const*, int*, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                              n0: 32969632 0x10D810920: TApplication::ProcessLine(char const*, bool, int*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n1: 44258592 0x10ECAAE6A: TH2F::TH2F(char const*, char const*, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n0: 44258592 in 12 places, all below massif's threshold (1.00%)
+  n0: 72024 in 1 place, below massif's threshold (1.00%)
+ n0: 16049734 in 3715 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=10
+#-----------
+time=5567056137
+mem_heap_B=3464067566
+mem_heap_extra_B=2322026
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=6030888519
+mem_heap_B=3465681062
+mem_heap_extra_B=2600570
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=6583389832
+mem_heap_B=3466313663
+mem_heap_extra_B=2689473
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=6999546672
+mem_heap_B=3471605124
+mem_heap_extra_B=3116324
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=7576425260
+mem_heap_B=3613830109
+mem_heap_extra_B=5074571
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=7870455121
+mem_heap_B=3722867304
+mem_heap_extra_B=5875080
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=8420223367
+mem_heap_B=3730582135
+mem_heap_extra_B=5962593
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=9203445507
+mem_heap_B=3731548179
+mem_heap_extra_B=5966461
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=9447958436
+mem_heap_B=3731693655
+mem_heap_extra_B=5967369
+mem_stacks_B=0
+heap_tree=detailed
+n4: 3731693655 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 3104676960 0x11B71ABE3: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+  n1: 3104676960 0x11B71AD8E: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+   n1: 3104676960 0x11B73C74C: AliXiStar::XiStarInit() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+    n1: 3104676960 0x11B73CDCC: AliXiStar::UserCreateOutputObjects() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+     n1: 3104676960 0x11B43E0BC: AliAnalysisTaskSE::CreateOutputObjects() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 3104676960 0x10CA899B4: AliAnalysisManager::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+       n1: 3104676960 0x10CA95BC0: AliAnalysisSelector::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+        n1: 3104676960 0x1104EF777: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+         n1: 3104676960 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 3104676960 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 3104676960 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+            n1: 3104676960 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+             n1: 3104676960 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 3104676960 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 3104676960 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 3104676960 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 3104676960 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 3104676960 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 3104676960 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 3104676960 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 3104676960 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 3104676960 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 3104676960 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 3104676960 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 3104676960 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 3104676960 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                             n1: 3104676960 0x10D8B16F7: TCint::ProcessLineSynch(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                              n0: 3104676960 0x10D8116D1: TApplication::ExecuteFile(char const*, int*, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+ n3: 456407732 0x10D8917A0: TArrayF::Set(int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n1: 294416480 0x10ECC3582: TH3F::TH3F(char const*, char const*, int, double, double, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n0: 294416480 in 25 places, all below massif's threshold (1.00%)
+  n2: 160854312 0x10ECAAE6A: TH2F::TH2F(char const*, char const*, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n1: 88426576 0x11B45641D: AliTriggerAnalysis::EnableHistograms(bool) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+    n1: 88426576 0x11B45F500: AliPhysicsSelection::Initialize(int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+     n1: 88426576 0x11B45E156: AliPhysicsSelection::Initialize(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 88426576 0x11B45CF69: AliPhysicsSelection::IsCollisionCandidate(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+       n1: 88426576 0x10C673EA5: AliESDInputHandler::BeginEvent(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libESD.so)
+        n1: 88426576 0x10CA86568: AliAnalysisManager::ExecAnalysis(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+         n1: 88426576 0x10CA95D9A: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 88426576 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+           n1: 88426576 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 88426576 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+             n1: 88426576 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 88426576 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 88426576 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 88426576 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 88426576 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 88426576 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 88426576 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 88426576 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 88426576 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 88426576 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 88426576 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 88426576 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 88426576 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 88426576 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 88426576 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 88426576 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n0: 72427736 in 19 places, all below massif's threshold (1.00%)
+  n0: 1136940 in 2 places, all below massif's threshold (1.00%)
+ n1: 118387852 0x10D819983: TBuffer::TBuffer(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n2: 118387852 0x10E70AFFC: TBufferFile::TBufferFile(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+   n1: 118387852 0x10F57EE6E: TBasket::TBasket(char const*, char const*, TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+    n1: 118387852 0x10F5D0D86: TTree::CreateBasket(TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+     n1: 118387852 0x10F583BBE: TBranch::GetBasket(int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+      n2: 118387852 0x10F58509D: TBranch::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+       n1: 117870536 0x10F596EB9: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+        n2: 117870536 0x10F596E95: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+         n1: 111732100 0x10F5D32B6: TTree::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+          n1: 111732100 0x10CA88732: AliAnalysisManager::GetEntry(long long, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 111732100 0x10CA95D82: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 111732100 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+             n1: 111732100 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+              n1: 111732100 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+               n1: 111732100 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 111732100 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 111732100 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 111732100 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 111732100 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 111732100 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 111732100 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 111732100 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 111732100 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 111732100 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 111732100 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 111732100 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 111732100 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 111732100 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+         n0: 6138436 in 1 place, below massif's threshold (1.00%)
+       n0: 517316 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n0: 52221111 in 3923 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=19
+#-----------
+time=10212193253
+mem_heap_B=3732621491
+mem_heap_extra_B=5967413
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=10936195901
+mem_heap_B=3850332401
+mem_heap_extra_B=6092175
+mem_stacks_B=0
+heap_tree=detailed
+n4: 3850332401 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 3104676960 0x11B71ABE3: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+  n1: 3104676960 0x11B71AD8E: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+   n1: 3104676960 0x11B73C74C: AliXiStar::XiStarInit() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+    n1: 3104676960 0x11B73CDCC: AliXiStar::UserCreateOutputObjects() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+     n1: 3104676960 0x11B43E0BC: AliAnalysisTaskSE::CreateOutputObjects() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 3104676960 0x10CA899B4: AliAnalysisManager::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+       n1: 3104676960 0x10CA95BC0: AliAnalysisSelector::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+        n1: 3104676960 0x1104EF777: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+         n1: 3104676960 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 3104676960 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 3104676960 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+            n1: 3104676960 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+             n1: 3104676960 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 3104676960 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 3104676960 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 3104676960 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 3104676960 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 3104676960 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 3104676960 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 3104676960 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 3104676960 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 3104676960 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 3104676960 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 3104676960 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 3104676960 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 3104676960 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                             n1: 3104676960 0x10D8B16F7: TCint::ProcessLineSynch(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                              n0: 3104676960 0x10D8116D1: TApplication::ExecuteFile(char const*, int*, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+ n3: 494500548 0x10D8917A0: TArrayF::Set(int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n1: 294416480 0x10ECC3582: TH3F::TH3F(char const*, char const*, int, double, double, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n0: 294416480 in 25 places, all below massif's threshold (1.00%)
+  n2: 160854312 0x10ECAAE6A: TH2F::TH2F(char const*, char const*, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n1: 88426576 0x11B45641D: AliTriggerAnalysis::EnableHistograms(bool) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+    n1: 88426576 0x11B45F500: AliPhysicsSelection::Initialize(int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+     n1: 88426576 0x11B45E156: AliPhysicsSelection::Initialize(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 88426576 0x11B45CF69: AliPhysicsSelection::IsCollisionCandidate(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+       n1: 88426576 0x10C673EA5: AliESDInputHandler::BeginEvent(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libESD.so)
+        n1: 88426576 0x10CA86568: AliAnalysisManager::ExecAnalysis(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+         n1: 88426576 0x10CA95D9A: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 88426576 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+           n1: 88426576 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 88426576 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+             n1: 88426576 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 88426576 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 88426576 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 88426576 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 88426576 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 88426576 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 88426576 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 88426576 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 88426576 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 88426576 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 88426576 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 88426576 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 88426576 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 88426576 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 88426576 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 88426576 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n0: 72427736 in 19 places, all below massif's threshold (1.00%)
+  n0: 39229756 in 4 places, all below massif's threshold (1.00%)
+ n1: 190623606 0x10D819983: TBuffer::TBuffer(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n3: 190623606 0x10E70AFFC: TBufferFile::TBufferFile(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+   n1: 118387852 0x10F57EE6E: TBasket::TBasket(char const*, char const*, TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+    n1: 118387852 0x10F5D0D86: TTree::CreateBasket(TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+     n1: 118387852 0x10F583BBE: TBranch::GetBasket(int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+      n2: 118387852 0x10F58509D: TBranch::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+       n1: 117870536 0x10F596EB9: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+        n2: 117870536 0x10F596E95: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+         n1: 111732100 0x10F5D32B6: TTree::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+          n1: 111732100 0x10CA88732: AliAnalysisManager::GetEntry(long long, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 111732100 0x10CA95D82: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 111732100 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+             n1: 111732100 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+              n1: 111732100 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+               n1: 111732100 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 111732100 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 111732100 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 111732100 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 111732100 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 111732100 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 111732100 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 111732100 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 111732100 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 111732100 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 111732100 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 111732100 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 111732100 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 111732100 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+         n0: 6138436 in 1 place, below massif's threshold (1.00%)
+       n0: 517316 in 2 places, all below massif's threshold (1.00%)
+   n1: 72235754 0x10E7568F5: TKey::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+    n1: 72235754 0x10E71796E: TDirectoryFile::GetObjectChecked(char const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+     n1: 72235754 0x10C1FF354: void TDirectoryFile::GetObject<AliOADBContainer>(char const*, AliOADBContainer*&) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libSTEERBase.so)
+      n2: 72235754 0x10C1FEB36: AliOADBContainer::InitFromFile(char const*, char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libSTEERBase.so)
+       n1: 72235754 0x11B472759: AliCentralitySelectionTask::SetupRun(AliVEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+        n1: 72235754 0x11B46E20D: AliCentralitySelectionTask::UserExec(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+         n1: 72235754 0x11B43FEE4: AliAnalysisTaskSE::Exec(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+          n1: 72235754 0x10D87F51D: TTask::ExecuteTask(char const*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+           n1: 72235754 0x10CA86768: AliAnalysisManager::ExecAnalysis(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 72235754 0x10CA95D9A: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+             n1: 72235754 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+              n1: 72235754 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+               n1: 72235754 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                n1: 72235754 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 72235754 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 72235754 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 72235754 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 72235754 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 72235754 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 72235754 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 72235754 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 72235754 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 72235754 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 72235754 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 72235754 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 72235754 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 72235754 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 72235754 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+       n0: 0 in 5 places, all below massif's threshold (1.00%)
+   n0: 0 in 5 places, all below massif's threshold (1.00%)
+ n0: 60531287 in 3928 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=21
+#-----------
+time=11564981082
+mem_heap_B=3805235888
+mem_heap_extra_B=5987256
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=12359632279
+mem_heap_B=3808401551
+mem_heap_extra_B=6002761
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=13056867219
+mem_heap_B=3808515300
+mem_heap_extra_B=6015844
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=13554879094
+mem_heap_B=3808597197
+mem_heap_extra_B=6025091
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=14152506626
+mem_heap_B=3808696253
+mem_heap_extra_B=6036051
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=14451316455
+mem_heap_B=3808745837
+mem_heap_extra_B=6041523
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=14995723035
+mem_heap_B=3852048186
+mem_heap_extra_B=6061238
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=15464492465
+mem_heap_B=4085334010
+mem_heap_extra_B=6062694
+mem_stacks_B=0
+heap_tree=detailed
+n5: 4085334010 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 3104676960 0x11B71ABE3: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+  n1: 3104676960 0x11B71AD8E: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+   n1: 3104676960 0x11B73C74C: AliXiStar::XiStarInit() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+    n1: 3104676960 0x11B73CDCC: AliXiStar::UserCreateOutputObjects() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+     n1: 3104676960 0x11B43E0BC: AliAnalysisTaskSE::CreateOutputObjects() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 3104676960 0x10CA899B4: AliAnalysisManager::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+       n1: 3104676960 0x10CA95BC0: AliAnalysisSelector::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+        n1: 3104676960 0x1104EF777: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+         n1: 3104676960 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 3104676960 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 3104676960 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+            n1: 3104676960 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+             n1: 3104676960 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 3104676960 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 3104676960 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 3104676960 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 3104676960 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 3104676960 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 3104676960 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 3104676960 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 3104676960 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 3104676960 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 3104676960 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 3104676960 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 3104676960 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 3104676960 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                             n1: 3104676960 0x10D8B16F7: TCint::ProcessLineSynch(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                              n0: 3104676960 0x10D8116D1: TApplication::ExecuteFile(char const*, int*, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+ n4: 528637776 0x10D8917A0: TArrayF::Set(int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n1: 294416480 0x10ECC3582: TH3F::TH3F(char const*, char const*, int, double, double, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n0: 294416480 in 25 places, all below massif's threshold (1.00%)
+  n2: 160854312 0x10ECAAE6A: TH2F::TH2F(char const*, char const*, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n1: 88426576 0x11B45641D: AliTriggerAnalysis::EnableHistograms(bool) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+    n1: 88426576 0x11B45F500: AliPhysicsSelection::Initialize(int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+     n1: 88426576 0x11B45E156: AliPhysicsSelection::Initialize(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 88426576 0x11B45CF69: AliPhysicsSelection::IsCollisionCandidate(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+       n1: 88426576 0x10C673EA5: AliESDInputHandler::BeginEvent(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libESD.so)
+        n1: 88426576 0x10CA86568: AliAnalysisManager::ExecAnalysis(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+         n1: 88426576 0x10CA95D9A: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 88426576 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+           n1: 88426576 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 88426576 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+             n1: 88426576 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 88426576 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 88426576 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 88426576 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 88426576 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 88426576 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 88426576 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 88426576 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 88426576 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 88426576 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 88426576 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 88426576 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 88426576 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 88426576 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 88426576 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 88426576 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n0: 72427736 in 19 places, all below massif's threshold (1.00%)
+  n2: 72230076 0x10D891887: TArrayF::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n1: 72225456 0x10D8E0D7D: TStreamerBase::ReadBuffer(TBuffer&, char*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+    n1: 72225456 0x10E8812D3: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+     n1: 72225456 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+      n2: 72225456 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+       n1: 66177360 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+        n2: 66177360 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+         n1: 65725560 0x10D8A405D: TList::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+          n1: 65725560 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+           n1: 65725560 0x10E70D7F0: TBufferFile::ReadFastArray(void**, TClass const*, int, bool, TMemberStreamer*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+            n1: 65725560 0x10E8814DC: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+             n1: 65725560 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+              n1: 65725560 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+               n1: 65725560 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                n2: 65725560 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                 n1: 63790864 0x10D8A6A37: TObjArray::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                  n1: 63790864 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                   n1: 63790864 0x10E70D7F0: TBufferFile::ReadFastArray(void**, TClass const*, int, bool, TMemberStreamer*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                    n1: 63790864 0x10E8814DC: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                     n1: 63790864 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                      n1: 63790864 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                       n1: 63790864 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                        n1: 63790864 0x10E756D41: TKey::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                         n1: 63790864 0x10E71796E: TDirectoryFile::GetObjectChecked(char const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                          n1: 63790864 0x10C1FF354: void TDirectoryFile::GetObject<AliOADBContainer>(char const*, AliOADBContainer*&) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libSTEERBase.so)
+                           n1: 63790864 0x10C1FEB36: AliOADBContainer::InitFromFile(char const*, char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libSTEERBase.so)
+                            n1: 63790864 0x11B472759: AliCentralitySelectionTask::SetupRun(AliVEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                             n1: 63790864 0x11B46E20D: AliCentralitySelectionTask::UserExec(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                              n0: 63790864 0x11B43FEE4: AliAnalysisTaskSE::Exec(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                 n0: 1934696 in 1 place, below massif's threshold (1.00%)
+         n0: 451800 in 1 place, below massif's threshold (1.00%)
+       n0: 6048096 in 1 place, below massif's threshold (1.00%)
+   n0: 4620 in 3 places, all below massif's threshold (1.00%)
+  n0: 1136908 in 3 places, all below massif's threshold (1.00%)
+ n1: 282489360 0x10D857674: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n2: 282489360 0x10D819BC3: TBuffer::Expand(int, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n2: 279899152 0x10E70E797: TBufferFile::WriteFastArray(float const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+    n1: 279899152 0x10D891869: TArrayF::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+     n1: 279899152 0x10D8E10CD: TStreamerBase::WriteBuffer(TBuffer&, char*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+      n1: 279899152 0x10E893CC7: int TStreamerInfo::WriteBufferAux<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+       n1: 279899152 0x10E7727A9: TStreamerInfoActions::GenericWriteAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+        n1: 279899152 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+         n2: 279899152 0x10E711AE9: TBufferFile::WriteClassBuffer(TClass const*, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+          n2: 279899152 0x10ECAB764: TH2F::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+           n1: 279899152 0x10E70F6D4: TBufferFile::WriteObjectClass(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+            n1: 279899152 0x10E70F7F3: TBufferFile::WriteObjectAny(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+             n1: 279899152 0x10E70EE10: TBufferFile::WriteFastArray(void**, TClass const*, int, bool, TMemberStreamer*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+              n1: 279899152 0x10E893F85: int TStreamerInfo::WriteBufferAux<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+               n1: 279899152 0x10E7727A9: TStreamerInfoActions::GenericWriteAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                n1: 279899152 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                 n1: 279899152 0x10E711AE9: TBufferFile::WriteClassBuffer(TClass const*, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                  n1: 279899152 0x10E70F6D4: TBufferFile::WriteObjectClass(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                   n1: 279899152 0x10E70F7F3: TBufferFile::WriteObjectAny(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                    n1: 279899152 0x10D8A3F47: TList::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                     n1: 279899152 0x10E70ECD5: TBufferFile::WriteFastArray(void*, TClass const*, int, TMemberStreamer*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                      n1: 279899152 0x10E89117E: int TStreamerInfo::WriteBufferAux<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                       n1: 279899152 0x10E7727A9: TStreamerInfoActions::GenericWriteAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                        n1: 279899152 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                         n1: 279899152 0x10E711AE9: TBufferFile::WriteClassBuffer(TClass const*, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                          n1: 279899152 0x10E70F6D4: TBufferFile::WriteObjectClass(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                           n1: 279899152 0x10E70F7F3: TBufferFile::WriteObjectAny(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                            n1: 279899152 0x10D8A3F47: TList::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                             n1: 279899152 0x10E754A96: TKey::TKey(TObject const*, char const*, int, TDirectory*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                              n0: 279899152 0x10E722059: TFile::CreateKey(TDirectory*, TObject const*, char const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+           n0: 0 in 1 place, below massif's threshold (1.00%)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 2590208 in 6 places, all below massif's threshold (1.00%)
+ n1: 118387852 0x10D819983: TBuffer::TBuffer(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n2: 118387852 0x10E70AFFC: TBufferFile::TBufferFile(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+   n1: 118387852 0x10F57EE6E: TBasket::TBasket(char const*, char const*, TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+    n1: 118387852 0x10F5D0D86: TTree::CreateBasket(TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+     n1: 118387852 0x10F583BBE: TBranch::GetBasket(int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+      n2: 118387852 0x10F58509D: TBranch::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+       n1: 117870536 0x10F596EB9: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+        n2: 117870536 0x10F596E95: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+         n1: 111732100 0x10F5D32B6: TTree::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+          n1: 111732100 0x10CA88732: AliAnalysisManager::GetEntry(long long, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 111732100 0x10CA95D82: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 111732100 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+             n1: 111732100 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+              n1: 111732100 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+               n1: 111732100 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 111732100 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 111732100 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 111732100 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 111732100 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 111732100 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 111732100 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 111732100 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 111732100 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 111732100 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 111732100 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 111732100 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 111732100 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 111732100 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+         n0: 6138436 in 1 place, below massif's threshold (1.00%)
+       n0: 517316 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 7 places, all below massif's threshold (1.00%)
+ n0: 51142062 in 3941 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=29
+#-----------
+time=15932817144
+mem_heap_B=4107279343
+mem_heap_extra_B=6061089
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=16336773173
+mem_heap_B=4107279343
+mem_heap_extra_B=6061089
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=16740736430
+mem_heap_B=4107279343
+mem_heap_extra_B=6061089
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=17548652122
+mem_heap_B=4107279343
+mem_heap_extra_B=6061089
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=17952637605
+mem_heap_B=4107279343
+mem_heap_extra_B=6061089
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=18622858289
+mem_heap_B=4031406391
+mem_heap_extra_B=6088481
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=19291337152
+mem_heap_B=4257220087
+mem_heap_extra_B=6091361
+mem_stacks_B=0
+heap_tree=detailed
+n5: 4257220087 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 3104676960 0x11B71ABE3: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+  n1: 3104676960 0x11B71AD8E: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+   n1: 3104676960 0x11B73C74C: AliXiStar::XiStarInit() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+    n1: 3104676960 0x11B73CDCC: AliXiStar::UserCreateOutputObjects() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+     n1: 3104676960 0x11B43E0BC: AliAnalysisTaskSE::CreateOutputObjects() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 3104676960 0x10CA899B4: AliAnalysisManager::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+       n1: 3104676960 0x10CA95BC0: AliAnalysisSelector::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+        n1: 3104676960 0x1104EF777: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+         n1: 3104676960 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 3104676960 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 3104676960 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+            n1: 3104676960 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+             n1: 3104676960 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 3104676960 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 3104676960 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 3104676960 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 3104676960 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 3104676960 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 3104676960 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 3104676960 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 3104676960 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 3104676960 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 3104676960 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 3104676960 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 3104676960 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 3104676960 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                             n1: 3104676960 0x10D8B16F7: TCint::ProcessLineSynch(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                              n0: 3104676960 0x10D8116D1: TApplication::ExecuteFile(char const*, int*, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+ n4: 528637776 0x10D8917A0: TArrayF::Set(int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n1: 294416480 0x10ECC3582: TH3F::TH3F(char const*, char const*, int, double, double, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n0: 294416480 in 25 places, all below massif's threshold (1.00%)
+  n2: 160854312 0x10ECAAE6A: TH2F::TH2F(char const*, char const*, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n1: 88426576 0x11B45641D: AliTriggerAnalysis::EnableHistograms(bool) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+    n1: 88426576 0x11B45F500: AliPhysicsSelection::Initialize(int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+     n1: 88426576 0x11B45E156: AliPhysicsSelection::Initialize(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 88426576 0x11B45CF69: AliPhysicsSelection::IsCollisionCandidate(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+       n1: 88426576 0x10C673EA5: AliESDInputHandler::BeginEvent(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libESD.so)
+        n1: 88426576 0x10CA86568: AliAnalysisManager::ExecAnalysis(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+         n1: 88426576 0x10CA95D9A: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 88426576 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+           n1: 88426576 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 88426576 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+             n1: 88426576 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 88426576 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 88426576 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 88426576 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 88426576 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 88426576 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 88426576 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 88426576 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 88426576 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 88426576 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 88426576 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 88426576 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 88426576 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 88426576 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 88426576 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 88426576 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n0: 72427736 in 19 places, all below massif's threshold (1.00%)
+  n2: 72230076 0x10D891887: TArrayF::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n1: 72225456 0x10D8E0D7D: TStreamerBase::ReadBuffer(TBuffer&, char*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+    n1: 72225456 0x10E8812D3: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+     n1: 72225456 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+      n2: 72225456 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+       n1: 66177360 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+        n2: 66177360 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+         n1: 65725560 0x10D8A405D: TList::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+          n1: 65725560 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+           n1: 65725560 0x10E70D7F0: TBufferFile::ReadFastArray(void**, TClass const*, int, bool, TMemberStreamer*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+            n1: 65725560 0x10E8814DC: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+             n1: 65725560 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+              n1: 65725560 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+               n1: 65725560 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                n2: 65725560 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                 n1: 63790864 0x10D8A6A37: TObjArray::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                  n1: 63790864 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                   n1: 63790864 0x10E70D7F0: TBufferFile::ReadFastArray(void**, TClass const*, int, bool, TMemberStreamer*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                    n1: 63790864 0x10E8814DC: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                     n1: 63790864 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                      n1: 63790864 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                       n1: 63790864 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                        n1: 63790864 0x10E756D41: TKey::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                         n1: 63790864 0x10E71796E: TDirectoryFile::GetObjectChecked(char const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                          n1: 63790864 0x10C1FF354: void TDirectoryFile::GetObject<AliOADBContainer>(char const*, AliOADBContainer*&) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libSTEERBase.so)
+                           n1: 63790864 0x10C1FEB36: AliOADBContainer::InitFromFile(char const*, char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libSTEERBase.so)
+                            n1: 63790864 0x11B472759: AliCentralitySelectionTask::SetupRun(AliVEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                             n1: 63790864 0x11B46E20D: AliCentralitySelectionTask::UserExec(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                              n0: 63790864 0x11B43FEE4: AliAnalysisTaskSE::Exec(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                 n0: 1934696 in 1 place, below massif's threshold (1.00%)
+         n0: 451800 in 1 place, below massif's threshold (1.00%)
+       n0: 6048096 in 1 place, below massif's threshold (1.00%)
+   n0: 4620 in 3 places, all below massif's threshold (1.00%)
+  n0: 1136908 in 3 places, all below massif's threshold (1.00%)
+ n1: 454217616 0x10D857674: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n2: 454217616 0x10D819BC3: TBuffer::Expand(int, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n2: 451627408 0x10E70E797: TBufferFile::WriteFastArray(float const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+    n1: 451627408 0x10D891869: TArrayF::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+     n1: 451627408 0x10D8E10CD: TStreamerBase::WriteBuffer(TBuffer&, char*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+      n1: 451627408 0x10E893CC7: int TStreamerInfo::WriteBufferAux<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+       n1: 451627408 0x10E7727A9: TStreamerInfoActions::GenericWriteAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+        n1: 451627408 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+         n3: 451627408 0x10E711AE9: TBufferFile::WriteClassBuffer(TClass const*, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+          n1: 301084936 0x10ECC3C04: TH3F::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+           n1: 301084936 0x10E70F6D4: TBufferFile::WriteObjectClass(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+            n1: 301084936 0x10E70F7F3: TBufferFile::WriteObjectAny(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+             n1: 301084936 0x10D8A3F47: TList::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+              n1: 301084936 0x10E754A96: TKey::TKey(TObject const*, char const*, int, TDirectory*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+               n1: 301084936 0x10E722059: TFile::CreateKey(TDirectory*, TObject const*, char const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                n1: 301084936 0x10E71A2ED: TDirectoryFile::WriteTObject(TObject const*, char const*, char const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                 n1: 301084936 0x10D83B5F9: TObject::Write(char const*, int, int) const (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                  n1: 301084936 0x10CA8BEBD: AliAnalysisManager::Terminate() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                   n1: 301084936 0x10CA961CF: AliAnalysisSelector::Terminate() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                    n1: 301084936 0x1104EFBAA: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+                     n1: 301084936 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                      n1: 301084936 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                       n1: 301084936 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 301084936 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 301084936 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 301084936 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 301084936 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 301084936 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 301084936 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 301084936 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+          n2: 150542472 0x10ECAB764: TH2F::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+           n1: 150542472 0x10E70F6D4: TBufferFile::WriteObjectClass(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+            n2: 150542472 0x10E70F7F3: TBufferFile::WriteObjectAny(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+             n1: 150542472 0x10D8A3F47: TList::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+              n1: 150542472 0x10E754A96: TKey::TKey(TObject const*, char const*, int, TDirectory*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+               n1: 150542472 0x10E722059: TFile::CreateKey(TDirectory*, TObject const*, char const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                n1: 150542472 0x10E71A2ED: TDirectoryFile::WriteTObject(TObject const*, char const*, char const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                 n1: 150542472 0x10D83B5F9: TObject::Write(char const*, int, int) const (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                  n1: 150542472 0x10CA8BEBD: AliAnalysisManager::Terminate() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                   n1: 150542472 0x10CA961CF: AliAnalysisSelector::Terminate() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                    n1: 150542472 0x1104EFBAA: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+                     n1: 150542472 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                      n1: 150542472 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                       n1: 150542472 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 150542472 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 150542472 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 150542472 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 150542472 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 150542472 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 150542472 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 150542472 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+           n0: 0 in 1 place, below massif's threshold (1.00%)
+          n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 2590208 in 6 places, all below massif's threshold (1.00%)
+ n1: 118387852 0x10D819983: TBuffer::TBuffer(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n2: 118387852 0x10E70AFFC: TBufferFile::TBufferFile(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+   n1: 118387852 0x10F57EE6E: TBasket::TBasket(char const*, char const*, TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+    n1: 118387852 0x10F5D0D86: TTree::CreateBasket(TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+     n1: 118387852 0x10F583BBE: TBranch::GetBasket(int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+      n2: 118387852 0x10F58509D: TBranch::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+       n1: 117870536 0x10F596EB9: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+        n2: 117870536 0x10F596E95: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+         n1: 111732100 0x10F5D32B6: TTree::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+          n1: 111732100 0x10CA88732: AliAnalysisManager::GetEntry(long long, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 111732100 0x10CA95D82: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 111732100 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+             n1: 111732100 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+              n1: 111732100 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+               n1: 111732100 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 111732100 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 111732100 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 111732100 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 111732100 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 111732100 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 111732100 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 111732100 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 111732100 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 111732100 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 111732100 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 111732100 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 111732100 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 111732100 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+         n0: 6138436 in 1 place, below massif's threshold (1.00%)
+       n0: 517316 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 7 places, all below massif's threshold (1.00%)
+ n0: 51299883 in 3941 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=36
+#-----------
+time=19708065933
+mem_heap_B=4708847479
+mem_heap_extra_B=6093025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=20310235899
+mem_heap_B=4708847479
+mem_heap_extra_B=6093025
+mem_stacks_B=0
+heap_tree=peak
+n5: 4708847479 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 3104676960 0x11B71ABE3: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+  n1: 3104676960 0x11B71AD8E: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+   n1: 3104676960 0x11B73C74C: AliXiStar::XiStarInit() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+    n1: 3104676960 0x11B73CDCC: AliXiStar::UserCreateOutputObjects() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+     n1: 3104676960 0x11B43E0BC: AliAnalysisTaskSE::CreateOutputObjects() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 3104676960 0x10CA899B4: AliAnalysisManager::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+       n1: 3104676960 0x10CA95BC0: AliAnalysisSelector::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+        n1: 3104676960 0x1104EF777: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+         n1: 3104676960 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 3104676960 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 3104676960 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+            n1: 3104676960 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+             n1: 3104676960 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 3104676960 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 3104676960 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 3104676960 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 3104676960 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 3104676960 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 3104676960 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 3104676960 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 3104676960 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 3104676960 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 3104676960 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 3104676960 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 3104676960 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 3104676960 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                             n1: 3104676960 0x10D8B16F7: TCint::ProcessLineSynch(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                              n0: 3104676960 0x10D8116D1: TApplication::ExecuteFile(char const*, int*, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+ n1: 905845008 0x10D857674: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n2: 905845008 0x10D819BC3: TBuffer::Expand(int, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n2: 903254800 0x10E70E797: TBufferFile::WriteFastArray(float const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+    n1: 903254800 0x10D891869: TArrayF::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+     n1: 903254800 0x10D8E10CD: TStreamerBase::WriteBuffer(TBuffer&, char*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+      n1: 903254800 0x10E893CC7: int TStreamerInfo::WriteBufferAux<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+       n1: 903254800 0x10E7727A9: TStreamerInfoActions::GenericWriteAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+        n1: 903254800 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+         n2: 903254800 0x10E711AE9: TBufferFile::WriteClassBuffer(TClass const*, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+          n1: 903254800 0x10ECC3C04: TH3F::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+           n1: 903254800 0x10E70F6D4: TBufferFile::WriteObjectClass(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+            n1: 903254800 0x10E70F7F3: TBufferFile::WriteObjectAny(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+             n1: 903254800 0x10D8A3F47: TList::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+              n1: 903254800 0x10E754A96: TKey::TKey(TObject const*, char const*, int, TDirectory*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+               n1: 903254800 0x10E722059: TFile::CreateKey(TDirectory*, TObject const*, char const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                n1: 903254800 0x10E71A2ED: TDirectoryFile::WriteTObject(TObject const*, char const*, char const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                 n1: 903254800 0x10D83B5F9: TObject::Write(char const*, int, int) const (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                  n1: 903254800 0x10CA8BEBD: AliAnalysisManager::Terminate() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                   n1: 903254800 0x10CA961CF: AliAnalysisSelector::Terminate() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                    n1: 903254800 0x1104EFBAA: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+                     n1: 903254800 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                      n1: 903254800 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                       n1: 903254800 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 903254800 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 903254800 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 903254800 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 903254800 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 903254800 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 903254800 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 903254800 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+          n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 2590208 in 6 places, all below massif's threshold (1.00%)
+ n4: 528637776 0x10D8917A0: TArrayF::Set(int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n1: 294416480 0x10ECC3582: TH3F::TH3F(char const*, char const*, int, double, double, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n0: 294416480 in 25 places, all below massif's threshold (1.00%)
+  n2: 160854312 0x10ECAAE6A: TH2F::TH2F(char const*, char const*, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n1: 88426576 0x11B45641D: AliTriggerAnalysis::EnableHistograms(bool) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+    n1: 88426576 0x11B45F500: AliPhysicsSelection::Initialize(int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+     n1: 88426576 0x11B45E156: AliPhysicsSelection::Initialize(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 88426576 0x11B45CF69: AliPhysicsSelection::IsCollisionCandidate(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+       n1: 88426576 0x10C673EA5: AliESDInputHandler::BeginEvent(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libESD.so)
+        n1: 88426576 0x10CA86568: AliAnalysisManager::ExecAnalysis(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+         n1: 88426576 0x10CA95D9A: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 88426576 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+           n1: 88426576 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 88426576 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+             n1: 88426576 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 88426576 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 88426576 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 88426576 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 88426576 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 88426576 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 88426576 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 88426576 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 88426576 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 88426576 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 88426576 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 88426576 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 88426576 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 88426576 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 88426576 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 88426576 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n0: 72427736 in 19 places, all below massif's threshold (1.00%)
+  n2: 72230076 0x10D891887: TArrayF::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n1: 72225456 0x10D8E0D7D: TStreamerBase::ReadBuffer(TBuffer&, char*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+    n1: 72225456 0x10E8812D3: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+     n1: 72225456 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+      n2: 72225456 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+       n1: 66177360 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+        n2: 66177360 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+         n1: 65725560 0x10D8A405D: TList::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+          n1: 65725560 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+           n1: 65725560 0x10E70D7F0: TBufferFile::ReadFastArray(void**, TClass const*, int, bool, TMemberStreamer*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+            n1: 65725560 0x10E8814DC: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+             n1: 65725560 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+              n1: 65725560 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+               n1: 65725560 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                n2: 65725560 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                 n1: 63790864 0x10D8A6A37: TObjArray::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                  n1: 63790864 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                   n1: 63790864 0x10E70D7F0: TBufferFile::ReadFastArray(void**, TClass const*, int, bool, TMemberStreamer*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                    n1: 63790864 0x10E8814DC: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                     n1: 63790864 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                      n1: 63790864 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                       n1: 63790864 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                        n1: 63790864 0x10E756D41: TKey::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                         n1: 63790864 0x10E71796E: TDirectoryFile::GetObjectChecked(char const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                          n1: 63790864 0x10C1FF354: void TDirectoryFile::GetObject<AliOADBContainer>(char const*, AliOADBContainer*&) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libSTEERBase.so)
+                           n1: 63790864 0x10C1FEB36: AliOADBContainer::InitFromFile(char const*, char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libSTEERBase.so)
+                            n1: 63790864 0x11B472759: AliCentralitySelectionTask::SetupRun(AliVEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                             n1: 63790864 0x11B46E20D: AliCentralitySelectionTask::UserExec(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                              n0: 63790864 0x11B43FEE4: AliAnalysisTaskSE::Exec(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                 n0: 1934696 in 1 place, below massif's threshold (1.00%)
+         n0: 451800 in 1 place, below massif's threshold (1.00%)
+       n0: 6048096 in 1 place, below massif's threshold (1.00%)
+   n0: 4620 in 3 places, all below massif's threshold (1.00%)
+  n0: 1136908 in 3 places, all below massif's threshold (1.00%)
+ n1: 118387852 0x10D819983: TBuffer::TBuffer(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n2: 118387852 0x10E70AFFC: TBufferFile::TBufferFile(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+   n1: 118387852 0x10F57EE6E: TBasket::TBasket(char const*, char const*, TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+    n1: 118387852 0x10F5D0D86: TTree::CreateBasket(TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+     n1: 118387852 0x10F583BBE: TBranch::GetBasket(int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+      n2: 118387852 0x10F58509D: TBranch::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+       n1: 117870536 0x10F596EB9: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+        n2: 117870536 0x10F596E95: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+         n1: 111732100 0x10F5D32B6: TTree::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+          n1: 111732100 0x10CA88732: AliAnalysisManager::GetEntry(long long, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 111732100 0x10CA95D82: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 111732100 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+             n1: 111732100 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+              n1: 111732100 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+               n1: 111732100 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 111732100 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 111732100 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 111732100 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 111732100 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 111732100 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 111732100 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 111732100 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 111732100 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 111732100 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 111732100 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 111732100 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 111732100 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 111732100 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+         n0: 6138436 in 1 place, below massif's threshold (1.00%)
+       n0: 517316 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 7 places, all below massif's threshold (1.00%)
+ n0: 51299883 in 3941 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=38
+#-----------
+time=20827462260
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=21631786457
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=22435502838
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=23239353086
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=24043225355
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=24445177030
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=detailed
+n6: 4750154748 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 3104676960 0x11B71ABE3: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+  n1: 3104676960 0x11B71AD8E: AliXiStarEventCollection::AliXiStarEventCollection(short) (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStarEventCollection_cxx.so)
+   n1: 3104676960 0x11B73C74C: AliXiStar::XiStarInit() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+    n1: 3104676960 0x11B73CDCC: AliXiStar::UserCreateOutputObjects() (in /Users/songjihye/alice/AliRsn/PWGLF/RESONANCES/pPb/NoTree_2015/AliXiStar_cxx.so)
+     n1: 3104676960 0x11B43E0BC: AliAnalysisTaskSE::CreateOutputObjects() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 3104676960 0x10CA899B4: AliAnalysisManager::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+       n1: 3104676960 0x10CA95BC0: AliAnalysisSelector::SlaveBegin(TTree*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+        n1: 3104676960 0x1104EF777: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+         n1: 3104676960 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 3104676960 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 3104676960 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+            n1: 3104676960 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+             n1: 3104676960 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 3104676960 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 3104676960 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 3104676960 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 3104676960 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 3104676960 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 3104676960 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 3104676960 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 3104676960 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 3104676960 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 3104676960 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 3104676960 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 3104676960 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 3104676960 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 3104676960 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                             n1: 3104676960 0x10D8B16F7: TCint::ProcessLineSynch(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                              n0: 3104676960 0x10D8116D1: TApplication::ExecuteFile(char const*, int*, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+ n1: 604760072 0x10D857674: TStorage::ReAllocChar(char*, unsigned long, unsigned long) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n2: 604760072 0x10D819BC3: TBuffer::Expand(int, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n2: 602169864 0x10E70E797: TBufferFile::WriteFastArray(float const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+    n1: 602169864 0x10D891869: TArrayF::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+     n1: 602169864 0x10D8E10CD: TStreamerBase::WriteBuffer(TBuffer&, char*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+      n1: 602169864 0x10E893CC7: int TStreamerInfo::WriteBufferAux<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+       n1: 602169864 0x10E7727A9: TStreamerInfoActions::GenericWriteAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+        n1: 602169864 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+         n2: 602169864 0x10E711AE9: TBufferFile::WriteClassBuffer(TClass const*, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+          n1: 602169864 0x10ECC3C04: TH3F::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+           n1: 602169864 0x10E70F6D4: TBufferFile::WriteObjectClass(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+            n1: 602169864 0x10E70F7F3: TBufferFile::WriteObjectAny(void const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+             n1: 602169864 0x10D8A3F47: TList::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+              n1: 602169864 0x10E754A96: TKey::TKey(TObject const*, char const*, int, TDirectory*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+               n1: 602169864 0x10E722059: TFile::CreateKey(TDirectory*, TObject const*, char const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                n1: 602169864 0x10E71A2ED: TDirectoryFile::WriteTObject(TObject const*, char const*, char const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                 n1: 602169864 0x10D83B5F9: TObject::Write(char const*, int, int) const (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                  n1: 602169864 0x10CA8BEBD: AliAnalysisManager::Terminate() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                   n1: 602169864 0x10CA961CF: AliAnalysisSelector::Terminate() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                    n1: 602169864 0x1104EFBAA: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+                     n1: 602169864 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                      n1: 602169864 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+                       n1: 602169864 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 602169864 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 602169864 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 602169864 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 602169864 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 602169864 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 602169864 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 602169864 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+          n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 2590208 in 6 places, all below massif's threshold (1.00%)
+ n4: 528637776 0x10D8917A0: TArrayF::Set(int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n1: 294416480 0x10ECC3582: TH3F::TH3F(char const*, char const*, int, double, double, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n0: 294416480 in 25 places, all below massif's threshold (1.00%)
+  n2: 160854312 0x10ECAAE6A: TH2F::TH2F(char const*, char const*, int, double, double, int, double, double) (in /opt/alice/root/v5-34-18/lib/libHist.5.34.so)
+   n1: 88426576 0x11B45641D: AliTriggerAnalysis::EnableHistograms(bool) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+    n1: 88426576 0x11B45F500: AliPhysicsSelection::Initialize(int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+     n1: 88426576 0x11B45E156: AliPhysicsSelection::Initialize(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+      n1: 88426576 0x11B45CF69: AliPhysicsSelection::IsCollisionCandidate(AliESDEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+       n1: 88426576 0x10C673EA5: AliESDInputHandler::BeginEvent(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libESD.so)
+        n1: 88426576 0x10CA86568: AliAnalysisManager::ExecAnalysis(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+         n1: 88426576 0x10CA95D9A: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 88426576 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+           n1: 88426576 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 88426576 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+             n1: 88426576 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 88426576 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 88426576 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 88426576 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 88426576 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 88426576 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 88426576 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 88426576 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 88426576 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 88426576 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 88426576 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 88426576 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 88426576 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 88426576 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 88426576 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 88426576 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 88426576 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n0: 72427736 in 19 places, all below massif's threshold (1.00%)
+  n2: 72230076 0x10D891887: TArrayF::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+   n1: 72225456 0x10D8E0D7D: TStreamerBase::ReadBuffer(TBuffer&, char*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+    n1: 72225456 0x10E8812D3: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+     n1: 72225456 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+      n2: 72225456 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+       n1: 66177360 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+        n2: 66177360 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+         n1: 65725560 0x10D8A405D: TList::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+          n1: 65725560 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+           n1: 65725560 0x10E70D7F0: TBufferFile::ReadFastArray(void**, TClass const*, int, bool, TMemberStreamer*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+            n1: 65725560 0x10E8814DC: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+             n1: 65725560 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+              n1: 65725560 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+               n1: 65725560 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                n2: 65725560 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                 n1: 63790864 0x10D8A6A37: TObjArray::Streamer(TBuffer&) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                  n1: 63790864 0x10E70F278: TBufferFile::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                   n1: 63790864 0x10E70D7F0: TBufferFile::ReadFastArray(void**, TClass const*, int, bool, TMemberStreamer*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                    n1: 63790864 0x10E8814DC: int TStreamerInfo::ReadBuffer<char**>(TBuffer&, char** const&, int, int, int, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                     n1: 63790864 0x10E772759: TStreamerInfoActions::GenericReadAction(TBuffer&, void*, TStreamerInfoActions::TConfiguration const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                      n1: 63790864 0x10E711BBB: TBufferFile::ApplySequence(TStreamerInfoActions::TActionSequence const&, void*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                       n1: 63790864 0x10E711898: TBufferFile::ReadClassBuffer(TClass const*, void*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                        n1: 63790864 0x10E756D41: TKey::ReadObjectAny(TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                         n1: 63790864 0x10E71796E: TDirectoryFile::GetObjectChecked(char const*, TClass const*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+                          n1: 63790864 0x10C1FF354: void TDirectoryFile::GetObject<AliOADBContainer>(char const*, AliOADBContainer*&) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libSTEERBase.so)
+                           n1: 63790864 0x10C1FEB36: AliOADBContainer::InitFromFile(char const*, char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libSTEERBase.so)
+                            n1: 63790864 0x11B472759: AliCentralitySelectionTask::SetupRun(AliVEvent const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                             n1: 63790864 0x11B46E20D: AliCentralitySelectionTask::UserExec(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                              n0: 63790864 0x11B43FEE4: AliAnalysisTaskSE::Exec(char const*) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSISalice.so)
+                 n0: 1934696 in 1 place, below massif's threshold (1.00%)
+         n0: 451800 in 1 place, below massif's threshold (1.00%)
+       n0: 6048096 in 1 place, below massif's threshold (1.00%)
+   n0: 4620 in 3 places, all below massif's threshold (1.00%)
+  n0: 1136908 in 3 places, all below massif's threshold (1.00%)
+ n2: 342189661 0x10E754C1E: TKey::TKey(TObject const*, char const*, int, TDirectory*) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+  n1: 342189661 0x10E722059: TFile::CreateKey(TDirectory*, TObject const*, char const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+   n1: 342189661 0x10E71A2ED: TDirectoryFile::WriteTObject(TObject const*, char const*, char const*, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+    n2: 342189661 0x10D83B5F9: TObject::Write(char const*, int, int) const (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+     n1: 342189661 0x10CA8BEBD: AliAnalysisManager::Terminate() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+      n1: 342189661 0x10CA961CF: AliAnalysisSelector::Terminate() (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+       n1: 342189661 0x1104EFBAA: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+        n1: 342189661 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+         n1: 342189661 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+          n1: 342189661 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+           n1: 342189661 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+            n1: 342189661 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+             n1: 342189661 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+              n1: 342189661 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+               n1: 342189661 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 342189661 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 342189661 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 342189661 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 342189661 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 342189661 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 342189661 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 342189661 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 342189661 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 342189661 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 342189661 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 342189661 0x10E0E7A8E: G__process_cmd (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 342189661 0x10D8B1412: TCint::ProcessLine(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                            n1: 342189661 0x10D8B16F7: TCint::ProcessLineSynch(char const*, TInterpreter::EErrorCode*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                             n1: 342189661 0x10D8116D1: TApplication::ExecuteFile(char const*, int*, bool) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+                              n0: 342189661 0x10D810920: TApplication::ProcessLine(char const*, bool, int*) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+     n0: 0 in 18 places, all below massif's threshold (1.00%)
+  n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 118387852 0x10D819983: TBuffer::TBuffer(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libCore.5.34.so)
+  n2: 118387852 0x10E70AFFC: TBufferFile::TBufferFile(TBuffer::EMode, int) (in /opt/alice/root/v5-34-18/lib/libRIO.5.34.so)
+   n1: 118387852 0x10F57EE6E: TBasket::TBasket(char const*, char const*, TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+    n1: 118387852 0x10F5D0D86: TTree::CreateBasket(TBranch*) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+     n1: 118387852 0x10F583BBE: TBranch::GetBasket(int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+      n2: 118387852 0x10F58509D: TBranch::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+       n1: 117870536 0x10F596EB9: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+        n2: 117870536 0x10F596E95: TBranchElement::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+         n1: 111732100 0x10F5D32B6: TTree::GetEntry(long long, int) (in /opt/alice/root/v5-34-18/lib/libTree.5.34.so)
+          n1: 111732100 0x10CA88732: AliAnalysisManager::GetEntry(long long, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+           n1: 111732100 0x10CA95D82: AliAnalysisSelector::Process(long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+            n1: 111732100 0x1104EFA4D: TTreePlayer::Process(TSelector*, char const*, long long, long long) (in /opt/alice/root/v5-34-18/lib/libTreePlayer.5.34.so)
+             n1: 111732100 0x10CA8F101: AliAnalysisManager::StartAnalysis(char const*, TTree*, long long, long long) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+              n1: 111732100 0x10CAB9941: G__G__ANALYSIS_210_0_14(G__value*, char const*, G__param*, int) (in /opt/alice/aliroot/master/build/lib/tgt_macosx64/libANALYSIS.so)
+               n1: 111732100 0x10E0000AF: Cint::G__ExceptionWrapper(int (*)(G__value*, char const*, G__param*, int), G__value*, char*, G__param*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                n1: 111732100 0x10E0A9059: G__execute_call (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                 n1: 111732100 0x10E0A94BA: G__call_cppfunc (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                  n1: 111732100 0x10E07CE3C: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                   n1: 111732100 0x10E06B265: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                    n1: 111732100 0x10E16BDD9: G__getstructmem(int, G__FastAllocString&, char*, int, char*, int*, G__var_array*, int) (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                     n1: 111732100 0x10E1628CB: G__getvariable (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                      n1: 111732100 0x10E05FAC0: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                       n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                        n1: 111732100 0x10E0DC97A: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                         n1: 111732100 0x10E0DAC8B: G__exec_statement (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                          n1: 111732100 0x10E07FA80: G__interpret_func (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                           n1: 111732100 0x10E06B2B2: G__getfunction (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                            n1: 111732100 0x10E05FB2D: G__getitem (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                             n1: 111732100 0x10E05B690: G__getexpr (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+                              n0: 111732100 0x10E053B21: G__calc_internal (in /opt/alice/root/v5-34-18/lib/libCint.5.34.so)
+         n0: 6138436 in 1 place, below massif's threshold (1.00%)
+       n0: 517316 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 7 places, all below massif's threshold (1.00%)
+ n0: 51502427 in 3940 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=44
+#-----------
+time=25248682715
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=26052290062
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=26855945328
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=27659734522
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=28061642027
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=28622068413
+mem_heap_B=4750154748
+mem_heap_extra_B=6091708
+mem_stacks_B=0
+heap_tree=empty

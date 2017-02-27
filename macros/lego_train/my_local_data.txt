@@ -1,0 +1,5 @@
+BASE=/Users/songjihye/alice/data/2010/LHC10d
+PREFIX=000
+DATA_PATTERN=*ESDs/pass2/*ESDs.root
+RUNS
+126437

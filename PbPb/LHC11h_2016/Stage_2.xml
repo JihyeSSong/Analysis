@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<alien>
+  <collection name="Stage_2">
+    <info command="[/alice/cern.ch/user/j/jisong/11h_MC_2016Jan31-SemiCentral-V9/output/]: find -z -x Stage_2 /alice/cern.ch/user/j/jisong//11h_MC_2016Jan31-SemiCentral-V9/output/106 Stage_1/*root_archive.zip" creator="admin" date="Tue Feb  2 20:15:06 CET 2016" timestamp="1454440506" />
+  </collection>
+</alien>
+

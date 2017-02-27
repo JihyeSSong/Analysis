@@ -1,0 +1,69 @@
+160306 19:29:23 1295 Xrd: CheckErrorStatus: Server [clralicexrd.in2p3.fr] declared: No servers are available to read the file.1.117]:1094 Sr[::134.158.121.136]:1094 Sr[::134.158.121.118]:1094 Sr[::134.158.121.116]:1094 Sr[::134.158.121.123]:1094 Sr[::134.158.121.127]:1094 Sr[::134.158.121.124]:1094 Sr[::134.158.121.122]:1094(error code: 3011)
+160306 19:29:23 1295 Xrd: Open: Error opening the file /00/13076/c62957ae-558b-11e1-9296-00266cfd8b68?&authz=-----BEGIN SEALED CIPHER-----
+OnnPHa+CDFiPe1BXpOOBbDnoyFjRZleiSQWaQKxes8sI7gKSXPJP5dtNbEjbCfe3DHSD+6pQdw6L
+Wh6L4a3GoqWMEZ9sOKY0dJowURQ0itvCoghMxzzBHzyLJIoEIUnFiai0xm+4tv6Ts4BULOnUyHYQ
+0h8uhpaeA2qjRJnb5iM=
+-----END SEALED CIPHER-----
+-----BEGIN SEALED ENVELOPE-----
+AAAAgHhtO4Lvynni2FwpdfpImhcDpFs4JVnPZ5SS0wcOWCpEqC7-0UFcQSP+ah8aLXarPW3I-dBE
+uJpWbgQ880jNzFGQQ8IoO0NQke3sWv7Jq9DmXMw-PxOowqTueWqhgi-g27HYzUpLmpg3mnEVq0-C
+uQbsKflCGaSCvm+gUQrG6-mu1isS0l7VG8-CclD1K9ZBr+WvRNY2A27KwVsBs4qWvqdQseO9Fssa
+roa1-pPPUbfiLQF1fgh3sZnWivaMp7dV5XcAduBueWKBWzPllwoFWD40iBsCYNpMoCpLzwjaznrU
+vDg4wLQfwZlq7Hpz1aXCGvh-hqHWohg8pcb-VT2nMPJlzUoanv-cP+BS7FLCUy+7IZEdwWhAMFHm
+R0FL8PZWi+brYgOrj9F++ATzlwLkEI0HO6PrzG5z8WeV2DgRq4oUkjanWDCX2+fIFb2ayXyksMhn
+yP8yOIrDFvNpopASBludyAKRbSpe-AZGBLLjbEJ6QSyqGRR4ZwmvwcIp9GgiqXgXaPswYHYv+aJL
+Y6MRCX-yg66NQ8CNWxwrJOPI3ABwhR2UkRIvBJLHN7UCjnpYWTK9AbiR2V4098iPu79vA4NjH2w5
+XchbqQuJsuF+gXl5+ylHj2Ruz7MugPk+m5N1-Y68s+zvSMml8YszECsp4iX8zNxorZcakC0vKzHl
+5U1ECrqozoKRwuGhpsmdWQg-A7KlXKmR-ULvx0OSgYT3XjMpkkN+YF7CU0OJTlnI8bdLpd90-7Xu
+KEo5tklb4DfP7eqQqNQgG21-VmRf97SWjG2628dpHi27elqrKi03Wm4mxeIT9BGn1F2VuHTYrDqI
+SONjruo6RQyywzn0bcmZyDQWZhn-pRNEuFNwHwUUjKkDADG14FPAaI0bpBEff+1ii+dXC1PEo+jl
+GLQKCUn4p+mjtfSEYFxl+ZSOKFSqifpSpe6vTAbpl39+JW47ZZYx1LL3MMfCOfnZpAyllxTh0DdZ
+iMG6SzuG-9kluGyjmEJkAl4Y+hdWjIJklw4+xMazqNfjjKTchWH-EhFNTk3uyYj9VrEmLzefJ1Wu
+UGKQfyKvt+hO0u1wpE8CIJjPpRh9P3VoLUXT7z0hTUG7rH3WZcMJV4EJHTQQjIXD9E9371fuAG+P
+KtxYZjR7BZUa+akkGBKlN+hbJl4-
+-----END SEALED ENVELOPE-----
+ on host clralicexrd.in2p3.fr:1094
+160306 19:29:39 1295 Xrd: CheckErrorStatus: Server [sbgse8.in2p3.fr] declared: No servers are available to read the file.(error code: 3011)
+160306 19:29:39 1295 Xrd: Open: Error opening the file /09/48021/930612b2-55eb-11e1-bf87-c3b5336ed15e?&authz=-----BEGIN SEALED CIPHER-----
+FgwRKvL7jJws-h2niSuCdl3Lt+HEHmcUHwsi1Y5SC6clxx5iJnmg6WdQXlvHEXLxLLmbkSLAqC1n
+YSIUDbuxIKJgAhD2o6TwQAt1zCi73cL5JY9DnMZbdh4FxDXekfDOrby0CE1qwEVhbIVmaFAZj6y-
+XBqUnii2TGISeoWn3-U=
+-----END SEALED CIPHER-----
+-----BEGIN SEALED ENVELOPE-----
+AAAAgIFq1XjJrkWoZ1YVVSfNZkvNwJhCYYhdYzrOujRl4QetAPtXRc9pKfO1LWRl9DFWyTZL+q+K
+KcfgJ2yjnwpCB8r+TSEO-KlGmAGSqbn53hDHWRFfOtM6sjbTTATzucFk3-ZT6QLozEGVO7tjLUnj
+qh9ga+vE9jtQ4wGybDZmYJjBYaRLG1B+B3w8F0U7dz2zxbeS5XmM0KW5mD3DuuCr3iW7bEjkeYQX
+mbFnzsAf07UDAvDgIeem7qC9pqba7fdvQjTdtN3tDmqogg0XCrAd9eaNkrXBVBNXEWf+CNBGDZKK
+ltKmqBCXtyWWpjbck8mQZnB-su4ez3R-Lz+IFNUmL+ciGPe7+n19Scwax4R0H0S6n3gNB3hZfSjD
+Jg9-0ft0rpckkuy68jvvE1nqVC7AQVzBFDPCQT1C5wmMCiVDYpK8cEcbtw1PARDivxlKHcqYQbI6
+iDRcg6MR2n7qj16xkAp2rq1F4QtrwyK-1G-vhZMyc3fFVXjUjex2S9MuE0Aw6eK0QDzJkTphmrPv
+F7puDK2Brd-bUg93QJe6-U4u4UPc4zM+0ubLpJIgVFay-LdP9M5K+hly5fNw4rNo8XajNE5h99TI
+bYTVLmntLpNZpic1YXZFklYei-xL5OUE8SVBqmad79w0FSBKwnN6Hrwe9Ew+IkOPK2tytvBm9Z8X
+giJnPTsnCTXDNYQGkmtgT40ueqzXJ2vpuEnKrjrVSjNcQ1v6t026sE1uzfDpdQeA1KMjdGT3tcrM
+XG89AuqAIzI0tP7iBCfxLdqXMrOVkFoyMnWgNHV0iNwQFV9E2TArQLVCkJOwtKHy8r5GFoCugsoy
+kWa3zfsSvYWRTcCP0Qim-BYjgICRHP-n+4ClIrAeLQUc1KEfUbQ5iTddUtAz4ndkv3sTHJB9HnmK
+CchPZfac6H8ybTPNf0llPx5TxEiZ6yXa3jdCvn0l1GQmOEiw8oxKIViuuT1z5J1eoLiPVsAporwj
+aaabN73E--vXXjvvrLCX9eq51fg7C7ygeis3Bb9tIGOzkMo8hbbyiN1Lq7ruhmxP+POdTBTkSSDI
+aBGr3V9A2ovuYFMc8EDrgTpEJ9QT1frjXnMXwcePo+CfUYlRSF+MbE7bADq8inJUAvRFsBYcUlmM
+0LLFOcY9DstVgOhEEcF3Q6mxHhNcNf4uYj1A5xY=
+-----END SEALED ENVELOPE-----
+ on host sbgse8.in2p3.fr:1094
+
+ *** Break *** keyboard interrupt GeneratedMacro.C:65:
+
+ *** Break *** keyboard interrupt
+
+ *** Break *** keyboard interrupt
+160306 19:34:31 6663 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160306 19:34:32 6419 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160306 19:35:01 7947 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160306 19:35:02 7687 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160306 19:35:31 9479 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160306 19:35:31 9223 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160306 19:35:31 6163 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160306 19:35:32 8455 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160306 19:35:32 5123 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+analysis.sh: line 40: free: command not found
+Output file EventStat_temp.root not found. Job FAILED !
+Output file MyOutput.root not found. Job FAILED !
+Output files were not validated by the analysis manager

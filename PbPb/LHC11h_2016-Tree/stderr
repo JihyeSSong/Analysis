@@ -1,0 +1,136 @@
+160307 11:22:32 1295 Xrd: CheckErrorStatus: Server [clralicexrd.in2p3.fr] declared: No servers are available to read the file.1.117]:1094 Sr[::134.158.121.136]:1094 Sr[::134.158.121.118]:1094 Sr[::134.158.121.116]:1094 Sr[::134.158.121.123]:1094 Sr[::134.158.121.127]:1094 Sr[::134.158.121.124]:1094 Sr[::134.158.121.122]:1094(error code: 3011)
+160307 11:22:32 1295 Xrd: Open: Error opening the file /00/13076/c62957ae-558b-11e1-9296-00266cfd8b68?&authz=-----BEGIN SEALED CIPHER-----
+O24Exmr9SwguATEqAXVNN-q-Bd87R5s--tM+hvCSm0HuTqHbyXAkCBzb3ULiosfCnChAPfoGQKKH
+hfrybAXexOKblmNE92jY4fpsbgU7ZpRKAnT2HNnEtLW0z11pvQ+t9p58yrOJLd4Fv1cooqSwQ3AZ
+PrlFu9MG3FyWmfvVBkU=
+-----END SEALED CIPHER-----
+-----BEGIN SEALED ENVELOPE-----
+AAAAgKBkwkco0lcs4a7kEkUNerpe4D+mCe-MPEUf4fhvGIWh6-CZoBYyybd7Lwus2Mpg8Xhi0R7X
+hcWXi1H3DIEH6OXy9bYvSwRIAgIz9W27tiM9OTRt7XkTQjLnB+Udr5Om7vp3uq2sh+xC4PDKvYcc
+IIT3Z8LRkxqFknk1ZUa2-g8sXaFALgzRRf4NxM9EptECWa+GkNXcSsk2JUnKpuCY8mTEKMNc33td
++oXvsMJ+y7SbCb8EjjyquMXvJL7fQ6kSftzonmlBkXOV2rC5nNE4PaaE-lcsXrc2aGAf-Wyn4KGT
+Fm-MWEOcj+9S05Fd9cOtt4LRHD8+7fTUOYKaADIaZF7QHzLfQNa-bCzVnGHVWFty5yKRK3ije5rg
+HVEbJrLnWugDYvCdJ+VrT7SMMSe4iEEw94nOCS9MLvuAFlRkUsexHo0omwApzaHsm-PIFZbIaAPj
+T3I63KBQYg24eDxJnaA75XENvF6YZYrBl3BhKjBc0BIOHkRPS+zT1+OsH7ndGPR+NT6DTrq64bPb
+cvHI6h6NsZPqYK5Vyf5QEtKY9fAIC+iYru1JhOqjv9RqsRSfSnrDx4ZQR5Q7bPohbYjGVRJc24JO
+N5hz8Lc8-EBAEjs-I+TZIYv--yF-NNd5DwzI8+5tt7wrnPARbhQH6IHGH1xq5kvgl1YnV+-Ae-ih
+PM-OmPfuuJWKJoCa1wtSED7xiMIiCJUnCLZVrUs-gGLjhVpFyOaYIgQHKJjdQsOpk0nYWRp-lIy3
+B6lAzTWlnHPQbV8x+lDGulEQL+MaP6xtY7lPZpkQ96M+N2xc7OcoNKRUSEyUyfEUnBxMuOXoBcbB
+OLtxiS2cPCwKkZRAE+VV0W-EpzSAN0XiV5ku83yhJ+jQiWUWU-fT42nX01NXhiTgb9lo0Yy+d84K
+TGb3mNO9fhvqIEPRJAVpXfqn4KRKCL3W24LcUgDd8XFa4nkN1tXhtfnOYfjQg7QlMBmMBR7-I0s0
+OlJPQuoimeV+lfeKy+BSLBXGEyoKN2poY6FLyb4PMn+8PZ42QDLDibhi4cO4iu+eT8qUi+LOluKc
+MkGCXoG2aLveF7rboywVpeVbI0Re0Xy9I5-96P7NpHDusgoA3pAmHGemA41QaDhUL5m6v--ZNR9s
+JOciZ-pYYNXkQjXTk4pKHd5IyOWz
+-----END SEALED ENVELOPE-----
+ on host clralicexrd.in2p3.fr:1094
+160307 11:22:35 1295 Xrd: CheckErrorStatus: Server [sbgse8.in2p3.fr] declared: No servers are available to read the file.(error code: 3011)
+160307 11:22:35 1295 Xrd: Open: Error opening the file /09/48021/930612b2-55eb-11e1-bf87-c3b5336ed15e?&authz=-----BEGIN SEALED CIPHER-----
+jGS4swRjUm4lVdGU52maNfNWrzgIF97Exrm4HDn4q2cwD8TfVza-DUP2W8QJsN5iUQ6R1-bci6TX
+jTp5A3ARmII-o-WzgujIe2VrPv8MNyJiVLu7kwBk39+rTwP8sbPPwvYC-caUi3g3AFNy95uc-j-b
+6kIYZMegk5peETJVb-4=
+-----END SEALED CIPHER-----
+-----BEGIN SEALED ENVELOPE-----
+AAAAgFaUV0lF-1LvV2Kx2qrlsw60b5G4Vb2s6YavWO4j9ajMq3jgdJGpz+5HgP+I8Ni75VhlJEM8
+wFJYud-R7t8afYdtlTeoIATerwWzS9CLJ1Tz3EX2N1brQCXvpJ3FK8cpE+7T0h9IP7d4+Tl1efwH
+KSG55MF7N8HjzZhaMquM3D-yclB3AeGrJtrSCdFqty0etcGvxJtSwpdlx8-h18cNxbH-bKp7yxIB
+yEYpTuSgVGWmv+pKHHoqBgTZbda1tsGaaUG8i19YvfOvsBsM9EBgsbk9A-AscfQqUyAtFirrHrDc
+WhSeuGD-sTSPP1oaXZ1jz51cCChPf958rzEJs2SVtXs+t1YQd0TPCWvViBBm9wdv+btzbQzXQCEb
+7XImTYgMpCSsEMbQkhCpVDRCQfWFJr1dNofFtCALRqC960-Sm+f9BpTv9Cmw6Xgs26EfalRRj2yR
+-EcIbD6A4rixGOaa0Zj65eF7AyMHUk8Ook385hj4rztmfN-tggafdAf3H1inqk8E+5wP+Sacyc2h
+iwZF7fsO3Cfr5mU1IKkxt1oQgNVDnUEbxFC1HP79S-EcfiYummS3WsugT2lNS1vvgZgW4h--P52H
+J7FLZMEHMKC4+DiW-izXhaUJlJjMwS3O8+n8kWG365Jj8E9pibFo0-Brd3aaNAuK7N7yekZO51wm
+YtDe1mFXgPabguq8U6eV77kJsMon5bwZf38VB-RmF-hQH32z2T+PCzG7ENUoHlGPedfJ5z88G3QZ
+5iN3cVMZ20t4vN9Mf-GisWlY7Qx7YSXReohxvNIcu1Sm4pQOqhkSU6QRL8-NTd9-seWr-9cXsFAc
+3pas43LO98TbCsomm8t69zZx8iE9OIo1PkDmOwIPRzzpkaScFFQdn7ixpKSzpjGYKR5KlPdICRwn
+hg5y-F6sTxk7UzlBsE2y004n5xqEUBtyVrDlULHLWD0D2Y3o8hnefpMBWhm-JiLBMGGWcl1SVsY5
++8z-1efMmokS7LYZJ5+IlDJG38wQ+aBhp5aq1QAd+fti-pli7bDfOjBAr8weNUp1SmLMqpMRcdgK
+umQQWgPtZC8LO8UARH3kiNPafEhbVuOB7TKxAVqnShJgraaMgUQ3+9XiynmsXcGLSAa9+innVLfi
+iFlvMMrRRMrg+erwrdkQ1CYdFw9Mysl-JdVD7cs=
+-----END SEALED ENVELOPE-----
+ on host sbgse8.in2p3.fr:1094
+160307 11:27:57 6163 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:27:57 8711 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:27:57 6939 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:27:57 7687 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:27:57 9479 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:27:57 6663 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:27:57 6419 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:27:57 9223 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:28:27 9735 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:30:12 1295 Xrd: CheckErrorStatus: Server [clralicexrd.in2p3.fr] declared: No servers are available to read the file.1.117]:1094 Sr[::134.158.121.136]:1094 Sr[::134.158.121.118]:1094 Sr[::134.158.121.116]:1094 Sr[::134.158.121.123]:1094 Sr[::134.158.121.127]:1094 Sr[::134.158.121.124]:1094 Sr[::134.158.121.122]:1094(error code: 3011)
+160307 11:30:12 1295 Xrd: Open: Error opening the file /00/13076/c62957ae-558b-11e1-9296-00266cfd8b68?&authz=-----BEGIN SEALED CIPHER-----
+O24Exmr9SwguATEqAXVNN-q-Bd87R5s--tM+hvCSm0HuTqHbyXAkCBzb3ULiosfCnChAPfoGQKKH
+hfrybAXexOKblmNE92jY4fpsbgU7ZpRKAnT2HNnEtLW0z11pvQ+t9p58yrOJLd4Fv1cooqSwQ3AZ
+PrlFu9MG3FyWmfvVBkU=
+-----END SEALED CIPHER-----
+-----BEGIN SEALED ENVELOPE-----
+AAAAgKBkwkco0lcs4a7kEkUNerpe4D+mCe-MPEUf4fhvGIWh6-CZoBYyybd7Lwus2Mpg8Xhi0R7X
+hcWXi1H3DIEH6OXy9bYvSwRIAgIz9W27tiM9OTRt7XkTQjLnB+Udr5Om7vp3uq2sh+xC4PDKvYcc
+IIT3Z8LRkxqFknk1ZUa2-g8sXaFALgzRRf4NxM9EptECWa+GkNXcSsk2JUnKpuCY8mTEKMNc33td
++oXvsMJ+y7SbCb8EjjyquMXvJL7fQ6kSftzonmlBkXOV2rC5nNE4PaaE-lcsXrc2aGAf-Wyn4KGT
+Fm-MWEOcj+9S05Fd9cOtt4LRHD8+7fTUOYKaADIaZF7QHzLfQNa-bCzVnGHVWFty5yKRK3ije5rg
+HVEbJrLnWugDYvCdJ+VrT7SMMSe4iEEw94nOCS9MLvuAFlRkUsexHo0omwApzaHsm-PIFZbIaAPj
+T3I63KBQYg24eDxJnaA75XENvF6YZYrBl3BhKjBc0BIOHkRPS+zT1+OsH7ndGPR+NT6DTrq64bPb
+cvHI6h6NsZPqYK5Vyf5QEtKY9fAIC+iYru1JhOqjv9RqsRSfSnrDx4ZQR5Q7bPohbYjGVRJc24JO
+N5hz8Lc8-EBAEjs-I+TZIYv--yF-NNd5DwzI8+5tt7wrnPARbhQH6IHGH1xq5kvgl1YnV+-Ae-ih
+PM-OmPfuuJWKJoCa1wtSED7xiMIiCJUnCLZVrUs-gGLjhVpFyOaYIgQHKJjdQsOpk0nYWRp-lIy3
+B6lAzTWlnHPQbV8x+lDGulEQL+MaP6xtY7lPZpkQ96M+N2xc7OcoNKRUSEyUyfEUnBxMuOXoBcbB
+OLtxiS2cPCwKkZRAE+VV0W-EpzSAN0XiV5ku83yhJ+jQiWUWU-fT42nX01NXhiTgb9lo0Yy+d84K
+TGb3mNO9fhvqIEPRJAVpXfqn4KRKCL3W24LcUgDd8XFa4nkN1tXhtfnOYfjQg7QlMBmMBR7-I0s0
+OlJPQuoimeV+lfeKy+BSLBXGEyoKN2poY6FLyb4PMn+8PZ42QDLDibhi4cO4iu+eT8qUi+LOluKc
+MkGCXoG2aLveF7rboywVpeVbI0Re0Xy9I5-96P7NpHDusgoA3pAmHGemA41QaDhUL5m6v--ZNR9s
+JOciZ-pYYNXkQjXTk4pKHd5IyOWz
+-----END SEALED ENVELOPE-----
+ on host clralicexrd.in2p3.fr:1094
+160307 11:30:13 1295 Xrd: CheckErrorStatus: Server [naneosmgr01.in2p3.fr:1094] declared: session not found(error code: 3011)
+160307 11:31:56 5651 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:33:57 1295 Xrd: CheckErrorStatus: Server [sbgse8.in2p3.fr] declared: No servers are available to read the file.(error code: 3011)
+160307 11:33:57 1295 Xrd: Open: Error opening the file /09/48021/930612b2-55eb-11e1-bf87-c3b5336ed15e?&authz=-----BEGIN SEALED CIPHER-----
+jGS4swRjUm4lVdGU52maNfNWrzgIF97Exrm4HDn4q2cwD8TfVza-DUP2W8QJsN5iUQ6R1-bci6TX
+jTp5A3ARmII-o-WzgujIe2VrPv8MNyJiVLu7kwBk39+rTwP8sbPPwvYC-caUi3g3AFNy95uc-j-b
+6kIYZMegk5peETJVb-4=
+-----END SEALED CIPHER-----
+-----BEGIN SEALED ENVELOPE-----
+AAAAgFaUV0lF-1LvV2Kx2qrlsw60b5G4Vb2s6YavWO4j9ajMq3jgdJGpz+5HgP+I8Ni75VhlJEM8
+wFJYud-R7t8afYdtlTeoIATerwWzS9CLJ1Tz3EX2N1brQCXvpJ3FK8cpE+7T0h9IP7d4+Tl1efwH
+KSG55MF7N8HjzZhaMquM3D-yclB3AeGrJtrSCdFqty0etcGvxJtSwpdlx8-h18cNxbH-bKp7yxIB
+yEYpTuSgVGWmv+pKHHoqBgTZbda1tsGaaUG8i19YvfOvsBsM9EBgsbk9A-AscfQqUyAtFirrHrDc
+WhSeuGD-sTSPP1oaXZ1jz51cCChPf958rzEJs2SVtXs+t1YQd0TPCWvViBBm9wdv+btzbQzXQCEb
+7XImTYgMpCSsEMbQkhCpVDRCQfWFJr1dNofFtCALRqC960-Sm+f9BpTv9Cmw6Xgs26EfalRRj2yR
+-EcIbD6A4rixGOaa0Zj65eF7AyMHUk8Ook385hj4rztmfN-tggafdAf3H1inqk8E+5wP+Sacyc2h
+iwZF7fsO3Cfr5mU1IKkxt1oQgNVDnUEbxFC1HP79S-EcfiYummS3WsugT2lNS1vvgZgW4h--P52H
+J7FLZMEHMKC4+DiW-izXhaUJlJjMwS3O8+n8kWG365Jj8E9pibFo0-Brd3aaNAuK7N7yekZO51wm
+YtDe1mFXgPabguq8U6eV77kJsMon5bwZf38VB-RmF-hQH32z2T+PCzG7ENUoHlGPedfJ5z88G3QZ
+5iN3cVMZ20t4vN9Mf-GisWlY7Qx7YSXReohxvNIcu1Sm4pQOqhkSU6QRL8-NTd9-seWr-9cXsFAc
+3pas43LO98TbCsomm8t69zZx8iE9OIo1PkDmOwIPRzzpkaScFFQdn7ixpKSzpjGYKR5KlPdICRwn
+hg5y-F6sTxk7UzlBsE2y004n5xqEUBtyVrDlULHLWD0D2Y3o8hnefpMBWhm-JiLBMGGWcl1SVsY5
++8z-1efMmokS7LYZJ5+IlDJG38wQ+aBhp5aq1QAd+fti-pli7bDfOjBAr8weNUp1SmLMqpMRcdgK
+umQQWgPtZC8LO8UARH3kiNPafEhbVuOB7TKxAVqnShJgraaMgUQ3+9XiynmsXcGLSAa9+innVLfi
+iFlvMMrRRMrg+erwrdkQ1CYdFw9Mysl-JdVD7cs=
+-----END SEALED ENVELOPE-----
+ on host sbgse8.in2p3.fr:1094
+160307 11:34:00 1295 Xrd: CheckErrorStatus: Server [xhs11.sdfarm.kr:1094] declared: session not found(error code: 3011)
+160307 11:34:57 10247 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:35:27 8987 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:36:57 10759 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:39:27 9243 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:39:27 5123 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:42:57 5395 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:45:03 1295 Xrd: CheckErrorStatus: Server [pcapiserv08.cern.ch:10000] declared: session not found(error code: 3011)
+160307 11:45:04 1295 Xrd: CheckErrorStatus: Server [eosalice-srv-b1.cern.ch:1094] declared: session not found(error code: 3011)
+160307 11:57:29 7175 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:57:29 7431 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:57:29 8199 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:57:29 7703 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:57:29 8455 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:57:29 10767 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:57:29 6183 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes)160307 11:57:38 5683 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:57:38 8199 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:57:38 8455 Xrd: XrdClientMessage::ReadRaw: Failed to read header (8 bytes).
+160307 11:57:38 9759 Xrd: XrdClientMessage::Re160307 12:17:52 5907 Xrd: XrdClientSock::RecvRaw: Error reading from socket: Operation timed out
+160307 12:17:52 5907 Xrd: Xrd160307 12:18:06 5907 Xrd: XrdClientMessage::ReadRaw: Fail160307 13:11:20 1295 Xrd: ReadPartialAnswer: Failed to read msg from connmgr (server [eosalice-srv-b1.cern.ch:1094]). Retrying ...
+160307 13:11:20 1295 Xrd: CheckErrorStatus: Server [eosalice-srv-b1.cern.ch:1094] declared: not session owner(error code: 3010)
+160307 13:11:20 1295 Xrd: CheckErrorStatus: Server [eosalice-srv-b1.cern.ch:1094] declared: session not found(error code: 3011)
+160307 13:12:23 1295 Xrd: CheckErrorStatus: Server [eosalice-srv-b1.cern.ch:1094] declared: session not found(error code: 3011)
+160307 13:13:44 1295 Xrd: CheckErrorStatus: Server [eosalice-srv-b1.cern.ch:1094] declared: session not found(error code: 3011)
+analysis.sh: line 40: free: command not found

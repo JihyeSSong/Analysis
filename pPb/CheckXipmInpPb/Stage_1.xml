@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<alien>
+  <collection name="Stage_1">
+    <event name="1">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:26:17" dir="37282800" entryId="37282821" expiretime="" gowner="jisong" guid="2145CBD6-0303-11E5-AA2F-9B1B7CF284DC" guidtime="11E50303" jobid="509670471" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/001/root_archive.zip" md5="e1b145334a29aa2986b6a86b0434b9ca" owner="jisong" perm="755" replicated="0" size="2428238" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/001/root_archive.zip" type="f" />
+    </event>
+    <event name="10">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:39:15" dir="37284638" entryId="37284690" expiretime="" gowner="jisong" guid="EE52CD08-0304-11E5-9802-239E096479AF" guidtime="11E50304" jobid="509670481" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/011/root_archive.zip" md5="3c941da6b50f861764ee81cffe55d321" owner="jisong" perm="755" replicated="0" size="3532904" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/011/root_archive.zip" type="f" />
+    </event>
+    <event name="11">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:42:26" dir="37285317" entryId="37285345" expiretime="" gowner="jisong" guid="632AA9B6-0305-11E5-8CB9-E7F1CB9CA755" guidtime="11E50305" jobid="509670482" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/012/root_archive.zip" md5="56a332165385555d43e1ad08fa58ccc7" owner="jisong" perm="755" replicated="0" size="3564676" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/012/root_archive.zip" type="f" />
+    </event>
+    <event name="12">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:46:58" dir="37285945" entryId="37285970" expiretime="" gowner="jisong" guid="0363FE8C-0306-11E5-BBBD-6B1CA47AC02F" guidtime="11E50306" jobid="509670483" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/013/root_archive.zip" md5="e52e9664e2b69da6bbc9ca98ee082381" owner="jisong" perm="755" replicated="0" size="3498814" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/013/root_archive.zip" type="f" />
+    </event>
+    <event name="13">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:44:38" dir="37285579" entryId="37285639" expiretime="" gowner="jisong" guid="AF309A8C-0305-11E5-A425-EB030A382FD4" guidtime="11E50305" jobid="509670484" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/014/root_archive.zip" md5="76b70972e90ff38d9bc6e066af9c1e1a" owner="jisong" perm="755" replicated="0" size="3550614" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/014/root_archive.zip" type="f" />
+    </event>
+    <event name="14">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:44:27" dir="37285559" entryId="37285605" expiretime="" gowner="jisong" guid="AA304E1A-0305-11E5-BF3E-632D38F31515" guidtime="11E50305" jobid="509670485" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/015/root_archive.zip" md5="c4ba3dd0063e0aeae0a23611820b0165" owner="jisong" perm="755" replicated="0" size="3528240" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/015/root_archive.zip" type="f" />
+    </event>
+    <event name="15">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:46:28" dir="37285872" entryId="37285903" expiretime="" gowner="jisong" guid="EF334260-0305-11E5-9A87-8757D7551202" guidtime="11E50305" jobid="509670486" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/016/root_archive.zip" md5="635bc308f19fe0c7aa1698dc04efbb95" owner="jisong" perm="755" replicated="0" size="3573933" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/016/root_archive.zip" type="f" />
+    </event>
+    <event name="16">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:45:48" dir="37285785" entryId="37285822" expiretime="" gowner="jisong" guid="D5065530-0305-11E5-921F-2FD8C53E7476" guidtime="11E50305" jobid="509670487" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/017/root_archive.zip" md5="05c233b317b8066e981411615dee3091" owner="jisong" perm="755" replicated="0" size="3567481" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/017/root_archive.zip" type="f" />
+    </event>
+    <event name="17">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:40:25" dir="37284815" entryId="37284862" expiretime="" gowner="jisong" guid="17EE8C7E-0305-11E5-A959-974D40B2F556" guidtime="11E50305" jobid="509670488" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/018/root_archive.zip" md5="20a8a9053d18d624ba88057eb7ad7820" owner="jisong" perm="755" replicated="0" size="3350255" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/018/root_archive.zip" type="f" />
+    </event>
+    <event name="18">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:38:04" dir="37284415" entryId="37284484" expiretime="" gowner="jisong" guid="BC5F41C8-0304-11E5-B660-B72A7F428338" guidtime="11E50304" jobid="509670489" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/019/root_archive.zip" md5="52985c5a54fe95936a43e62aabc3a639" owner="jisong" perm="755" replicated="0" size="3445998" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/019/root_archive.zip" type="f" />
+    </event>
+    <event name="19">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:33:01" dir="37283695" entryId="37283715" expiretime="" gowner="jisong" guid="0E5FB54E-0304-11E5-81FF-4F0294ECFFDF" guidtime="11E50304" jobid="509670490" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/020/root_archive.zip" md5="ee457fb50e476bf512f11a3ebc9a0534" owner="jisong" perm="755" replicated="0" size="2426081" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/020/root_archive.zip" type="f" />
+    </event>
+    <event name="2">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:43:57" dir="37285484" entryId="37285526" expiretime="" gowner="jisong" guid="96E8E90C-0305-11E5-92DC-533634B1E3C1" guidtime="11E50305" jobid="509670472" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/002/root_archive.zip" md5="162561a4cec837438c6df2be2a50caaa" owner="jisong" perm="755" replicated="0" size="3574952" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/002/root_archive.zip" type="f" />
+    </event>
+    <event name="20">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:34:22" dir="37283920" entryId="37283970" expiretime="" gowner="jisong" guid="3F0F6ACC-0304-11E5-9EA1-6BA3740C94C3" guidtime="11E50304" jobid="509670491" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/021/root_archive.zip" md5="bb14a31752c3b365246c1f3f3ba4a0d3" owner="jisong" perm="755" replicated="0" size="2416147" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/021/root_archive.zip" type="f" />
+    </event>
+    <event name="21">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:26:58" dir="37282881" entryId="37282918" expiretime="" gowner="jisong" guid="36C87562-0303-11E5-BD5D-E33F8D4C41D9" guidtime="11E50303" jobid="509670492" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/022/root_archive.zip" md5="4ef4752167f3c9c2d794cfe75ea05656" owner="jisong" perm="755" replicated="0" size="2428085" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/022/root_archive.zip" type="f" />
+    </event>
+    <event name="22">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:46:28" dir="37285873" entryId="37285906" expiretime="" gowner="jisong" guid="F074F736-0305-11E5-A6F4-A3C52B99DFF7" guidtime="11E50305" jobid="509670493" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/023/root_archive.zip" md5="9640a8fc2147129726a3451d2cd88227" owner="jisong" perm="755" replicated="0" size="3525490" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/023/root_archive.zip" type="f" />
+    </event>
+    <event name="23">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:40:05" dir="37284772" entryId="37284811" expiretime="" gowner="jisong" guid="0D01A09E-0305-11E5-A18E-77CFC07E0F25" guidtime="11E50305" jobid="509670494" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/024/root_archive.zip" md5="6dc1671c608b5beb8c77a1ca50e92fd5" owner="jisong" perm="755" replicated="0" size="3567836" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/024/root_archive.zip" type="f" />
+    </event>
+    <event name="24">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:58:52" dir="37287008" entryId="37287016" expiretime="" gowner="jisong" guid="A8052AD2-0307-11E5-9052-A79D3616D541" guidtime="11E50307" jobid="509670495" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/025/root_archive.zip" md5="8d7e8203fecb4534de04a65b89d4d488" owner="jisong" perm="755" replicated="0" size="3581641" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/025/root_archive.zip" type="f" />
+    </event>
+    <event name="25">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:45:28" dir="37285739" entryId="37285782" expiretime="" gowner="jisong" guid="CE5EE7D8-0305-11E5-A295-1B8CA8337C2E" guidtime="11E50305" jobid="509670496" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/026/root_archive.zip" md5="7d75ba81c480f28bb081058f03a8e70d" owner="jisong" perm="755" replicated="0" size="3592209" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/026/root_archive.zip" type="f" />
+    </event>
+    <event name="26">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:47:48" dir="37286073" entryId="37286107" expiretime="" gowner="jisong" guid="1DB35CBA-0306-11E5-A9DA-430CB3C8379A" guidtime="11E50306" jobid="509670497" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/027/root_archive.zip" md5="c231a9abbb4863c3c5e6ccc80048b033" owner="jisong" perm="755" replicated="0" size="3537279" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/027/root_archive.zip" type="f" />
+    </event>
+    <event name="27">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:36:12" dir="37284203" entryId="37284232" expiretime="" gowner="jisong" guid="8040A1A0-0304-11E5-B429-CF823D1F7396" guidtime="11E50304" jobid="509670498" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/028/root_archive.zip" md5="9369112734495ee87e9ff1eb330b6e11" owner="jisong" perm="755" replicated="0" size="3013133" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/028/root_archive.zip" type="f" />
+    </event>
+    <event name="28">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:37:24" dir="37284338" entryId="37284378" expiretime="" gowner="jisong" guid="A8AEC874-0304-11E5-80F9-4758100DB93B" guidtime="11E50304" jobid="509670500" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/030/root_archive.zip" md5="601e3431cf06ce85d2b42b27ca1f3d18" owner="jisong" perm="755" replicated="0" size="3525554" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/030/root_archive.zip" type="f" />
+    </event>
+    <event name="29">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:37:24" dir="37284344" entryId="37284381" expiretime="" gowner="jisong" guid="AD658C5E-0304-11E5-B2F2-77EEB8C9C88B" guidtime="11E50304" jobid="509670501" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/031/root_archive.zip" md5="5652fe71429969fa323ead0b0940d4c6" owner="jisong" perm="755" replicated="0" size="3538914" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/031/root_archive.zip" type="f" />
+    </event>
+    <event name="3">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:40:35" dir="37284865" entryId="37284905" expiretime="" gowner="jisong" guid="212244F2-0305-11E5-9891-FBD31C14308C" guidtime="11E50305" jobid="509670473" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/003/root_archive.zip" md5="261675a6c82a902dc52ce0397a63752f" owner="jisong" perm="755" replicated="0" size="3540750" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/003/root_archive.zip" type="f" />
+    </event>
+    <event name="30">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:33:41" dir="37283805" entryId="37283843" expiretime="" gowner="jisong" guid="2631B3A2-0304-11E5-AF7E-CB8BD9704BEE" guidtime="11E50304" jobid="509670502" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/032/root_archive.zip" md5="cc712cdc96b45e72f6db3fc3a07c5de7" owner="jisong" perm="755" replicated="0" size="3619140" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/032/root_archive.zip" type="f" />
+    </event>
+    <event name="31">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:38:34" dir="37284525" entryId="37284562" expiretime="" gowner="jisong" guid="D5C296F6-0304-11E5-A55F-F32AB691AC6A" guidtime="11E50304" jobid="509670503" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/033/root_archive.zip" md5="38c4f626a85ae2f537b2dfd591205b0a" owner="jisong" perm="755" replicated="0" size="3513738" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/033/root_archive.zip" type="f" />
+    </event>
+    <event name="32">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:32:40" dir="37283654" entryId="37283678" expiretime="" gowner="jisong" guid="017329A6-0304-11E5-9224-43B47493664F" guidtime="11E50304" jobid="509670504" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/034/root_archive.zip" md5="35e905265a1225c4a8eccdb3c871d572" owner="jisong" perm="755" replicated="0" size="3432982" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/034/root_archive.zip" type="f" />
+    </event>
+    <event name="33">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:27:27" dir="37282936" entryId="37283012" expiretime="" gowner="jisong" guid="44D40C84-0303-11E5-8C0B-7B6998814EBB" guidtime="11E50303" jobid="509670505" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/035/root_archive.zip" md5="387654b72bcbe6fcf5ca0dec2aa52df5" owner="jisong" perm="755" replicated="0" size="2443092" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/035/root_archive.zip" type="f" />
+    </event>
+    <event name="34">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:27:07" dir="37282917" entryId="37282951" expiretime="" gowner="jisong" guid="3F1AF104-0303-11E5-B3FC-7F8C798CB027" guidtime="11E50303" jobid="509670506" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/036/root_archive.zip" md5="dc6287b1af450727c22feeb37c71be3a" owner="jisong" perm="755" replicated="0" size="2410407" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/036/root_archive.zip" type="f" />
+    </event>
+    <event name="4">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:45:58" dir="37285792" entryId="37285842" expiretime="" gowner="jisong" guid="DA572988-0305-11E5-87D1-C316A3A83158" guidtime="11E50305" jobid="509670475" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/005/root_archive.zip" md5="688c824a21ce59a02ca0d97ed819cb6e" owner="jisong" perm="755" replicated="0" size="3522734" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/005/root_archive.zip" type="f" />
+    </event>
+    <event name="5">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:54:21" dir="37286800" entryId="37286822" expiretime="" gowner="jisong" guid="063A98C2-0307-11E5-BEAE-0F0225AB9E9D" guidtime="11E50307" jobid="509670476" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/006/root_archive.zip" md5="032a8c771bc77bbba9dcf49536eb7c10" owner="jisong" perm="755" replicated="0" size="3622332" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/006/root_archive.zip" type="f" />
+    </event>
+    <event name="6">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:31:31" dir="37283489" entryId="37283532" expiretime="" gowner="jisong" guid="D8E07ACA-0303-11E5-A5C4-431DEC11E8FF" guidtime="11E50303" jobid="509670477" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/007/root_archive.zip" md5="eb37885820c4779c7b1692264373e8c3" owner="jisong" perm="755" replicated="0" size="2853199" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/007/root_archive.zip" type="f" />
+    </event>
+    <event name="7">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:32:00" dir="37283570" entryId="37283597" expiretime="" gowner="jisong" guid="E8FD1832-0303-11E5-A5D4-27AA214D8F78" guidtime="11E50303" jobid="509670478" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/008/root_archive.zip" md5="7263f2fc74ad143d246271bcdd6c79df" owner="jisong" perm="755" replicated="0" size="2410630" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/008/root_archive.zip" type="f" />
+    </event>
+    <event name="8">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:37:44" dir="37284385" entryId="37284442" expiretime="" gowner="jisong" guid="B5E6C1B8-0304-11E5-ADBE-0BE77063D479" guidtime="11E50304" jobid="509670479" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/009/root_archive.zip" md5="8775239f6e1c6abc8232e360d01a46be" owner="jisong" perm="755" replicated="0" size="3533041" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/009/root_archive.zip" type="f" />
+    </event>
+    <event name="9">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2015-05-25 19:45:58" dir="37285809" entryId="37285845" expiretime="" gowner="jisong" guid="E06E51DE-0305-11E5-8C22-7F53F6A8B6C8" guidtime="11E50305" jobid="509670480" lfn="/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/010/root_archive.zip" md5="b9cecebd388ac73aacbeff96cffa5ed0" owner="jisong" perm="755" replicated="0" size="3603048" turl="alien:///alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/013/010/root_archive.zip" type="f" />
+    </event>
+    <info command="[/alice/cern.ch/user/j/jisong/LHC13c_CompareXi_pp/output/]: find -z -x Stage_1 /alice/cern.ch/user/j/jisong//LHC13c_CompareXi_pp/output/013 *root_archive.zip" creator="admin" date="Tue May 26 09:08:38 CEST 2015" timestamp="1432624118" />
+  </collection>
+</alien>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

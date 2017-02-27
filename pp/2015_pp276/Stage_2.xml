@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<alien>
+  <collection name="Stage_2">
+    <event name="1">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 08:03:48" dir="62155828" entryId="62155834" expiretime="" gowner="jisong" guid="8A5045F4-E84C-11E6-A83F-7BCD2C0C9CA4" guidtime="11E6E84C" jobid="817454210" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/001/root_archive.zip" md5="61e6421e3195bc363b345cb6bceabbcf" owner="jisong" perm="755" replicated="0" size="4573665" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/001/root_archive.zip" type="f" />
+    </event>
+    <event name="10">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:56:26" dir="62155347" entryId="62155436" expiretime="" gowner="jisong" guid="7A23CFEE-E84B-11E6-A9A2-8BA060FDA069" guidtime="11E6E84B" jobid="817454219" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/010/root_archive.zip" md5="a764d5880c3c3055008277bf2ce72468" owner="jisong" perm="755" replicated="0" size="3942013" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/010/root_archive.zip" type="f" />
+    </event>
+    <event name="11">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:58:33" dir="62155551" entryId="62155705" expiretime="" gowner="jisong" guid="9F40B5E4-E84B-11E6-AFDF-E3BD0AFD447C" guidtime="11E6E84B" jobid="817454220" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/011/root_archive.zip" md5="0ce155610a41eb32478b651c7dc6edd9" owner="jisong" perm="755" replicated="0" size="3937052" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/011/root_archive.zip" type="f" />
+    </event>
+    <event name="12">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:57:13" dir="62155548" entryId="62155616" expiretime="" gowner="jisong" guid="9D68B41A-E84B-11E6-83E3-23F8E81C0C63" guidtime="11E6E84B" jobid="817454221" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/012/root_archive.zip" md5="ac1d2fb9a980c6a8c9f1568275f04583" owner="jisong" perm="755" replicated="0" size="4574687" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/012/root_archive.zip" type="f" />
+    </event>
+    <event name="13">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:55:52" dir="62155262" entryId="62155306" expiretime="" gowner="jisong" guid="7210F71E-E84B-11E6-BBE6-83D59F1BE8A5" guidtime="11E6E84B" jobid="817454222" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/013/root_archive.zip" md5="c2f8443450205420ffba4bf5c116b7f5" owner="jisong" perm="755" replicated="0" size="4213502" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/013/root_archive.zip" type="f" />
+    </event>
+    <event name="14">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:57:13" dir="62155550" entryId="62155619" expiretime="" gowner="jisong" guid="9DD337D6-E84B-11E6-B7A5-F7E77E49B62E" guidtime="11E6E84B" jobid="817454223" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/014/root_archive.zip" md5="bc5ba36dbda43c896299acf591d13d94" owner="jisong" perm="755" replicated="0" size="4276149" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/014/root_archive.zip" type="f" />
+    </event>
+    <event name="15">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:58:33" dir="62155674" entryId="62155708" expiretime="" gowner="jisong" guid="C5BC4FF8-E84B-11E6-8E6E-1B5A11F2ABB6" guidtime="11E6E84B" jobid="817454224" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/015/root_archive.zip" md5="559b1ea12f0c4f72b0139f9a334358fd" owner="jisong" perm="755" replicated="0" size="4354035" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/015/root_archive.zip" type="f" />
+    </event>
+    <event name="16">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:55:53" dir="62155266" entryId="62155314" expiretime="" gowner="jisong" guid="72748C5C-E84B-11E6-A9B6-CB992EC514F2" guidtime="11E6E84B" jobid="817454225" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/016/root_archive.zip" md5="25f145ba5e5e67366a41ba6df1391d47" owner="jisong" perm="755" replicated="0" size="4521687" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/016/root_archive.zip" type="f" />
+    </event>
+    <event name="17">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:56:26" dir="62155277" entryId="62155443" expiretime="" gowner="jisong" guid="76CAE206-E84B-11E6-83C4-DB4CC5639920" guidtime="11E6E84B" jobid="817454226" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/017/root_archive.zip" md5="b7f62fdf515117fe6abcc0c9fba15f7a" owner="jisong" perm="755" replicated="0" size="3995673" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/017/root_archive.zip" type="f" />
+    </event>
+    <event name="18">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:56:26" dir="62155269" entryId="62155449" expiretime="" gowner="jisong" guid="72FED13C-E84B-11E6-A4E9-7FA555A188EF" guidtime="11E6E84B" jobid="817454227" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/018/root_archive.zip" md5="9ad903da6e221d54bb2e8cb0e8e888cc" owner="jisong" perm="755" replicated="0" size="3941842" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/018/root_archive.zip" type="f" />
+    </event>
+    <event name="19">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 08:02:59" dir="62155808" entryId="62155820" expiretime="" gowner="jisong" guid="7103D5FC-E84C-11E6-AB57-07FB295C9C28" guidtime="11E6E84C" jobid="817454228" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/019/root_archive.zip" md5="e07d8c205852a7701749d8e970df0022" owner="jisong" perm="755" replicated="0" size="5011027" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/019/root_archive.zip" type="f" />
+    </event>
+    <event name="2">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:59:11" dir="62155732" entryId="62155737" expiretime="" gowner="jisong" guid="E5C7E208-E84B-11E6-B72A-8B2546B4D43D" guidtime="11E6E84B" jobid="817454211" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/002/root_archive.zip" md5="b62543ef1274e9a3b59fcdd28aa47ecb" owner="jisong" perm="755" replicated="0" size="5111959" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/002/root_archive.zip" type="f" />
+    </event>
+    <event name="20">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:55:53" dir="62155273" entryId="62155319" expiretime="" gowner="jisong" guid="74D0C862-E84B-11E6-8909-EFC365C9A640" guidtime="11E6E84B" jobid="817454229" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/020/root_archive.zip" md5="db67a9a186afa2dd7c431dbd4216225f" owner="jisong" perm="755" replicated="0" size="3936837" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/020/root_archive.zip" type="f" />
+    </event>
+    <event name="21">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:57:11" dir="62155517" entryId="62155585" expiretime="" gowner="jisong" guid="9AE176B4-E84B-11E6-A099-4B367EE31418" guidtime="11E6E84B" jobid="817454230" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/021/root_archive.zip" md5="735841fc312c9b123464b548e576c6c0" owner="jisong" perm="755" replicated="0" size="4417900" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/021/root_archive.zip" type="f" />
+    </event>
+    <event name="22">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:58:33" dir="62155698" entryId="62155711" expiretime="" gowner="jisong" guid="D0F8F894-E84B-11E6-AF4A-4B4D3D910CE2" guidtime="11E6E84B" jobid="817454231" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/022/root_archive.zip" md5="cf3bf684fd2cd8f92425378a6eb78321" owner="jisong" perm="755" replicated="0" size="4820980" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/022/root_archive.zip" type="f" />
+    </event>
+    <event name="23">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:57:03" dir="62155516" entryId="62155571" expiretime="" gowner="jisong" guid="9AD68696-E84B-11E6-B580-6F6DE922584D" guidtime="11E6E84B" jobid="817454232" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/023/root_archive.zip" md5="072c7558f497daf61610d35f400fa953" owner="jisong" perm="755" replicated="0" size="4556098" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/023/root_archive.zip" type="f" />
+    </event>
+    <event name="24">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:56:52" dir="62155467" entryId="62155539" expiretime="" gowner="jisong" guid="96CD28C0-E84B-11E6-A892-0343F3FBDC18" guidtime="11E6E84B" jobid="817454233" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/024/root_archive.zip" md5="1d981aa9047751f6b2b7a4edb0ebc253" owner="jisong" perm="755" replicated="0" size="4086818" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/024/root_archive.zip" type="f" />
+    </event>
+    <event name="3">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:57:03" dir="62155514" entryId="62155568" expiretime="" gowner="jisong" guid="99E8C474-E84B-11E6-AF18-4762AB5BD177" guidtime="11E6E84B" jobid="817454212" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/003/root_archive.zip" md5="ee90f798bdba690b1652315895f6e9db" owner="jisong" perm="755" replicated="0" size="4409203" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/003/root_archive.zip" type="f" />
+    </event>
+    <event name="4">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:58:11" dir="62155673" entryId="62155685" expiretime="" gowner="jisong" guid="C2CF4BA6-E84B-11E6-817F-97A53456AEAD" guidtime="11E6E84B" jobid="817454213" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/004/root_archive.zip" md5="1a94e043ad591a13fb09f4cc479ed487" owner="jisong" perm="755" replicated="0" size="4599482" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/004/root_archive.zip" type="f" />
+    </event>
+    <event name="5">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:55:52" dir="62155257" entryId="62155303" expiretime="" gowner="jisong" guid="6E8A2070-E84B-11E6-BBDD-3FDF2255F10B" guidtime="11E6E84B" jobid="817454214" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/005/root_archive.zip" md5="1d7da8f9e2fe7b458667b2ec89ed63c3" owner="jisong" perm="755" replicated="0" size="4179550" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/005/root_archive.zip" type="f" />
+    </event>
+    <event name="6">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:56:52" dir="62155511" entryId="62155530" expiretime="" gowner="jisong" guid="9753DFF0-E84B-11E6-A5EC-1BC3AF7F7B8E" guidtime="11E6E84B" jobid="817454215" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/006/root_archive.zip" md5="0bd07f6e44b06be561ff238f4fc9a610" owner="jisong" perm="755" replicated="0" size="4921405" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/006/root_archive.zip" type="f" />
+    </event>
+    <event name="7">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:56:52" dir="62155510" entryId="62155533" expiretime="" gowner="jisong" guid="9733DDF4-E84B-11E6-B069-3BAC88CB512C" guidtime="11E6E84B" jobid="817454216" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/007/root_archive.zip" md5="098253d5898dae1be00649a93a5af252" owner="jisong" perm="755" replicated="0" size="4978818" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/007/root_archive.zip" type="f" />
+    </event>
+    <event name="8">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:56:52" dir="62155465" entryId="62155536" expiretime="" gowner="jisong" guid="9493C82A-E84B-11E6-B435-1B0A94269A1C" guidtime="11E6E84B" jobid="817454217" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/008/root_archive.zip" md5="6720294559d4528d2f94eaad233aecf0" owner="jisong" perm="755" replicated="0" size="4756623" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/008/root_archive.zip" type="f" />
+    </event>
+    <event name="9">
+      <file name="root_archive.zip" aclId="" broken="0" ctime="2017-02-01 07:56:26" dir="62155280" entryId="62155430" expiretime="" gowner="jisong" guid="773CB19C-E84B-11E6-B1BC-C79D3E9D27C1" guidtime="11E6E84B" jobid="817454218" lfn="/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/009/root_archive.zip" md5="683fc0e70d4b661ddcde16310f7cda47" owner="jisong" perm="755" replicated="0" size="4218463" turl="alien:///alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015/Stage_1/009/root_archive.zip" type="f" />
+    </event>
+    <info command="[/alice/cern.ch/user/j/jisong/pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/]: find -z -x Stage_2 /alice/cern.ch/user/j/jisong//pp276TeV_LHC11a_withoutSDD-LHC12f1a-Phojet-TPCPID/output/015 Stage_1/*root_archive.zip" creator="admin" date="Wed Feb  8 17:30:39 CET 2017" timestamp="1486571439" />
+  </collection>
+</alien>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

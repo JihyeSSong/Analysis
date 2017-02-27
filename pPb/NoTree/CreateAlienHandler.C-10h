@@ -1,0 +1,497 @@
+AliAnalysisGrid* CreateAlienHandler(bool MCcase)
+{
+    // Check if user has a valid token, otherwise make one. This has limitations.
+    // One can always follow the standard procedure of calling alien-token-init then
+    //   source /tmp/gclient_env_$UID in the current shell.
+    //   if (!AliAnalysisGrid::CreateToken()) return NULL;
+    
+    AliAnalysisAlien *plugin = new AliAnalysisAlien();
+    
+    //  plugin->SetUser("Your alien username here");
+    plugin->SetUser("jisong");
+    
+    
+    
+    // Overwrite all generated files, datasets and output results from a previous session
+    plugin->SetOverwriteMode(kTRUE);
+    // Set the run mode (can be "full", "test", "offline", "submit" or "terminate")
+    plugin->SetRunMode("full");  // VERY IMPORTANT
+    // Set versions of used packages
+    plugin->SetAPIVersion("V1.1x");
+    //    plugin->SetROOTVersion("v5-34-05");
+    //    plugin->SetAliROOTVersion("v5-04-80-AN");
+    
+    plugin->SetROOTVersion("v5-34-08-6");
+    plugin->SetAliROOTVersion("vAN-20140602");
+    
+    
+    if(!MCcase) plugin->SetRunPrefix("000");   // real or MC data
+    
+    
+    //TString *Production=new TString("10b");
+    //TString *Production=new TString("10c");
+    //TString *Production=new TString("10d");
+    TString *Production=new TString("10h");
+    
+    //TString *Production=new TString("10e");
+    
+    Int_t totruns=0;
+    // Declare input data to be processed.
+    if(!MCcase){// Real data
+        /*if(Production->Contains("10b")){// AODs
+         plugin->SetGridDataDir("/alice/data/2010/LHC10b");
+         plugin->SetDataPattern("ESDs/pass2/AOD038/*AliAOD.root");
+         totruns += AddGoodRuns(plugin,"LHC10b");
+         }*/
+        
+        if(Production->Contains("10h")){// ESDs
+            plugin->SetGridDataDir("/alice/data/2010/LHC10h");
+            plugin->SetDataPattern("ESDs/pass2/*AliESDs.root");
+            totruns += AddGoodRuns(plugin,"LHC10h");
+        }
+        /*
+         if(Production->Contains("10c")){// AODs
+         plugin->SetGridDataDir("/alice/data/2010/LHC10c");
+         plugin->SetDataPattern("ESDs/pass2/AOD038/*AliAOD.root");
+         totruns += AddGoodRuns(plugin,"LHC10c");
+         }*/
+        if(Production->Contains("10c")){// ESDs
+            plugin->SetGridDataDir("/alice/data/2010/LHC10c");
+            plugin->SetDataPattern("ESDs/pass2/*AliESDs.root");
+            totruns += AddGoodRuns(plugin,"LHC10c");
+        }
+        
+        /*
+         if(Production->Contains("10d")){// AODs
+         plugin->SetGridDataDir("/alice/data/2010/LHC10d");
+         plugin->SetDataPattern("ESDs/pass2/AOD057/*AliAOD.root");
+         totruns += AddGoodRuns(plugin,"LHC10d");
+         }*/
+        if(Production->Contains("10d")){// ESDs
+            plugin->SetGridDataDir("/alice/data/2010/LHC10d");
+            plugin->SetDataPattern("ESDs/pass2/*AliESDs.root");
+            totruns += AddGoodRuns(plugin,"LHC10d");
+        }
+        /*
+         if(Production->Contains("10e")){// AODs
+         plugin->SetGridDataDir("/alice/data/2010/LHC10e");
+         plugin->SetDataPattern("ESDs/pass2/AOD057/*AliAOD.root");
+         totruns += AddGoodRuns(plugin,"LHC10e");
+         }*/
+        if(Production->Contains("10e")){// ESDs
+            plugin->SetGridDataDir("/alice/data/2010/LHC10e");
+            plugin->SetDataPattern("ESDs/pass2/*AliESDs.root");
+            totruns += AddGoodRuns(plugin,"LHC10e");
+        }
+    }else {// MC data
+        if(Production->Contains("10d")){// AODs
+            plugin->SetGridDataDir("/alice/sim/LHC10d");
+            plugin->SetDataPattern("*AliESDs.root");
+            totruns += AddGoodRuns(plugin,"LHC10d",MCcase);
+        }/*
+          if(Production->Contains("10b")){// AODs
+          plugin->SetGridDataDir("/alice/sim/LHC10d1");
+          plugin->SetDataPattern("AOD056/*AliAOD.root");
+          totruns += AddGoodRuns(plugin,"LHC10b",MCcase);
+          }*/
+        /*
+         if(Production->Contains("10c")){// AODs
+         plugin->SetGridDataDir("/alice/sim/LHC10d4");
+         plugin->SetDataPattern("AOD056/*AliAOD.root");
+         totruns += AddGoodRuns(plugin,"LHC10c",MCcase);
+         }*/
+        if(Production->Contains("10h")){// ESDs
+            plugin->SetGridDataDir("/alice/sim/LHC11a10a_bis");
+            plugin->SetDataPattern("*AliESDs.root");
+            totruns += AddGoodRuns(plugin,"LHC10h",MCcase);
+        }
+        
+        /*
+         if(Production->Contains("10d")){// AODs
+         plugin->SetGridDataDir("/alice/sim/LHC10f6a");
+         plugin->SetDataPattern("AOD041/*AliAOD.root");
+         totruns += AddGoodRuns(plugin,"LHC10d",MCcase);
+         }*/
+        if(Production->Contains("10d")){// David's Xi MC data set
+            plugin->SetGridDataDir("/alice/sim/LHC11a6a");
+            plugin->SetDataPattern("*AliESDs.root");
+            totruns += AddGoodRuns(plugin,"LHC10d",MCcase);
+        }
+        /*if(Production->Contains("10d")){// LHC10f6a ESDs
+         plugin->SetGridDataDir("/alice/sim/LHC10f6a");
+         plugin->SetDataPattern("*AliESDs.root");
+         totruns += AddGoodRuns(plugin,"LHC10d",MCcase);
+         }*/
+        /*
+         if(Production->Contains("10e")){// AODs
+         plugin->SetGridDataDir("/alice/sim/LHC10e20");
+         plugin->SetDataPattern("AOD060/*AliAOD.root");
+         totruns += AddGoodRuns(plugin,"LHC10e",MCcase);
+         }*/
+        if(Production->Contains("10e")){// AODs
+            plugin->SetGridDataDir("/alice/sim/LHC10e20");
+            plugin->SetDataPattern("*AliESDs.root");
+            totruns += AddGoodRuns(plugin,"LHC10e",MCcase);
+        }
+    }
+    
+    
+    
+    //plugin->AddRunNumber(117052); // an LHC10b run
+    //plugin->AddRunNumber(120822); // an LHC10c run
+    //plugin->AddRunNumber(120820); // an LHC10c run
+    //plugin->AddRunNumber(137366);// a PbPb run
+    
+    
+    
+    // Define alien work directory where all files will be copied. Relative to alien $HOME.
+    if(!MCcase) plugin->SetGridWorkingDir("10h_ori");
+    else plugin->SetGridWorkingDir("MC_11Jul_Cent30");
+    
+    // Declare alien output directory. Relative to working directory.
+    plugin->SetGridOutputDir("output"); // In this case will be $HOME/work/output
+    //plugin->SetMaxMergeFiles(50);
+    plugin->SetOneStageMerging(kFALSE);
+    plugin->SetMaxMergeStages(2);
+    plugin->SetMergeViaJDL();
+    //plugin->SetUseSubmitPolicy();
+    
+    // Declare the analysis source files names separated by blancs. To be compiled runtime
+    // using ACLiC on the worker nodes.
+    plugin->SetAnalysisSource("AliXiStarEventCollection.cxx AliXiStar.cxx");
+    // Declare all libraries (other than the default ones for the framework. These will be
+    // loaded by the generated analysis macro. Add all extra files (task .cxx/.h) here.
+    plugin->SetAdditionalLibs("AliXiStarEventCollection.h AliXiStarEventCollection.cxx AliXiStar.h AliXiStar.cxx");
+    
+    // No need for output file names. Procedure is automatic.
+    plugin->SetDefaultOutputs(kTRUE);
+    //plugin->SetOutputFiles("MyOutput.root");
+    // No need define the files to be archived. Note that this is handled automatically by the plugin.
+    //plugin->SetOutputArchive("log_archive.zip:stdout,stderr");
+    // Set a name for the generated analysis macro (default MyAnalysis.C) Make this unique !
+    plugin->SetAnalysisMacro("GeneratedMacro.C");
+    // Optionally set maximum number of input files/subjob (default 100, put 0 to ignore). The optimum for an analysis
+    // is correlated with the run time - count few hours TTL per job, not minutes !
+    plugin->SetSplitMaxInputFileNumber(50);
+    // Optionally set number of failed jobs that will trigger killing waiting sub-jobs.
+    
+    // Optionally resubmit threshold.
+    plugin->SetMasterResubmitThreshold(97);
+    // Optionally set time to live (default 30000 sec)
+    plugin->SetTTL(40000);
+    // Optionally set input format (default xml-single)
+    plugin->SetInputFormat("xml-single");
+    // Optionally modify the name of the generated JDL (default analysis.jdl)
+    plugin->SetJDLName("runCode.jdl");
+    // Optionally modify job price (default 1)
+    plugin->SetPrice(1);
+    // Optionally modify split mode (default 'se')
+    plugin->SetSplitMode("se");
+    
+    return plugin;
+    
+}
+//___________________________________________________________________-
+Int_t AddGoodRuns(AliAnalysisAlien* plugin,TString lhcPeriod,bool MCcase=kFALSE) {
+    //
+    // Adds good runs from the Monalisa Run Condition Table
+    
+    
+    Int_t nruns=0,ngoodruns=0;
+    
+    
+    if(lhcPeriod=="LHC10h") {
+        nruns=1; // 150 runs
+        Int_t runlist[1]={138275};
+        
+        /* run_a
+        
+        {137124, 137125, 137132, 137133, 137135, 137136, 137137, 137161,
+            137162, 137163, 137165, 137230, 137231, 137232, 137235, 137236, 137243, 137365, 137366, 137370, 137430, 137431, 137432, 137434, 137439, 137440, 137441, 137443, 137530, 137531, 137539, 137541, 137544, 137546, 137549, 137595, 137608, 137609, 137638, 137639, 137685, 137686, 137689, 137691, 137692, 137693, 137704, 137718, 137722, 137724};
+        
+        */
+        
+        
+        
+        
+        
+          /*
+           
+           
+           
+           
+           {137748, 137751, 137752, 137843, 137847, 137848, 138125, 138126, 138150, 138151, 138153, 138154, 138190, 138192, 138197, 138200, 138201, 138225, 138359, 138364, 138396, 138438, 138439, 138442, 138469, 138533, 138578, 138579, 138582, 138583, 138620, 138621, 138624, 138637, 138638, 138652, 138653, 138662, 138666, 138730, 138731, 138732, 138736, 138737, 138740, 138742, 138796, 138826, 138828, 138830},
+           
+           {138831, 138836, 138837, 138870, 138871, 138872, 139024, 139025, 139028, 139029, 139030, 139031, 139034, 139036, 139037, 139038, 139042, 139104, 139105, 139107, 139172, 139173, 139308, 139309, 139310, 139311, 139314, 139316, 139328, 139329, 139360, 139437, 139438, 139439, 139440, 139441, 139465, 139466, 139467, 139470, 139471, 139503, 139504, 139505, 139507, 139510, 139511, 139513, 139514, 139517}
+         
+         
+         
+         //150 runs
+         */
+        
+        
+        //, 139110,138795,138534,138275,137844, this is MC which will be done with plugin->SetNrunsPerMaster(1);
+        
+        
+        /*
+         
+         
+         {137685, 137686, 137689, 137691, 137692, 137693, 137704, 137718, 137722, 137724, 137748, 137751, 137752, 137843, 137844, 137847, 137848, 138125, 138126, 138150, 138151, 138153, 138154, 138190, 138192, 138197, 138200, 138201, 138225, 138275, 138359, 138364, 138396, 138438, 138439, 138442, 138469, 138533, 138534, 138578, 138579, 138582, 138583, 138620, 138621, 138624, 138637, 138638, 138652, 138653, 138662, 138666, 138730, 138731, 138732, 138736, 138737, 138740, 138742, 138795, 138796, 138826, 138828, 138830, 138831, 138836, 138837, 138870, 138871, 138872, 139024, 139025, 139028, 139029, 139030, 139031, 139034, 139036, 139037, 139038, 139042, 139104, 139105, 139107, 139110, 139172, 139173, 139308, 139309, 139310, 139311, 139314, 139316, 139328, 139329, 139360, 139437, 139438, 139439, 139440, 139441, 139465, 139466, 139467, 139470, 139471, 139503, 139504, 139505, 139507, 139510, 139511, 139513, 139514, 139517}; // this is MC
+         */
+        
+        for(Int_t k=0;k<nruns;k++){
+            if(MCcase) {
+                TString *MCRunName = new TString();
+                *MCRunName += runlist[k];
+                plugin->AddRunNumber(MCRunName->Data());
+            }
+            else plugin->AddRunNumber(runlist[k]);
+            
+            ngoodruns++;
+        }
+        plugin->SetNrunsPerMaster(ngoodruns);
+        //plugin->SetNrunsPerMaster(1);
+    }
+    /*
+     if(lhcPeriod=="LHC10c") {
+     nruns=30;
+     //Int_t runlist[36]={120829, 120825, 120824, 120823, 120822, 120821, 120820, 120758, 120750, 120741, 120671, 120617, 120616, 120505, 120504, 120503, 120244, 120079, 120076, 120073, 120072, 120069, 120067, 119862, 119859, 119856, 119853, 119849, 119846, 119845, 119844, 119842, 119841, 119163, 119161, 119159};// old version
+     Int_t runlist[30]={119159, 119161, 119163, 119842, 119844, 119845, 119846, 119849, 119853, 119856, 119859, 119862, 120067, 120069, 120072, 120073, 120076, 120079, 120244, 120503, 120504, 120505, 120616, 120617, 120671, 120741, 120823, 120824, 120825, 120829};// Angela's list
+     
+     for(Int_t k=0;k<nruns;k++){
+     
+     if(MCcase) {
+     if(runlist[k] > 120829) continue;// last 2 runs do not exist in the MC
+     TString *MCRunName = new TString();
+     *MCRunName += runlist[k];
+     plugin->AddRunNumber(MCRunName->Data());
+     }
+     else plugin->AddRunNumber(runlist[k]);
+     
+     ngoodruns++;
+     }
+     //plugin->SetNrunsPerMaster(ngoodruns);
+     plugin->SetNrunsPerMaster(1);
+     }
+     
+     
+     
+     if(lhcPeriod=="LHC10d") { // runs with high mu excluded
+     nruns=54;
+     Int_t runlist[54]={122374, 125085, 125097, 125100, 125101, 125134, 125296, 125630, 125632, 125633, 125842, 125843, 125844, 125847, 125848, 125849, 125850, 125851, 125855, 126004, 126007, 126008, 126078, 126081, 126082,  126088, 126090, 126097, 126158, 126160, 126168, 126283, 126284, 126285, 126351, 126352, 126359, 126403, 126404, 126405, 126406, 126407, 126408, 126409, 126422,  126424, 126425, 126432, 126437, 125133, 125139, 125140, 125156, 125186};// Angela's list
+     //nruns=34;
+     //Int_t runlist[34]={122374, 125085, 125097, 125100, 125101, 125134, 125296, 125630, 125632, 125633, 125842, 125843, 125844, 125847, 125848, 125849, 125850, 125851, 125855, 126004, 126007, 126008, 126078, 126081, 126082,  126088, 126090, 126097, 126158, 126160, 126168, 126283, 126284, 126285};
+     //nruns=20;
+     //Int_t runlist[20]={126351, 126352, 126359, 126403, 126404, 126405, 126406, 126407, 126408, 126409, 126422,  126424, 126425, 126432, 126437, 125133, 125139, 125140, 125156, 125186};
+     
+     for(Int_t k=0;k<nruns;k++){
+     if(MCcase) {
+     TString *MCRunName = new TString();
+     *MCRunName += runlist[k];
+     plugin->AddRunNumber(MCRunName->Data());
+     }
+     else plugin->AddRunNumber(runlist[k]);
+     
+     ngoodruns++;
+     }
+     plugin->SetNrunsPerMaster(ngoodruns);
+     //plugin->SetNrunsPerMaster(1);
+     }
+     */
+    /*
+     if(lhcPeriod=="LHC10h") {
+     nruns=171;
+     Int_t runlist[171]={
+     139517,
+     139514,
+     139513,
+     139511,
+     139510,
+     139507,
+     139505,
+     139504,
+     139503,
+     139471,
+     139470,
+     139467,
+     139466,
+     139465,
+     139441,
+     139440,
+     139439,
+     139438,
+     139437,
+     139360,
+     139329,
+     139328,
+     139316,
+     139314,
+     139311,
+     139310,
+     139309,
+     139308,
+     139173,
+     139172,
+     139110,
+     139107,
+     139105,
+     139104,
+     139042,
+     139038,
+     139037,
+     139036,
+     139034,
+     139031,
+     139030,
+     139029,
+     139028,
+     139025,
+     139024,
+     138983,
+     138982,
+     138980,
+     138979,
+     138978,
+     138977,
+     138976,
+     138973,
+     138972,
+     138965,
+     138924,
+     138872,
+     138871,
+     138870,
+     138837,
+     138836,
+     138831,
+     138830,
+     138828,
+     138826,
+     138796,
+     138795,
+     138742,
+     138740,
+     138737,
+     138736,
+     138732,
+     138731,
+     138730,
+     138666,
+     138662,
+     138653,
+     138652,
+     138638,
+     138637,
+     138624,
+     138621,
+     138620,
+     138583,
+     138582,
+     138579,
+     138578,
+     138534,
+     138533,
+     138469,
+     138442,
+     138439,
+     138438,
+     138396,
+     138364,
+     138359,
+     138275,
+     138225,
+     138201,
+     138200,
+     138197,
+     138192,
+     138190,
+     138154,
+     138153,
+     138151,
+     138150,
+     138126,
+     138125,
+     137848,
+     137847,
+     137844,
+     137843,
+     137752,
+     137751,
+     137748,
+     137724,
+     137722,
+     137718,
+     137704,
+     137693,
+     137692,
+     137691,
+     137689,
+     137686,
+     137685,
+     137639,
+     137638,
+     137609,
+     137608,
+     137595,
+     137549,
+     137546,
+     137544,
+     137541,
+     137539,
+     137531,
+     137530,
+     137443,
+     137441,
+     137440,
+     137439,
+     137434,
+     137432,
+     137431,
+     137430,
+     137370,
+     137366,
+     137365,
+     137243,
+     137236,
+     137235,
+     137232,
+     137231,
+     137230,
+     137165,
+     137163,
+     137162,
+     137161,
+     137137,
+     137136,
+     137135,
+     137133,
+     137132,
+     137125,
+     137124,
+     137045,
+     137042,
+     136879,
+     136854,
+     136851
+     
+     };
+     
+     for(Int_t k=0;k<nruns;k++){
+     if(MCcase) {
+     if(runlist[k] < 127719) continue;
+     TString *MCRunName = new TString();
+     *MCRunName += runlist[k];
+     plugin->AddRunNumber(MCRunName->Data());
+     }
+     else plugin->AddRunNumber(runlist[k]);
+     
+     ngoodruns++;
+     }
+     //plugin->SetNrunsPerMaster(ngoodruns);
+     plugin->SetNrunsPerMaster(1);
+     }
+     
+     */
+    return ngoodruns;
+    
+}

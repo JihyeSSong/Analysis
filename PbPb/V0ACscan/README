@@ -1,0 +1,9 @@
+This shows information about AnalTree.C
+
+AnalTree.C  // using Event number method
+AnalTree_v2.C // using Event counter method
+
+AnalTree_v1.C // Event loop including all event
+
+AliXiStar.cxx-9Sep 사용중인 코드 !
+AliXiStar.cxx-10Sep fTreeVariablexiTrack을 fTreeEvent에서 fTreeMC로 옮김

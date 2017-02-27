@@ -1,0 +1,8 @@
+
+ *** Break *** keyboard interrupt GeneratedMacro.C:12:
+
+ *** Break *** keyboard interrupt
+analysis.sh: line 40: free: command not found
+Output file EventStat_temp.root not found. Job FAILED !
+Output file MyOutput.root not found. Job FAILED !
+Output files were not validated by the analysis manager
