@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<alien>
-  <collection name="Stage_2">
-    <info command="[/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_Set1_March8/output/]: find -z -x Stage_2 /alice/cern.ch/user/j/jisong//LHC11h_NewCentrality_Set1_March8/output/000 Stage_1/*root_archive.zip" creator="admin" date="Tue Mar  8 14:37:02 CET 2016" timestamp="1457444222" />
-  </collection>
-</alien>
-
