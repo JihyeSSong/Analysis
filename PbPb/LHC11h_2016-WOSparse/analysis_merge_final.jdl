@@ -17,16 +17,16 @@ Packages = {
 };
 # List of input files to be uploaded to workers
 InputFile = {
-   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set1To6_Signal-V9/analysis_merge.C",
-   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set1To6_Signal-V9/analysis.root",
-   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set1To6_Signal-V9/AliXiStarPbPbEventCollection.h",
-   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set1To6_Signal-V9/AliXiStarPbPbEventCollection.cxx",
-   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set1To6_Signal-V9/AliXiStarPbPb.h",
-   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set1To6_Signal-V9/AliXiStarPbPb.cxx",
+   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set2To6_Signal-V9/analysis_merge.C",
+   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set2To6_Signal-V9/analysis.root",
+   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set2To6_Signal-V9/AliXiStarPbPbEventCollection.h",
+   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set2To6_Signal-V9/AliXiStarPbPbEventCollection.cxx",
+   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set2To6_Signal-V9/AliXiStarPbPb.h",
+   "LF:/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set2To6_Signal-V9/AliXiStarPbPb.cxx",
    "LF:$1/Stage_$2.xml"
 };
 # This is the startup script
-Executable = "/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set1To6_Signal-V9/analysis_merge.sh";
+Executable = "/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set2To6_Signal-V9/analysis_merge.sh";
 # We split per SE for merging in stages
 # Time after which the job is killed (1000 min.)
 TTL = "60000";
@@ -42,6 +42,6 @@ Arguments = "Stage_$2.xml $2";
 # AliEn price for this job
 Price = "1";
 # Validation script to be run for each subjob
-Validationcommand = "/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set1To6_Signal-V9/analysis_validation_merge.sh";
+Validationcommand = "/alice/cern.ch/user/j/jisong/LHC11h_NewCentrality_JULY8_Set2To6_Signal-V9/analysis_validation_merge.sh";
 User = "jisong";
 Workdirectorysize = {"5000MB"};
