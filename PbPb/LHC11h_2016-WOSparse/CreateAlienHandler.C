@@ -17,7 +17,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
     // Overwrite all generated files, datasets and output results from a previous session
     plugin->SetOverwriteMode(kTRUE);
     // Set the run mode (can be "full", "test", "offline", "submit" or "terminate")
-    plugin->SetRunMode("full");  // VERY IMPORTANT
+    plugin->SetRunMode("terminate");  // VERY IMPORTANT
     // Set versions of used packages
     plugin->SetAPIVersion("V1.1x");
     
@@ -102,7 +102,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
     
     // Define alien work directory where all files will be copied. Relative to aliBn $HOME.
 
-    if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set2To6_Signal-V9");
+    if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set1To6_Signal-V9");
 //    if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set1To6_Signal-DEF");
 
     else plugin->SetGridWorkingDir("LHC11h_MC_kCent_LHC14a1c_JULY8-Set3to3-MW6");
