@@ -102,7 +102,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
     
     // Define alien work directory where all files will be copied. Relative to aliBn $HOME.
 
-    if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set1To6_Signal-V9");
+    if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set2To6_Signal-V9");
 //    if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set1To6_Signal-DEF");
 
     else plugin->SetGridWorkingDir("LHC11h_MC_kCent_LHC14a1c_JULY8-Set3to3-MW6");
@@ -159,7 +159,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
 Int_t AddGoodRuns(AliAnalysisAlien* plugin,TString lhcPeriod,bool MCcase=kFALSE) {
     //
     // Adds good runs from the Monalisa Run Condition Table
-    Int_t SetRunNumber = 2;
+    Int_t SetRunNumber = 3;
       Int_t nruns=0,ngoodruns=0;
    
   
