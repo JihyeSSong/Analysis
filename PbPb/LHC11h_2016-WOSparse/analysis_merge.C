@@ -76,7 +76,7 @@ void analysis_merge(const char *dir, Int_t stage=0)
          continue;
       }
       if (mergeExcludes.Contains(outputFile.Data())) continue;
-      merged = AliAnalysisAlien::MergeOutput(outputFile, outputDir, 20, stage);
+      merged = AliAnalysisAlien::MergeOutput(outputFile, outputDir, 100, stage);
       if (!merged) {
          printf("ERROR: Cannot merge %s\n", outputFile.Data());
          return;

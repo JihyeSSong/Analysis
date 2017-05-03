@@ -1,4 +1,4 @@
-void runXiStar(int Nevents=1000, bool batchmode=kTRUE, bool MCcase=kFALSE, bool AODcase=kFALSE, const char* collectionfile="collection.xml", const char* outfilename="MyOutput.root") {
+void runXiStar(int Nevents=1000, bool batchmode=kTRUE, bool MCcase=kTRUE, bool AODcase=kFALSE, const char* collectionfile="collection.xml", const char* outfilename="MyOutput.root") {
     
     
     gSystem->Load("libTree.so");

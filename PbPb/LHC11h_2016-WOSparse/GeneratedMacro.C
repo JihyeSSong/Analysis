@@ -2,7 +2,7 @@ const char *anatype = "ESD";
 
 void GeneratedMacro()
 {
-// Analysis using ESD data
+// Analysis using ESD/MC
 // Automatically generated analysis steering macro executed in grid subjobs
 
    TStopwatch timer;
