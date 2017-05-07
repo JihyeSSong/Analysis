@@ -10,3 +10,13 @@
 
 3.  LHC11h_Histo_2015_Cuts :: Previous version has LHC10h General cuts
 			      This code includes LHC11h General cuts
+
+
+
+
+LHC11h_2017-CPAtest-vlooseTest1:: introduce LightV0 JH version
+¡ª> Add low-pT loosen criteria for low pT track
+
+
+LHC11h_2017-CPAtest-vlooseTest2:: introduce LightCascade JH version
+

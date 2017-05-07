@@ -17,7 +17,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
     // Overwrite all generated files, datasets and output results from a previous session
     plugin->SetOverwriteMode(kTRUE);
     // Set the run mode (can be "full", "test", "offline", "submit" or "terminate")
-    plugin->SetRunMode("terminate");  // VERY IMPORTANT
+    plugin->SetRunMode("full");  // VERY IMPORTANT
     // Set versions of used packages
     plugin->SetAPIVersion("V1.1x");
     
@@ -70,7 +70,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
         }
     }else {// MC data
         if(Production->Contains("11h")){// AODs
-            plugin->SetGridDataDir("/alice/sim/2014/LHC14a1a"); // LHC14a1b for semi, LHC14a1c for mb
+            plugin->SetGridDataDir("/alice/sim/2014/LHC14a1b"); // LHC14a1b for semi, LHC14a1c for mb
             plugin->SetDataPattern("*AliESDs.root");
             totruns += AddGoodRuns(plugin,"LHC11h_2",MCcase);
         }
@@ -105,7 +105,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
     if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set6To6_Signal-V11");
 //    if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set1To6_Signal-DEF");
 
-    else plugin->SetGridWorkingDir("LHC11h_MC_kCent_LHC14a1a_JULY8-Set3to3-V9");
+    else plugin->SetGridWorkingDir("LHC11h_MC_kCent_LHC14a1b_JULY8-Set1to3-V9");
 
     
     // Declare alien output directory. Relative to working directory.
@@ -159,7 +159,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
 Int_t AddGoodRuns(AliAnalysisAlien* plugin,TString lhcPeriod,bool MCcase=kFALSE) {
     //
     // Adds good runs from the Monalisa Run Condition Table
-    Int_t SetRunNumber = 3;
+    Int_t SetRunNumber = 1;
       Int_t nruns=0,ngoodruns=0;
    
   
