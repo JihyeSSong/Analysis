@@ -1289,7 +1289,7 @@ void AliXiStarPbPb::Exec(Option_t *)
         }
         
     // Vertex systematic study default : 10 , loose : 11 , tight : 9 
-        if(fabs(primaryVtx[2]) > 9.) return; // Z-Vertex Cut
+        if(fabs(primaryVtx[2]) > 11.) return; // Z-Vertex Cut
     
     
         ((TH1F*)fOutputList->FindObject("fMultDist2"))->Fill(fESD->GetNumberOfTracks());

@@ -70,7 +70,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
         }
     }else {// MC data
         if(Production->Contains("11h")){// AODs
-            plugin->SetGridDataDir("/alice/sim/2014/LHC14a1b"); // LHC14a1b for semi, LHC14a1c for mb
+            plugin->SetGridDataDir("/alice/sim/2014/LHC14a1a"); // LHC14a1b for semi, LHC14a1c for mb
             plugin->SetDataPattern("*AliESDs.root");
             totruns += AddGoodRuns(plugin,"LHC11h_2",MCcase);
         }
@@ -105,7 +105,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
     if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set6To6_Signal-V11");
 //    if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set1To6_Signal-DEF");
 
-    else plugin->SetGridWorkingDir("LHC11h_MC_kCent_LHC14a1b_JULY8-Set1to3-V9");
+    else plugin->SetGridWorkingDir("LHC11h_MC_kCent_LHC14a1a_JULY8-Set1to3-V11");
 
     
     // Declare alien output directory. Relative to working directory.
