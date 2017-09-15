@@ -14,9 +14,14 @@
 
 
 
-LHC11h_2017-CPAtest-vlooseTest1:: introduce LightV0 JH version
-！> Add low-pT loosen criteria for low pT track
+LHC11h_2017-CPAtest-vlooseTest1:: 
+！> old&old version of AliLightV0 and Cascade
+！> This is linked to ＾/Users/jihyesong/alicesw/aliphysics/master/inst/include￣
+！> Number of Xi (90)
+
+LHC11h_2017-CPAtest-vlooseTest2:: introduce OLD- Light version
+！> old version of light (without pre filter for Cascade)
 
 
-LHC11h_2017-CPAtest-vlooseTest2:: introduce LightCascade JH version
-
+LHC11h_2017-CPAtest-vlooseTest3:: introduce new- Light version
+！> stored latest light-version of AliPhysics

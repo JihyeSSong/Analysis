@@ -12,12 +12,12 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
     
     gSystem->Setenv("alien_CLOSE_SE","working_disk_SE");
     
-   //  gSystem->Setenv("alien_CLOSE_SE","ALICE::ORNL::LCG");
+   // gSystem->Setenv("alien_CLOSE_SE","ALICE::ORNL::LCG"); // ALICE::Tsukuba::SE
     
     // Overwrite all generated files, datasets and output results from a previous session
     plugin->SetOverwriteMode(kTRUE);
     // Set the run mode (can be "full", "test", "offline", "submit" or "terminate")
-    plugin->SetRunMode("full");  // VERY IMPORTANT
+    plugin->SetRunMode("terminate");  // VERY IMPORTANT
     // Set versions of used packages
     plugin->SetAPIVersion("V1.1x");
     
@@ -29,6 +29,8 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
     plugin->SetAliPhysicsVersion("v5-06-15-01"); //work for kMB untill June 23 2016.  //for data
     
     
+//    plugin->SetCheckCopy(kFALSE); // Add June 30
+
     
     // below is test
   //   plugin->SetROOTVersion("v5-34-30-alice-24");
@@ -70,7 +72,9 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
         }
     }else {// MC data
         if(Production->Contains("11h")){// AODs
-            plugin->SetGridDataDir("/alice/sim/2014/LHC14a1a"); // LHC14a1b for semi, LHC14a1c for mb
+            plugin->SetGridDataDir("/alice/sim/2014/LHC14a1c"); // LHC14a1b for semi, LHC14a1c for mb
+//            plugin->SetGridDataDir("/alice/sim/2014/LHC14a1b"); // LHC14a1b for semi, LHC14a1c for mb
+
             plugin->SetDataPattern("*AliESDs.root");
             totruns += AddGoodRuns(plugin,"LHC11h_2",MCcase);
         }
@@ -99,13 +103,13 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
     }
     
     
-    
+
     // Define alien work directory where all files will be copied. Relative to aliBn $HOME.
 
     if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set6To6_Signal-V11");
-//    if(!MCcase) plugin->SetGridWorkingDir("LHC11h_NewCentrality_JULY8_Set1To6_Signal-DEF");
 
-    else plugin->SetGridWorkingDir("LHC11h_MC_kCent_LHC14a1a_JULY8-Set1to3-V11");
+    else plugin->SetGridWorkingDir("LHC11h_MC_kCent_LHC14a1c_JULY8-Set3to3-V11");
+   // else plugin->SetGridWorkingDir("LHC11h_MC_kCent_LHC14a1c_JULY8-Set3to3-V11-add");
 
     
     // Declare alien output directory. Relative to working directory.
@@ -115,6 +119,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
     plugin->SetMaxMergeStages(2);
     plugin->SetMergeViaJDL();
     //plugin->SetUseSubmitPolicy();
+    
     
     // Declare the analysis source files names separated by blancs. To be compiled runtime
     // using ACLiC on the worker nodes.
@@ -159,7 +164,7 @@ AliAnalysisGrid* CreateAlienHandler(bool MCcase)
 Int_t AddGoodRuns(AliAnalysisAlien* plugin,TString lhcPeriod,bool MCcase=kFALSE) {
     //
     // Adds good runs from the Monalisa Run Condition Table
-    Int_t SetRunNumber = 1;
+    Int_t SetRunNumber = 3;
       Int_t nruns=0,ngoodruns=0;
    
   
@@ -215,31 +220,22 @@ Int_t AddGoodRuns(AliAnalysisAlien* plugin,TString lhcPeriod,bool MCcase=kFALSE)
                 
                 Int_t runlist[35]={ 169859, 169923, 169965, 170027, 170040, 170081, 170083, 170084, 170085, 170088, 170089, 170091, 170155, 170159, 170163, 170193, 170203, 170204, 170207, 170228, 170230, 170268, 170269, 170270, 170306, 170308, 170309, 170311, 170312, 170313, 170315, 170387, 170388, 170572, 170593};
             }
+            if(SetRunNumber==4){ //set 2/3
+                nruns=8; //total 108
+                
+                Int_t runlist[8]={169590, 169591, 169835, 169837, 169838, 169846, 169855, 169858};
+            }
+            if(SetRunNumber==5){ //set3/3
+                nruns=8; //total 108
+                
+                Int_t runlist[8]={ 170311, 170312, 170313, 170315, 170387, 170388, 170572, 170593};
+            }
+            
 
             
             
             
         }
-        
-        
-        
-        //170593, 170572, 170388, 170387, 170315, 170313, 170312, 170311, 170309, 170308,
-        //170306, 170270, 170269, 170268, 170230, 170228, 170207, 170204, //set1
-        
-        //170203,170193,170163, 170159, 170155, 170091, 170089, 170088, 170085, 170084,
-        // 170083, 170081,170040, 170027, 169965, 169923, 169859, 169858, //set2
-        
-        //169855, 169846, 169838, 169837, 169835, 169591, 169590, 169588, 169587, 169586,
-        //169557, 169555, 169554, 169553, 169550, 169515, 169512, 169506, //set3
-        
-        //169504, 169498, 169475, 169420, 169419, 169418, 169417, 169415, 169411, 169238,
-        //169167, 169160, 169156, 169148, 169145, 169144, 169138, 169099, //set4
-        
-        //169094, 169091, 169045, 169044, 169040, 169035, 168992, 168988, 168826, 168777,
-        //168514, 168512, 168511, 168467, 168464, 168460, 168458, 168362, //set5
-        
-        //168361, 168342, 168341, 168325, 168322, 168311, 168310, 168115, 168108, 168107,
-        //168105, 168076, 168069, 167988, 167987, 167985, 167920, 167915 //set6
         
         
         
